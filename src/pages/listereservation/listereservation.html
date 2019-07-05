@@ -1,0 +1,42 @@
+ 
+<ion-content>
+    <ion-label>Details</ion-label>
+    Client:{{item.nom_client}}<br>
+    Date debut  evenement:{{item.date_debut_evenement}}<br>
+    Date fin  evenement:{{item.date_fin_evenement}}
+    <br>
+    <br>
+
+<table >
+  
+        <tr>
+            <th>Produit:</th>
+            <td *ngFor="let res of listres" >{{res.produit}}</td>
+            <td> </td>
+          </tr>
+
+          <tr>
+                <th>Quantité demandée</th>
+                <td *ngFor="let res of listres" >{{res.qte}}</td>
+                
+              </tr>
+
+              
+           <tr>
+              <th>Quantité disponible dans le stock</th>
+              <td  *ngFor="let st of reversestock ">{{st}}</td>
+             
+            </tr> 
+            <tr>
+              <th>Quantité disponible hors stock</th>
+              <td    *ngFor="let qt of sortiereclean ">{{qt}}</td>
+             
+            </tr> 
+         
+            <tr>
+              <th>Total quantité</th>
+              <td></td>
+             
+            </tr>        
+        </table>
+</ion-content>

@@ -1,0 +1,38 @@
+page-param {
+    ion-label{
+        font-size: 1em;
+        font-weight: bold;
+        padding-left: 1%
+    }
+
+    table {
+      
+        border-collapse: collapse;
+        width: 100%;
+      }
+     th{
+        font-size: 0.9em;
+     }
+      td, th {
+        
+        text-align: left;
+        padding: 8px;
+      }
+      
+      tr:nth-child(even) {
+        background-color: #ffffff;
+        border: 1px solid #cfcdcd;
+      }
+     #item{
+          font-size: 0.9em;
+          float:right;
+     margin-right:70%
+         
+      }
+    #icon{
+          font-size: 1.2em;
+          float:right;
+          color: red;
+          margin-right:0%;
+      }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "Qradmin",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

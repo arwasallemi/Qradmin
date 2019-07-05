@@ -1,0 +1,214 @@
+
+
+<ion-content style="background-color:lightgrey">
+
+  <nav>
+     
+   <ul id="main" >
+       <li class="border">  
+         <img src="assets/icon/favicon.ico" width="50px" height="47 px"/>
+       </li>
+     <li class="border" style="color:#3ea7d8">
+<div style="float:left" >
+ <ul id="menu" ><ion-icon id="med" name="desktop" style="color:#3ea7d8"></ion-icon></ul>
+ <ul id="menu">Accueil</ul>
+ </div>
+<div style="float:center;margin-left: 50px">
+   <ul><ion-icon id="med" name="build" style="color:#3ea7d8"></ion-icon></ul>
+   <ul>Réglages</ul>
+</div>
+<!-- <ion-note style="margin-bottom: 0%;float: center">Mon bureau</ion-note> -->
+<!-- <p style="float:right;margin-left: 130px;margin-top: 0%">Bureau</p> -->
+ </li>
+ <li class="border" style="color:#a305a8">
+   
+     <div style="float:left;margin-top:6%"><ion-icon id="med" name="person" style="color:#a305a8"></ion-icon>Clients</div>
+     <div style="float:center;margin-left:55px">
+       <ul><ion-icon id="small" name="contacts" style="color:#a305a8"></ion-icon>Prospects</ul>
+       <ul><ion-icon id="small" name="contacts" style="color:#a305a8"></ion-icon>Representants</ul>
+       <ul><ion-icon id="small" name="contacts" style="color:#a305a8"></ion-icon>Employeurs</ul>
+     </div>
+   
+ </li>
+
+     <li class="border"style="color:#178a43">
+      
+         <div style="float:left">
+             <ul id="menu"><ion-icon id="med" name="archive" style="color:#178a43"></ion-icon></ul>
+             <ul id="menu">Liste des produits</ul>
+             </div>
+           <div style="float:center;margin-left: 150px">
+               <ul id="menu"><ion-icon id="med" name="filing" style="color:#178a43"></ion-icon></ul>
+               <ul id="menu">Mouvements de stock</ul>
+           </div>
+     </li>
+     <li class="border" style="color:#f8793e">
+         <div style="float:left">
+             <ul id="menu"><ion-icon id="med" name="document" style="color:#f8793e"></ion-icon></ul>
+             <ul id="menu">Pieces clients</ul>
+             </div>
+           <div style="float:center;margin-left: 80px">
+               <ul ><ion-icon id="med" name="document" style="color:#f8793e"></ion-icon></ul>
+               <ul>Pieces employeurs</ul>
+           </div>
+     </li>
+     <li class="border" >
+         <ul id="menu" style="margin-right:0%"><ion-icon id="med" name="help-circle"></ion-icon></ul>
+             <ul id="menu" style="margin-right:0%">Help</ul>
+     </li>
+     <!-- <li style="padding-top: 0;padding-bottom: 0;margin-right: 0;float:right">
+       <ion-searchbar></ion-searchbar>
+     </li> -->
+     <div id="marker"></div>
+   </ul>
+ </nav>
+  <!-- ============================================================== -->
+   <!-- Side Menu -->
+   <!-- ============================================================== -->
+
+
+   
+<input type="checkbox" id="check" style="padding-top:200px"/>
+<label for="check">
+ <svg viewBox="0 0 30 30" width="20" height="30" style="padding-top:200px;float:left">
+   <path id="one" d="M4 10h22M4" stroke="#374954" stroke-width="2" stroke-linecap="round"></path>
+   <path id="two" d="M4 20h22M4" stroke="#000" stroke-width="2" stroke-linecap="round"></path>
+ </svg> <ion-icon name="menu" style="color: white"></ion-icon>
+</label>
+<aside>
+ <div class="top" style="color: white">
+   <h2>Title</h2>
+   <ul>
+     <li>Nav text</li>
+     <li>Nav text</li>
+     <li>Nav text</li>
+     <li>Nav text</li>
+     <li>Nav text</li>
+   </ul>
+ </div>
+ 
+</aside>
+
+
+ <article >
+  <p id="title">Ajouter un nouveau employeur</p>
+  <ion-card>
+   
+
+ 
+
+  <div class="clearfixtop">
+    <div class="boxtop" >
+        <ion-label id="medium">Nom et Prenom</ion-label>
+            <ion-input [(ngModel)]="nom" type="text" placeholder="nom" ></ion-input>
+         
+         
+    </div>
+    <!-- <div class="boxtop" style="float:center;margin-left:5%">
+        
+           <ion-label id="medium">Prenom</ion-label>
+           <ion-input [(ngModel)]="prenom" type="text" placeholder="prenom" ></ion-input>
+    </div> -->
+    <div class="boxtop" style="float:center;margin-left:5%">
+        
+      <ion-label id="medium">Cin</ion-label>
+      <ion-input [(ngModel)]="cin" type="text" placeholder="cin" ></ion-input>
+    </div>
+    <div class="boxtop" style="float:center">
+            
+      <ion-label id="medium">Email</ion-label>
+      <ion-input [(ngModel)]="email" type="text" placeholder="email" ></ion-input>
+    </div>
+    <div class="boxtop"  style="float:center">
+            
+      <ion-label id="medium">Tel</ion-label>
+      <ion-input [(ngModel)]="tel" type="text" placeholder="tel" ></ion-input>
+    </div>
+    <div class="boxtop"  style="float:center;margin-left:5%">
+            
+      <ion-label id="medium">Adresse</ion-label>
+      <ion-input [(ngModel)]="adresse" type="text" placeholder="adresse" ></ion-input>
+    </div>
+    <div class="boxtop" style="float:center">
+        
+    
+   
+      <ion-list style="width:40%" radio-group [(ngModel)]="sexe">
+          <ion-label id="medium">Sexe</ion-label>
+        <ion-item>
+          <ion-label id="small">Femme</ion-label>
+          <ion-radio value="femme" checked></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label id="small">Homme</ion-label>
+          <ion-radio value="homme"></ion-radio>
+        </ion-item>
+     
+      </ion-list>
+</div>
+<button ion-button (click)="add()">Ajouter</button>
+    </div>  
+              
+
+  
+        
+
+
+    
+
+
+     
+ 
+
+
+           
+     
+            
+           
+</ion-card>
+<p id="title">Liste des employeurs</p>
+<ion-card>
+
+
+
+<table >
+  <tr>
+    <th>#</th>
+    <th>Nom</th>
+    <th>Prenom</th>
+    <th>Sexe</th>
+    <th>Email</th>
+    <th>CIN</th>
+    <th>Tel</th>
+    <th>Adresse</th>
+    <th>Date de creation</th>
+  
+     <th>Action</th>
+  </tr>
+  <tr *ngFor="let item of list " >
+    <td>{{item.id}}</td>
+    <td>{{item.nom}}</td>
+    <td>{{item.prenom}}</td>
+    <td>{{item.sexe}}</td>
+    <td>{{item.email}}</td>
+    <td>{{item.cin}}</td>
+    <td>{{item.tel}}</td>
+    <td>{{item.adresse}}</td>
+    <td>{{item.created_at}}</td>
+  
+    <td> <ion-icon id="action" name="eye" style="color:#3ea7d8"></ion-icon> <ion-icon id="action" name="create" (click)="edit(item.id)" style="color:#178a43"></ion-icon> 
+      <ion-icon id="action" name="trash" (click)="delete(item.id)" style="color:red"></ion-icon></td>
+  </tr>
+
+</table>
+
+</ion-card>
+          
+    </article>
+    
+
+
+
+
+        
+</ion-content>

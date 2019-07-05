@@ -1,0 +1,50 @@
+page-entrepot {
+    ion-label{
+        font-size: 1.2em
+    }
+    
+    table {
+      
+        border-collapse: collapse;
+        width: 100%;
+      }
+     
+      td, th {
+        
+        text-align: left;
+        padding: 8px;
+      }
+      
+      tr:nth-child(even) {
+        background-color: #ffffff;
+        border: 1px solid #cfcdcd;
+      }
+    
+      //////////
+      #action{
+        font-size: 20px;
+        margin-right: 10px
+      }
+      ion-input{
+          border-bottom: #cfcdcd;
+     
+          border-bottom-style:initial;
+          border-bottom-color: rgb(173, 173, 173);
+      }
+      #title{
+        font-size: 15px; 
+       // font-family:'Courier New', Courier, monospace; 
+        font-weight:500;
+      }
+
+
+      #left{
+          float:left;
+          width: 40%;
+      }
+      
+      #right{
+        float:center;
+        
+    }
+}
