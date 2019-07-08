@@ -20,7 +20,7 @@ import { ReservationPage } from '../pages/reservation/reservation';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = ParamPage;
+  rootPage:any = ReservationPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
