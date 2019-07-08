@@ -45,6 +45,7 @@ import { ListereservationPage } from '../pages/listereservation/listereservation
 import { ListeResPage } from '../pages/liste-res/liste-res';
 import { ListeResProvider } from '../providers/list-res/list-res';
 import { ListesortieProvider } from '../providers/listesortie/listesortie';
+import { TvaProvider } from '../providers/tva/tva';
  
  
  
@@ -120,7 +121,8 @@ EntrepotPage,
     BonSortieProvider,
     ReservationProvider,
     ListeResProvider,
-    ListesortieProvider
+    ListesortieProvider,
+    TvaProvider,
   
   ]
 })

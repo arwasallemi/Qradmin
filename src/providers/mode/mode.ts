@@ -45,7 +45,7 @@ export class ModeProvider {
       // We're using Angular HTTP provider to request the data,
       // then on the response, it'll map the JSON data to a parsed JS object.
       // Next, we process the data and resolve the promise with the new data.
-      this.http.get('http://localhost:8000/mode/modes/')
+      this.http.get('http://testmariadb.alwaysdata.net/public/mode/modes')
         .map(res => res.json())
         .subscribe(data => {
           // we've got back the raw data, now generate the core schedule data
@@ -75,7 +75,7 @@ export class ModeProvider {
 
 save(data) {
   return new Promise((resolve, reject) => {
-    this.http.post('http://localhost:8000/mode/modes/',data)
+    this.http.post('http://testmariadb.alwaysdata.net/public/mode/modes',data)
       .subscribe(res => {
         resolve(res);
       }, (err) => {
@@ -94,7 +94,7 @@ edit(id,postInfo){
      headers.append('Authorization', 'Bearer '+value);
      console.log('value: ' + value);
 
-     this.http.put('http://localhost:8000/mode/modes/' +id ,  JSON.stringify(postInfo),  {headers: headers})
+     this.http.put('http://testmariadb.alwaysdata.net/public/mode/modes' +id ,  JSON.stringify(postInfo),  {headers: headers})
        .map(res => res.json())
        .subscribe(data => {
          resolve(data);
@@ -121,13 +121,13 @@ delete(id){
      headers.append('Authorization', 'Bearer '+value);
      console.log('value: ' + value);
 
-     this.http.delete('http://localhost:8000/mode/modes/' +id,    {headers: headers})
+     this.http.delete('http://testmariadb.alwaysdata.net/public/mode/modes' +id,    {headers: headers})
        .map(res => res.json())
        .subscribe(data => {
          resolve(data);
        }, (err) => {
          reject(err);
-       }); 
+       });
    }) 
 
  });

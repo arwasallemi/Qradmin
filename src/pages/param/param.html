@@ -92,33 +92,44 @@
 
  <article>
 
-  <ion-card style="width: 40%;float:left;margin-left:5%" id="left">
-   <ion-label>Parametres Devis</ion-label>
+  <ion-card style="width: 100%" >
+   <ion-label>  <u>  Paramètres Devis</u></ion-label>
     <table >
   
         <tr>
             <th>Delai de livraison:</th>
             <td *ngFor="let item of list ">{{item.delai}}</td>
-            <td>  <ion-icon id="icon" name="add-circle"></ion-icon></td>
+            <td>  <ion-icon id="icon" name="add-circle"  (click)="adddelai()"></ion-icon></td>
           </tr>
           <tr>
-              <th>Mode de reglement:</th>
+              <th>Mode de règlement:</th>
               <td *ngFor="let item1 of listmd ">{{item1.mode}}</td>
-              <td>  <ion-icon id="icon" name="add-circle"></ion-icon></td>
+              <td>  <ion-icon id="icon" name="add-circle"  (click)="addMode()"></ion-icon></td>
             </tr>
             <tr>
-                <th>Condition de reglement:</th>
+                <th>Condition de règlement:</th>
                 <td *ngFor="let item2 of listcd ">{{item2.condition}}</td>
-                <td>  <ion-icon id="icon" name="add-circle"></ion-icon></td>
+                <td>  <ion-icon id="icon" name="add-circle" (click)="addCondition()"></ion-icon></td>
               </tr>
            
        
         </table>
 </ion-card>
 
-<ion-card style="width: 40%;float:right;margin-top:0.6%" id="right">
+<ion-card style="width: 100%">
  
-  <ion-label >TVA</ion-label>
+  <ion-label > <u> TVA </u></ion-label>
+  <table >
+  
+    <tr>
+        <th>Valeur % : </th>
+        <td *ngFor="let itemtva of listTva ">{{itemtva.valeur}}</td>
+        <td>  <ion-icon id="icon" name="add-circle"  (click)="addtva()"></ion-icon></td>
+      </tr>
+     
+       
+   
+    </table>
 </ion-card>
           
     </article>

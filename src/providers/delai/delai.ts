@@ -45,7 +45,7 @@ export class DelaiProvider {
       // We're using Angular HTTP provider to request the data,
       // then on the response, it'll map the JSON data to a parsed JS object.
       // Next, we process the data and resolve the promise with the new data.
-      this.http.get('http://localhost:8000/delai/delais/')
+      this.http.get('http://testmariadb.alwaysdata.net/public/delai/delais')
         .map(res => res.json())
         .subscribe(data => {
           // we've got back the raw data, now generate the core schedule data
@@ -62,7 +62,7 @@ export class DelaiProvider {
 
  getitems() {
   return new Promise(resolve => {
-    this.http.get('http://localhost:8000/delai/delais/').subscribe(data => {
+    this.http.get('http://testmariadb.alwaysdata.net/public/delai/delais').subscribe(data => {
       resolve(data);
     }, err => {
       console.log(err);
@@ -76,7 +76,7 @@ export class DelaiProvider {
 
 save(data) {
   return new Promise((resolve, reject) => {
-    this.http.post('http://localhost:8000/delai/delais/',data)
+    this.http.post('http://testmariadb.alwaysdata.net/public/delai/delais',data)
       .subscribe(res => {
         resolve(res);
       }, (err) => {
@@ -95,7 +95,7 @@ edit(id,postInfo){
      headers.append('Authorization', 'Bearer '+value);
      console.log('value: ' + value);
 
-     this.http.put('http://localhost:8000/delai/delais/' +id ,  JSON.stringify(postInfo),  {headers: headers})
+     this.http.put('http://testmariadb.alwaysdata.net/public/delai/delais' +id ,  JSON.stringify(postInfo),  {headers: headers})
        .map(res => res.json())
        .subscribe(data => {
          resolve(data);
@@ -117,7 +117,7 @@ getbyId(id){
      headers.append('Authorization', 'Bearer '+value);
      console.log('value: ' + value);
 
-     this.http.get('http://localhost:8000/delai/delais/' +id ,  {headers: headers})
+     this.http.get('http://testmariadb.alwaysdata.net/public/delai/delais' +id ,  {headers: headers})
        .map(res => res.json())
        .subscribe(data => {
          resolve(data);
@@ -142,7 +142,7 @@ delete(id){
      headers.append('Authorization', 'Bearer '+value);
      console.log('value: ' + value);
 
-     this.http.delete('http://localhost:8000/delai/delais/' +id,    {headers: headers})
+     this.http.delete('http://testmariadb.alwaysdata.net/public/delai/delais' +id,    {headers: headers})
        .map(res => res.json())
        .subscribe(data => {
          resolve(data);

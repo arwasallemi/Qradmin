@@ -43,7 +43,7 @@ export class DevisProvider {
 
        console.log('value: ' + value);
   
-       this.http.get('http://localhost:8000/devis/devis/', {headers: headers})
+       this.http.get('http://testmariadb.alwaysdata.net/public/devis/devis', {headers: headers})
          .map(res => res.json())
          .subscribe(data => {
            resolve(data);
@@ -61,7 +61,7 @@ export class DevisProvider {
 
  getitems() {
   return new Promise(resolve => {
-    this.http.get('http://localhost:8000/devis/devis/').subscribe(data => {
+    this.http.get('http://testmariadb.alwaysdata.net/public/devis/devis').subscribe(data => {
       resolve(data);
     }, err => {
       console.log(err);
@@ -75,7 +75,7 @@ export class DevisProvider {
 
 save(data) {
   return new Promise((resolve, reject) => {
-    this.http.post('http://localhost:8000/devis/devis/',data)
+    this.http.post('http://testmariadb.alwaysdata.net/public/devis/devis',data)
       .subscribe(res => {
         resolve(res);
       }, (err) => {
@@ -94,7 +94,7 @@ edit(id,postInfo){
      headers.append('Authorization', 'Bearer '+value);
      console.log('value: ' + value);
 
-     this.http.put('http://localhost:8000/devis/devis/' +id ,  JSON.stringify(postInfo),  {headers: headers})
+     this.http.put('http://testmariadb.alwaysdata.net/public/devis/devis/' +id ,  JSON.stringify(postInfo),  {headers: headers})
        .map(res => res.json())
        .subscribe(data => {
          resolve(data);
@@ -121,7 +121,7 @@ delete(id){
      headers.append('Authorization', 'Bearer '+value);
      console.log('value: ' + value);
 
-     this.http.delete('http://localhost:8000/devis/devis/' +id,    {headers: headers})
+     this.http.delete('http://testmariadb.alwaysdata.net/public/devis/devis/' +id,    {headers: headers})
        .map(res => res.json())
        .subscribe(data => {
          resolve(data);

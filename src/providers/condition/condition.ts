@@ -42,7 +42,7 @@ export class ConditionProvider {
 
     return new Promise(resolve => {
 
-      this.http.get('http://localhost:8000/condition/conditions/')
+      this.http.get('http://testmariadb.alwaysdata.net/public/condition/conditions')
         .map(res => res.json())
         .subscribe(data => {
   
@@ -58,7 +58,7 @@ export class ConditionProvider {
 
  getitems() {
   return new Promise(resolve => {
-    this.http.get('http://localhost:8000/condition/conditions/').subscribe(data => {
+    this.http.get('http://testmariadb.alwaysdata.net/public/condition/conditions').subscribe(data => {
       resolve(data);
     }, err => {
       console.log(err);
@@ -72,7 +72,7 @@ export class ConditionProvider {
 
 save(data) {
   return new Promise((resolve, reject) => {
-    this.http.post('http://localhost:8000/condition/conditions/',data)
+    this.http.post('http://testmariadb.alwaysdata.net/public/condition/conditions',data)
       .subscribe(res => {
         resolve(res);
       }, (err) => {
