@@ -102,10 +102,9 @@
      
  
 <p id="title">Liste des bon de sortie</p>
+<ion-searchbar placeholder="rechercher par status" [(ngModel)]="myInput" (ionInput)="getItems($event)"></ion-searchbar>
+ 
 <ion-card>
-
-
-
  <table >
   <tr>
     <th>#</th>
@@ -122,8 +121,11 @@
     <th>Equipe Technique</th>
    
 
+
+    <th>Status</th>
+    <th></th>
+    <th></th>
     <th>Date de creation</th>
-    <th>Etat</th>
     <th></th>
     <th></th>
      <th>Action</th>
@@ -142,25 +144,27 @@
     <td>{{bon.matricule}}</td>
   
     <td>{{bon.equipe_name}}</td>
-   
-  
-    <td>{{bon.created_at}}</td>
     <td style="width:200px"  class="dropdown">
-     {{bon.etat}}
+      {{bon.etat}}
+    
+       <div class="dropdown-content">
    
-      <div class="dropdown-content">
-  
-  <a (click)="brouillon(bon)">brouillon</a>
-  <a  (click)="cours(bon)">en cours</a>
-  <a  (click)="valide(bon)">validé</a>
-  
-    </div>
-    </td>
+   <a (click)="brouillon(bon)">brouillon</a>
+   <a  (click)="cours(bon)">en cours</a>
+   <a  (click)="valide(bon)">validé</a>
+   
+     </div>
+     </td>
+     <td></td>
+     <td></td>
+    <td>{{bon.created_at}}</td>
+
    <td></td>
    <td></td>
-    <td> <ion-icon id="action" name="eye" style="color:#3ea7d8"></ion-icon> 
-      <ion-icon id="action" name="create" (click)="edit(item.id)" style="color:#178a43"></ion-icon> 
-      <ion-icon id="action" name="trash" (click)="delete(item.id)" style="color:red"></ion-icon></td>
+    <td> 
+      <ion-icon id="action" name="create" (click)="edit(bon.id)" style="color:#178a43"></ion-icon> 
+      <ion-icon id="action" name="trash" (click)="delete(bon.id)" style="color:red"></ion-icon>
+      <ion-icon id="action" name="eye" style="color:#3ea7d8" (click)="show(bon)"></ion-icon> </td>
   </tr>
 
 </table> 

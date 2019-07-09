@@ -43,7 +43,7 @@ databonSortie
 
        console.log('value: ' + value);
   
-       this.http.get('http://localhost:8000/bonsortie/bonsorties/', {headers: headers})
+       this.http.get('http://testmariadb.alwaysdata.net/public/bonsortie/bonsorties/', {headers: headers})
          .map(res => res.json())
          .subscribe(data => {
            resolve(data);
@@ -69,7 +69,7 @@ databonSortie
        // We're using Angular HTTP provider to request the data,
        // then on the response, it'll map the JSON data to a parsed JS object.
        // Next, we process the data and resolve the promise with the new data.
-       this.http.get('http://localhost:8000/bonsortie/bonsorties')
+       this.http.get('http://testmariadb.alwaysdata.net/public/bonsortie/bonsorties')
          .map(res => res.json())
          .subscribe(data => {
            // we've got back the raw data, now generate the core schedule data
@@ -81,23 +81,14 @@ databonSortie
    }
 
 
- getitems() {
-  return new Promise(resolve => {
-    this.http.get('http://localhost:8000/bonsortie/bonsorties/').subscribe(data => {
-      resolve(data);
-    }, err => {
-      console.log(err);
-    });
-  });
-}
-
+ 
 
  
 
 
 save(data) {
   return new Promise((resolve, reject) => {
-    this.http.post('http://localhost:8000/bonsortie/bonsorties/',data)
+    this.http.post('http://testmariadb.alwaysdata.net/public/bonsortie/bonsorties',data)
       .subscribe(res => {
         resolve(res);
       }, (err) => {
@@ -116,7 +107,7 @@ edit(id,postInfo){
      headers.append('Authorization', 'Bearer '+value);
      console.log('value: ' + value);
 
-     this.http.put('http://localhost:8000/bonsortie/bonsorties/' +id ,  JSON.stringify(postInfo),  {headers: headers})
+     this.http.put('http://testmariadb.alwaysdata.net/public/bonsortie/bonsorties/' +id ,  JSON.stringify(postInfo),  {headers: headers})
        .map(res => res.json())
        .subscribe(data => {
          resolve(data);
@@ -135,25 +126,39 @@ edit(id,postInfo){
 
 
 delete(id){
-  return new Promise((resolve, reject) => {
-   this.storage.get('token').then((value) => {
+//   return new Promise((resolve, reject) => {
+//    this.storage.get('token').then((value) => {
 
+//      let headers = new Headers();
+//      headers.append('Content-Type', 'application/json');
+//      headers.append('Authorization', 'Bearer '+value);
+//      console.log('value: ' + value);
+
+//      this.http.delete('http://testmariadb.alwaysdata.net/public/bonsortie/bonsorties/' +id,    {headers: headers})
+//        .map(res => res.json())
+//        .subscribe(data => {
+//          resolve(data);
+//        }, (err) => {
+//          reject(err);
+//        }); 
+//    }) 
+
+//  });
+return new Promise(resolve => {
      let headers = new Headers();
      headers.append('Content-Type', 'application/json');
-     headers.append('Authorization', 'Bearer '+value);
-     console.log('value: ' + value);
-
-     this.http.delete('http://localhost:8000/bonsortie/bonsorties/' +id,    {headers: headers})
-       .map(res => res.json())
-       .subscribe(data => {
-         resolve(data);
-       }, (err) => {
-         reject(err);
-       }); 
-   }) 
-
- });
-
+   //  headers.append('Authorization');
+  //   console.log('value: ' + value);
+  this.http.delete('http://testmariadb.alwaysdata.net/public/bonsortie/bonsorties/' +id,    {headers: headers})
+    .map(res => res.json())
+    .subscribe(data => {
+      // we've got back the raw data, now generate the core schedule data
+      // and save the data for later reference
+      this.databonSortie = data;
+      resolve(this.databonSortie);
+    });
+});
+}
 }
 
-}
+

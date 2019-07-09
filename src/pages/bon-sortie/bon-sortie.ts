@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams,ModalController } from 'ionic-angular';
 import { BonSortieProvider } from '../../providers/bon-sortie/bon-sortie';
+import { ListesortiePage } from '../listesortie/listesortie';
+import { ListesortieProvider } from '../../providers/listesortie/listesortie';
 
 /**
  * Generated class for the BonSortiePage page.
@@ -31,7 +33,13 @@ equipe_name:'',
 created_at:'',
 updated_at:''
 }
-  constructor(public navCtrl: NavController, public navParams: NavParams,public provider:BonSortieProvider) {
+  listSortie: any;
+  listS: any;
+  listrecherche: any;
+  
+  constructor(public providerSortie:ListesortieProvider,public navCtrl: NavController, 
+    public navParams: NavParams,public provider:BonSortieProvider,
+    public modalCtrl:ModalController) {
     this.get();
   }
 
@@ -39,7 +47,20 @@ updated_at:''
     console.log('ionViewDidLoad BonSortiePage');
    
   }
- 
+  getSortie(){
+    this.providerSortie.get()
+    .then(datast => {
+      this.listSortie = datast;
+      console.log("list sortie:::::",this.list);
+      for(var i=0;i<this.listSortie.length;i++){
+        if(this.listSortie[i].bonSortie_id===this.item.id){
+         
+          this.listS.push(this.listSortie[i])
+       }
+      }
+      console.log(" sortie:::::", this.listSortie);
+    });
+  }
   brouillon(a:any){
     console.log("test test:",a.id)
     this.etat="brouillon";
@@ -59,6 +80,7 @@ updated_at:''
     this.provider.loadBonsortie()
     .then(data => {
       this.list= data;
+      this.listrecherche=data;
       console.log("list:::::",this.list);
     });
     
@@ -78,4 +100,38 @@ updated_at:''
     this.provider.delete(a);
     this.navCtrl.setRoot(BonSortiePage)
    }
+   show(a){
+    let modal = this.modalCtrl.create(ListesortiePage, { item:a});
+    modal.present();
+    console.log("res:",a);
+   }
+   //////////////////recherche
+   initializeItems(): void {
+    this.list = this.listrecherche;
+  }
+  getItems(searchbar) {
+    // Reset items back to all of the items
+    this.initializeItems();
+  
+    // set q to the value of the searchbar
+    var q = searchbar.srcElement.value;
+  
+  
+    // if the value is an empty string don't filter the items
+    if (!q) {
+      return;
+    }
+  
+    this.list = this.list.filter((v) => {
+      if(v.etat && q) {
+        if (v.etat.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+          return true;
+        }
+        return false;
+      }
+    });
+  
+    console.log(q, this.list.length);
+  
+  }
 }

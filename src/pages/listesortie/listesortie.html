@@ -1,0 +1,16 @@
+ 
+<ion-content>
+
+ <table>
+   <tr>
+ 
+<th>Produit</th>
+<th>Quantité</th>
+   </tr>
+ 
+   <tr *ngFor="let produit of listSortie ">
+      <td>{{produit.ref}}</td>
+      <td>{{produit.qte}}</td>
+  </tr>
+ </table>
+</ion-content>
