@@ -16,6 +16,7 @@ import { BonSortiePage } from '../pages/bon-sortie/bon-sortie';
 import { BarcodePage } from '../pages/barcode/barcode';
 import { ParamPage } from '../pages/param/param';
 import { ReservationPage } from '../pages/reservation/reservation';
+import { SortieCltPage } from '../pages/sortie-clt/sortie-clt';
 @Component({
   templateUrl: 'app.html'
 })

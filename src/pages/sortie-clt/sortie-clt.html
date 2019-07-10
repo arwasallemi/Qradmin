@@ -143,12 +143,11 @@
     <th>Equipe Technique</th>
    
 
-<th>Entrepot</th>
+
     <th>Status</th>
- <th></th>
- <th></th>
-    <th>Date de creation</th>
    
+    <th>Date de creation</th>
+  
      <th>Action</th>
   </tr>
   <tr *ngFor="let bon of listbrl " >
@@ -165,27 +164,14 @@
     <td>{{bon.matricule}}</td>
   
     <td>{{bon.equipe_name}}</td>
-    <td>{{bon.entrepot}}</td>
-    <td style="width:200px;margin-top:10px"  class="dropdown">
-            {{bon.etat}}
-            <ion-icon id="td" name="arrow-dropdown"></ion-icon>
-      <div class="dropdown-content">
-         <a  (click)="cloture(bon)">cloturé</a>
-         <a  (click)="valide(bon)">validé</a>
-         
-    </div>
-     
-       
-    </td>
- <td></td>
- <td></td>
-         
+    <td>
+      {{bon.etat}}
+     </td>
+    
     <td>{{bon.created_at}}</td>
 
-   <td></td>
-   <td></td>
+ 
     <td> 
-      <ion-icon id="action" name="create" (click)="edit(bon.id)" style="color:#178a43"></ion-icon> 
       <ion-icon id="action" name="trash" (click)="delete(bon.id)" style="color:red"></ion-icon>
       <ion-icon id="action" name="eye" style="color:#3ea7d8" (click)="show(bon)"></ion-icon> </td>
   </tr>

@@ -47,6 +47,9 @@ import { ListeResProvider } from '../providers/list-res/list-res';
 import { ListesortieProvider } from '../providers/listesortie/listesortie';
 import { TvaProvider } from '../providers/tva/tva';
 import { ListesortiePage } from '../pages/listesortie/listesortie';
+import { LoginPage } from '../pages/login/login';
+import { SortieCltPage } from '../pages/sortie-clt/sortie-clt';
+import { SortieVldPage } from '../pages/sortie-vld/sortie-vld';
  
  
  
@@ -68,7 +71,10 @@ import { ListesortiePage } from '../pages/listesortie/listesortie';
  ParamPage,
  ReservationPage,
  ListereservationPage,
- ListesortiePage
+ ListesortiePage,
+ LoginPage,
+ SortieCltPage,
+ SortieVldPage
  //ListeResPage
   ],
   imports: [
@@ -98,7 +104,10 @@ EntrepotPage,
  ParamPage,
  ReservationPage,
  ListereservationPage,
- ListesortiePage
+ ListesortiePage,
+ LoginPage,
+ SortieCltPage,
+ SortieVldPage
  //ListeResPage
   ],
   providers: [
