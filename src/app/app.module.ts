@@ -46,10 +46,17 @@ import { ListeResPage } from '../pages/liste-res/liste-res';
 import { ListeResProvider } from '../providers/list-res/list-res';
 import { ListesortieProvider } from '../providers/listesortie/listesortie';
 import { TvaProvider } from '../providers/tva/tva';
+
+import { SocietePage } from '../pages/societe/societe';
+import { SocieteProvider } from '../providers/societe/societe';
+
 import { ListesortiePage } from '../pages/listesortie/listesortie';
 import { LoginPage } from '../pages/login/login';
 import { SortieCltPage } from '../pages/sortie-clt/sortie-clt';
 import { SortieVldPage } from '../pages/sortie-vld/sortie-vld';
+import { Printer } from '@ionic-native/printer';
+import { PrintPage } from '../pages/print/print';
+import { ImageQrcodePage } from '../pages/image-qrcode/image-qrcode';
  
  
  
@@ -71,11 +78,16 @@ import { SortieVldPage } from '../pages/sortie-vld/sortie-vld';
  ParamPage,
  ReservationPage,
  ListereservationPage,
+
+ SocietePage,
+ ImageQrcodePage,
+ PrintPage,
+
  ListesortiePage,
  LoginPage,
  SortieCltPage,
  SortieVldPage
- //ListeResPage
+
   ],
   imports: [
     HttpModule,
@@ -107,8 +119,10 @@ EntrepotPage,
  ListesortiePage,
  LoginPage,
  SortieCltPage,
- SortieVldPage
- //ListeResPage
+ SortieVldPage,
+ SocietePage,
+ ImageQrcodePage,
+ PrintPage
   ],
   providers: [
  
@@ -134,7 +148,9 @@ EntrepotPage,
     ReservationProvider,
     ListeResProvider,
     ListesortieProvider,
+    Printer,
     TvaProvider,
+    SocieteProvider,
   
   ]
 })

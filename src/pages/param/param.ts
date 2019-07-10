@@ -5,12 +5,7 @@ import { ConditionProvider } from '../../providers/condition/condition';
 import { ModeProvider } from '../../providers/mode/mode';
 import { TvaProvider } from '../../providers/tva/tva';
 
-/**
- * Generated class for the ParamPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @Component({
   selector: 'page-param',
