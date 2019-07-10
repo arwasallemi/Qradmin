@@ -16,11 +16,13 @@ import { BonSortiePage } from '../pages/bon-sortie/bon-sortie';
 import { BarcodePage } from '../pages/barcode/barcode';
 import { ParamPage } from '../pages/param/param';
 import { ReservationPage } from '../pages/reservation/reservation';
+import { SocietePage } from '../pages/societe/societe';
+import { UploadPage } from '../pages/upload/upload';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = ParamPage;
+  rootPage:any = SocietePage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

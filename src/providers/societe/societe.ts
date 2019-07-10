@@ -19,8 +19,9 @@ const httpOptions = {
   })
 };
 @Injectable()
-export class DelaiProvider {
-  datadelai: any;
+export class SocieteProvider {
+  dataSociete: any;
+  dataSoc : any;
 
   constructor(public storage: Storage ,
     public http: Http, public httpClient: HttpClient) {
@@ -28,8 +29,8 @@ export class DelaiProvider {
   }
 
   get(){
-    if (this.datadelai) {
-      return Promise.resolve(this.datadelai);
+    if (this.dataSociete) {
+      return Promise.resolve(this.dataSociete);
     }
   
     
@@ -38,20 +39,51 @@ export class DelaiProvider {
       // We're using Angular HTTP provider to request the data,
       // then on the response, it'll map the JSON data to a parsed JS object.
       // Next, we process the data and resolve the promise with the new data.
-      this.http.get('http://testmariadb.alwaysdata.net/public/delai/delais')
+      this.http.get('http://testmariadb.alwaysdata.net/public/societe/societes')
         .map(res => res.json())
         .subscribe(data => {
           // we've got back the raw data, now generate the core schedule data
           // and save the data for later reference
-          this.datadelai = data;
-          resolve(this.datadelai);
+          this.dataSociete = data;
+          resolve(this.dataSociete);
         });
     });
 
  }
 
 
+ loadsociete() {
+  if (this.dataSoc) {
+    // already loaded data
+    return Promise.resolve(this.dataSoc);
+  }
 
+  // don't have the data yet
+  return new Promise(resolve => {
+    // We're using Angular HTTP provider to request the data,
+    // then on the response, it'll map the JSON data to a parsed JS object.
+    // Next, we process the data and resolve the promise with the new data.
+    this.http.get('http://testmariadb.alwaysdata.net/public/societe/societes')
+      .map(res => res.json())
+      .subscribe(data => {
+        // we've got back the raw data, now generate the core schedule data
+        // and save the data for later reference
+        this.dataSoc = data;
+        resolve(this.dataSoc);
+      });
+  });
+}
+
+saveSociete(data) {
+  return new Promise((resolve, reject) => {
+    this.http.post('http://testmariadb.alwaysdata.net/public/bonsortie/bonsorties',data)
+      .subscribe(res => {
+        resolve(res);
+      }, (err) => {
+        reject(err);
+      });
+  });
+}
 
  getitems() {
   return new Promise(resolve => {
@@ -77,8 +109,6 @@ save(data) {
       });
   });
 }
-
-
 edit(id,postInfo){
   return new Promise((resolve, reject) => {
    this.storage.get('token').then((value) => {
@@ -88,7 +118,7 @@ edit(id,postInfo){
      headers.append('Authorization', 'Bearer '+value);
      console.log('value: ' + value);
 
-     this.http.put('http://testmariadb.alwaysdata.net/public/delai/delais' +id ,  JSON.stringify(postInfo),  {headers: headers})
+     this.http.put('http://testmariadb.alwaysdata.net/public/societe/societes/' +id ,  JSON.stringify(postInfo),  {headers: headers})
        .map(res => res.json())
        .subscribe(data => {
          resolve(data);
@@ -100,6 +130,8 @@ edit(id,postInfo){
  });
 
 }
+
+
 
 getbyId(id){
   return new Promise((resolve, reject) => {

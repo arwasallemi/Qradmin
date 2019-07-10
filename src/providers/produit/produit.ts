@@ -79,7 +79,7 @@ export class ProduitProvider {
 
 save(data) {
   return new Promise((resolve, reject) => {
-    this.http.post('http://localhost:8000/produit/produits',data)
+    this.http.post('http://testmariadb.alwaysdata.net/public/produit/produits',data)
       .subscribe(res => {
         resolve(res);
       }, (err) => {
@@ -98,7 +98,7 @@ edit(id,postInfo){
      headers.append('Authorization', 'Bearer '+value);
      console.log('value: ' + value);
 
-     this.http.put('http://localhost:8000/produit/produits/' +id ,  JSON.stringify(postInfo),  {headers: headers})
+     this.http.put('http://testmariadb.alwaysdata.net/public/produit/produits/' +id ,  JSON.stringify(postInfo),  {headers: headers})
        .map(res => res.json())
        .subscribe(data => {
          resolve(data);

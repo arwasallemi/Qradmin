@@ -126,7 +126,7 @@ delete(id){
          reject(err);
        }); 
    }) 
-
+ 
  });
 
 }

@@ -46,6 +46,8 @@ import { ListeResPage } from '../pages/liste-res/liste-res';
 import { ListeResProvider } from '../providers/list-res/list-res';
 import { ListesortieProvider } from '../providers/listesortie/listesortie';
 import { TvaProvider } from '../providers/tva/tva';
+import { SocietePage } from '../pages/societe/societe';
+import { SocieteProvider } from '../providers/societe/societe';
  
  
  
@@ -67,7 +69,7 @@ import { TvaProvider } from '../providers/tva/tva';
  ParamPage,
  ReservationPage,
  ListereservationPage,
- //ListeResPage
+ SocietePage
   ],
   imports: [
     
@@ -95,8 +97,8 @@ EntrepotPage,
  BarcodePage,
  ParamPage,
  ReservationPage,
- ListereservationPage
- //ListeResPage
+ ListereservationPage,
+ SocietePage
   ],
   providers: [
  
@@ -123,6 +125,7 @@ EntrepotPage,
     ListeResProvider,
     ListesortieProvider,
     TvaProvider,
+    SocieteProvider,
   
   ]
 })
