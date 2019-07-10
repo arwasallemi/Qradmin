@@ -16,21 +16,14 @@ import { BonSortiePage } from '../pages/bon-sortie/bon-sortie';
 import { BarcodePage } from '../pages/barcode/barcode';
 import { ParamPage } from '../pages/param/param';
 import { ReservationPage } from '../pages/reservation/reservation';
-<<<<<<< HEAD
 import { SocietePage } from '../pages/societe/societe';
 import { UploadPage } from '../pages/upload/upload';
-=======
-import { SortieCltPage } from '../pages/sortie-clt/sortie-clt';
->>>>>>> bdb42a7a297157241459434043e4ed264b1adba9
+import { PrintPage } from '../pages/print/print';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-<<<<<<< HEAD
-  rootPage:any = SocietePage;
-=======
-  rootPage:any = BonSortiePage;
->>>>>>> bdb42a7a297157241459434043e4ed264b1adba9
+  rootPage:any = ProduitPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
 import { BlankPage } from '../blank/blank';
 import QRCode from 'qrcode';
 import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner';
@@ -7,6 +7,7 @@ import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-sca
 import { ProduitProvider } from '../../providers/produit/produit';
 import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
+import { ImageQrcodePage } from '../image-qrcode/image-qrcode';
  
 /**
  * Generated class for the ProduitPage page.
@@ -58,7 +59,8 @@ list:any;
   constructor(
     public navCtrl: NavController, public navParams: NavParams,
     private barcodeScanner: BarcodeScanner,
-    public provider:ProduitProvider,public httpClient: HttpClient) {
+    public provider:ProduitProvider,public httpClient: HttpClient,public modalCtrl:ModalController,
+    public Alert:AlertController) {
 
       this.get()
       this.encodeText();
@@ -126,6 +128,45 @@ get(){
 
  this.navCtrl.setRoot(ProduitPage)
  
+ }
+ print(a){
+
+  let alert = this.Alert.create({
+    title: 'nouvelle entrée',
+    inputs: [
+      {
+        name: 'logo',
+        placeholder: 'nombre'
+      },
+    
+    ],
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: data => {
+          console.log('Cancel clicked');
+        }
+      },
+      {
+        text: 'ajouter',
+        handler: data => {
+          console.log("data:::",data.logo)
+
+          let modal = this.modalCtrl.create(ImageQrcodePage, { item:a,nombre:data.logo});
+          modal.present();
+          console.log("res:",a);
+     
+ 
+       
+     //   this.navCtrl.setRoot(DevisPage)
+        }
+      }
+    ]
+  });
+  alert.present(alert);
+  /////////////////////
+
  }
 encodeText(){
   this.barcodeScanner.encode(this.barcodeScanner.Encode.TEXT_TYPE,"http://www.nytimes.com").then((encodedData) => {
