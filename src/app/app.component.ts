@@ -21,7 +21,7 @@ import { SortieCltPage } from '../pages/sortie-clt/sortie-clt';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = BonSortiePage;
+  rootPage:any = ProduitPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

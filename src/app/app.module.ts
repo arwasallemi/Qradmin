@@ -78,7 +78,7 @@ import { SortieVldPage } from '../pages/sortie-vld/sortie-vld';
  //ListeResPage
   ],
   imports: [
-    
+    HttpModule,
     BrowserModule,
     NgxBarcodeModule,
     IonicStorageModule.forRoot(),

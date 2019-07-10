@@ -7,7 +7,9 @@ import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-sca
 import { ProduitProvider } from '../../providers/produit/produit';
 import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
- 
+import { HttpModule } from '@angular/http';
+import { Http } from '@angular/http';
+import * as papa from 'papaparse';
 /**
  * Generated class for the ProduitPage page.
  *
@@ -20,7 +22,8 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'produit.html',
 })
 export class ProduitPage {
-  selectedFiles: FileList;
+  csvData: any[] = [];
+  headerRow: any[] = [];
  
  
   ///////////
@@ -29,6 +32,7 @@ export class ProduitPage {
   urlImage: any;
   converted_image: string;
   categorie: any;
+  listcsv: any=[];
 
   displayQrCode() {
     return this.generated !== '';
@@ -55,15 +59,69 @@ barre="testcodebarre";
 //image;
 qr;
 list:any;
+pdt={
+  id:"",
+  libelle:"",
+  ref:"",
+  categorie:"",
+  note:"",
+  prix_location:"",
+  prix_location_minimale:"",
+}
   constructor(
+    private http: Http,
     public navCtrl: NavController, public navParams: NavParams,
     private barcodeScanner: BarcodeScanner,
     public provider:ProduitProvider,public httpClient: HttpClient) {
-
+    //  this.readCsvData();
       this.get()
       this.encodeText();
   }
 
+ 
+
+  downloadCSV() {
+    // let csv = papa.unparse({
+    //   fields: ["id","libelle","reference","categorie","prix location","prix location minimale","date de creation"],
+    //   data: this.list
+    // });
+  //  this.readCsvData()
+ 
+let csv=this.convertToCSV(this.listcsv)
+console.log("csvvvvvvvvvvvv:",csv)
+    // Dummy implementation for Desktop download purpose
+    var blob = new Blob([csv]);
+    var a = window.document.createElement("a");
+    a.href = window.URL.createObjectURL(blob);
+    a.download = "newdata.csv";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+  convertToCSV(objArray) {
+    let array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+    let str = '';
+    let row = ""; 
+    for (let index in objArray[0]) {
+        //Now convert each value to string and comma-separated
+        row += index + '|      ';
+    }
+    row = row.slice(0, -1);
+    //append Label row with line break
+    str += row + '\r\n';
+
+    for (let i = 0; i < array.length; i++) {
+        let line = '';
+        for (let index in array[i]) {
+            if (line != '') line += '         |        ';
+            line += array[i][index];
+        }
+        str += line + '\r\n';
+    }
+    return str;
+  }
+
+ 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProduitPage');
   }
@@ -83,7 +141,22 @@ get(){
   this.provider.get()
   .then(data => {
     this.list = data;
+  
     console.log("list:::::",this.list);
+    for(var i=0;i<this.list.length;i++){
+      this.pdt.id=this.list[i].id
+      this.pdt.libelle=this.list[i].libelle
+      this.pdt.ref=this.list[i].ref
+      this.pdt.categorie=this.list[i].categorie
+      this.pdt.note=this.list[i].note
+      this.pdt.prix_location=this.list[i].prix_location
+      this.pdt.prix_location_minimale=this.list[i].prix_location_minimale
+      console.log("prrrrrrrrrrrrrt::::",this.pdt)
+      this.listcsv.push(this.pdt)  
+    }
+
+ //   this.listcsv.push(this.pdt)
+    console.log("csv list::::",this.listcsv)
   });
 }
  edit(a){
@@ -128,6 +201,7 @@ get(){
  this.navCtrl.setRoot(ProduitPage)
  
  }
+
 encodeText(){
   this.barcodeScanner.encode(this.barcodeScanner.Encode.TEXT_TYPE,"http://www.nytimes.com").then((encodedData) => {
 
