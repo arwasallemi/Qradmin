@@ -44,6 +44,7 @@ item:any
   sortiereclean: any[];
   idlist:any=[]
   reflist: any=[];
+  st: number;
  
   constructor(public navCtrl: NavController, public navParams: NavParams,
     
@@ -162,15 +163,21 @@ this.sortie.get().then(sor => {
   console.log("list bon sortie:::::", this.listsortie); 
    for(var j=0;j<this.reflist.length;j++){
      this.sum=0;
-    
+     
     for( var i=0;i<this.listsortie.length;i++){
+      this.compareDate(this.listsortie[i].dateRetour,this.item.date_debut_evenement)
+    //  console.log("sssssst:",this.st)
 if(this.listsortie[i].ref.match(this.reflist[j])===null){
 
 }else{
-  console.log("sortie ref:",this.listsortie[i].ref,"-----------ref:",this.reflist[j])
-  this.sum=this.sum+this.listsortie[i].qte
-      console.log("sum:::::", this.sum); 
- 
+  if(this.st==0){
+    console.log("sortie ref:",this.listsortie[i].ref,"-----------ref:",this.reflist[j],"sssssst:",this.st)
+    console.log("date retour::::",this.listsortie[i].dateRetour)
+    this.sum=this.sum+this.listsortie[i].qte
+        console.log("sum:::::", this.sum); 
+  }
+
+    
       ///////////////filtrage date
 }
 
@@ -193,7 +200,76 @@ if(this.listsortie[i].ref.match(this.reflist[j])===null){
   });
 
 }
-
+compareDate(Retour,DateDebut){
+ 
+ 
+        //  var  newdate = year + "/" + month + "/" + day;
+    //  console.log(newdate,"newdate")
+    //////////////////
+      console.log(Retour,"dateRetour")
+    
+      var dateRetour = new Date(Retour)
+      console.log(dateRetour,"dateobj")
+      var month = dateRetour.getUTCMonth() + 1; //months from 1-12
+      console.log(month,"month")
+      var day = dateRetour.getUTCDate() + 1 ;
+      console.log(day,"day")
+      var year = dateRetour.getUTCFullYear();
+      console.log(year,"year")
+       var  newdate = year + "/" + month + "/" + day;
+     console.log(newdate,"newdate")
+      ///////////////////
+      console.log(DateDebut,"DateDebutEvenement")
+    
+      var dateDebutEvenement = new Date(DateDebut)
+      console.log(dateDebutEvenement,"dateDebutEvenement")
+      var monthEv = dateDebutEvenement.getUTCMonth() + 1; //months from 1-12
+      console.log(monthEv,"monthEv")
+      var dayEv = dateDebutEvenement.getUTCDate() + 1;
+      console.log(dayEv,"dayEv")
+      var yearEv = dateDebutEvenement.getUTCFullYear();
+      console.log(yearEv,"yearEv")
+       var  newdateEv = yearEv + "/" + monthEv + "/" + dayEv;
+     console.log(newdateEv,"newdateEv")
+  
+  
+  ////////////////////////////
+     if( year > yearEv)
+     {
+       dateRetour > dateDebutEvenement
+       console.log( "res1")
+  
+     }
+       if ( (year ==  yearEv) && ( month > monthEv)  )
+     {
+      
+      
+        dateRetour > dateDebutEvenement
+        console.log("res2")
+     
+  
+  
+    }
+   if ( (year ==  yearEv) && ( month ==  monthEv) && (day > dayEv) )
+    
+     
+     {
+      dateRetour > dateDebutEvenement
+      console.log("res3")
+     }
+       
+     if ( dateRetour > dateDebutEvenement )
+     {
+      this.st = 1
+     }
+     
+     else this.st =0
+  
+    
+   console.log("stttttttttttttttt:::",this.st)
+  
+  
+}
 cleanArray(a,out=[]) {
   var i, j, len = a.length, obj =[];
   for (i = 0; i < len; i++) {

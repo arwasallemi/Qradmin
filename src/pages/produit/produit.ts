@@ -3,7 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { BlankPage } from '../blank/blank';
 import QRCode from 'qrcode';
 import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner';
-import { Upload } from '../models/upload';
+
 import { ProduitProvider } from '../../providers/produit/produit';
 import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
@@ -21,7 +21,7 @@ import { Storage } from '@ionic/storage';
 })
 export class ProduitPage {
   selectedFiles: FileList;
-  currentUpload: Upload;
+ 
  
   ///////////
   code;

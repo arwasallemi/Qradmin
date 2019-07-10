@@ -46,8 +46,15 @@ import { ListeResPage } from '../pages/liste-res/liste-res';
 import { ListeResProvider } from '../providers/list-res/list-res';
 import { ListesortieProvider } from '../providers/listesortie/listesortie';
 import { TvaProvider } from '../providers/tva/tva';
+<<<<<<< HEAD
 import { SocietePage } from '../pages/societe/societe';
 import { SocieteProvider } from '../providers/societe/societe';
+=======
+import { ListesortiePage } from '../pages/listesortie/listesortie';
+import { LoginPage } from '../pages/login/login';
+import { SortieCltPage } from '../pages/sortie-clt/sortie-clt';
+import { SortieVldPage } from '../pages/sortie-vld/sortie-vld';
+>>>>>>> bdb42a7a297157241459434043e4ed264b1adba9
  
  
  
@@ -69,7 +76,15 @@ import { SocieteProvider } from '../providers/societe/societe';
  ParamPage,
  ReservationPage,
  ListereservationPage,
+<<<<<<< HEAD
  SocietePage
+=======
+ ListesortiePage,
+ LoginPage,
+ SortieCltPage,
+ SortieVldPage
+ //ListeResPage
+>>>>>>> bdb42a7a297157241459434043e4ed264b1adba9
   ],
   imports: [
     
@@ -98,7 +113,15 @@ EntrepotPage,
  ParamPage,
  ReservationPage,
  ListereservationPage,
+<<<<<<< HEAD
  SocietePage
+=======
+ ListesortiePage,
+ LoginPage,
+ SortieCltPage,
+ SortieVldPage
+ //ListeResPage
+>>>>>>> bdb42a7a297157241459434043e4ed264b1adba9
   ],
   providers: [
  

@@ -3,21 +3,19 @@ import { NavController, NavParams,ModalController } from 'ionic-angular';
 import { BonSortieProvider } from '../../providers/bon-sortie/bon-sortie';
 import { ListesortiePage } from '../listesortie/listesortie';
 import { ListesortieProvider } from '../../providers/listesortie/listesortie';
-import { ProduitProvider } from '../../providers/produit/produit';
-import { StockProvider } from '../../providers/stock/stock';
-
 /**
- * Generated class for the BonSortiePage page.
+ * Generated class for the SortieVldPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
+ 
 @Component({
-  selector: 'page-bon-sortie',
-  templateUrl: 'bon-sortie.html',
+  selector: 'page-sortie-vld',
+  templateUrl: 'sortie-vld.html',
 })
-export class BonSortiePage {
+export class SortieVldPage {
+
   list: any;
   etat: any;
   item={
@@ -40,30 +38,17 @@ updated_at:''
   listrecherche: any=[];
   listbrl: any=[];
   search: string;
-  liste: any=[];
-  listeSortie: any=[];
-  produit={
-    id:"",
-    qte:"",
-    entrepot:""
-  };
-  listprdt: any;
-  liststock: any;
+  
   constructor(public providerSortie:ListesortieProvider,public navCtrl: NavController, 
     public navParams: NavParams,public provider:BonSortieProvider,
-    public modalCtrl:ModalController,
-    public providerListe:ListesortieProvider,
-    public providerProduit:ProduitProvider,
-    public providerStock:StockProvider) {
+    public modalCtrl:ModalController) {
     this.get();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad BonSortiePage');
+    console.log('ionViewDidLoad BonSortiecltPage');
    
   }
- 
-  
   getSortie(){
     this.providerSortie.get()
     .then(datast => {
@@ -84,76 +69,14 @@ updated_at:''
     this.edit(a.id)
   }
   valide(a:any){
-    this.listeSortie=[]
     console.log("test test:",a.id)
-    this.etat="validé",
-    this.getListe(a)
- this.edit(a.id)
-   
-  
-  }
-  cloture(a:any){
-    console.log("test test:",a.id)
-    this.etat="cloturé";
+    this.etat="validé"
     this.edit(a.id)
   }
-  getListe(a){
-    this.providerListe.get()
-    .then(dataListe => {
-      this.liste = dataListe;
-      console.log("list sortie:::::",this.liste);
-      for(var i=0;i<this.liste.length;i++){
-        if(this.liste[i].bonSortie_id===a.id){
-         
-       
-      this.produit.qte=this.liste[i].qte
-      this.produit.entrepot=a.entrepot
-      /////////////find produit id
-      var ref=this.liste[i].ref
-    //  console.log("ref::",ref)
-      this.providerProduit.get()
-      .then(dataprdt => {
-        this.listprdt= dataprdt;
-    for(var j=0;j<this.listprdt.length;j++){
-      if(this.listprdt[j].libelle===ref){
-       // console.log("produitttt:::::",this.listprdt[j]);
-       this.produit.id=this.listprdt[j].id
-      }
-    }
-        console.log("list produit:::::",this.listprdt);
-    
-      });
-
-
-      ////////////////////
-      this.listeSortie.push(this.produit)
-   //   console.log("produit:::::", this.produit);
-       }
-      }
-     
-      
-    });
-    console.log("sortie:::::", this.listeSortie);
-    this.providerStock.get()
-    .then(datastock => {
-      this.liststock= datastock;
-  
-      console.log("listStock:::::",this.liststock);
-      for(var i=0;i<this.listeSortie.length;i++){
-        for(var j=0;j<this.liststock.length;j++){
-if((this.listeSortie[i].id===this.liststock[j].produit) || (this.listeSortie[i].entrepot===this.liststock[j].entrepot )){
-  console.log("stoooooooooock:::::",this.liststock[j].qte);
-  var qt=(this.liststock[j].qte)-(this.listeSortie[i].qte)
-  console.log(" new stoooooooooock:::::",qt);
-  let data={
-    qte:(this.liststock[j].qte)-(this.listeSortie[i].qte)
-  }
-  this.providerStock.edit(this.liststock[j].id,data)
-}
-        }
-      }
-    });
-    
+  cours(a:any){
+    console.log("test test:",a.id)
+    this.etat="en cours";
+    this.edit(a.id)
   }
   get(){
     this.provider.loadBonsortie()
@@ -162,7 +85,7 @@ if((this.listeSortie[i].id===this.liststock[j].produit) || (this.listeSortie[i].
   
       console.log("list:::::",this.list);
       for(var i=0;i<this.list.length;i++){
-if(this.list[i].etat==="brouillon"){
+if(this.list[i].etat==="validé"){
   this.listbrl.push(this.list[i])
   this.listrecherche.push(this.list[i])
 }
@@ -178,12 +101,12 @@ if(this.list[i].etat==="brouillon"){
        
       };
     this.provider.edit(a,credentials);
-    this.navCtrl.setRoot(BonSortiePage)
+    this.navCtrl.setRoot(SortieVldPage)
    }
    delete(a){
     console.log("delete",a);
     this.provider.delete(a);
-    this.navCtrl.setRoot(BonSortiePage)
+    this.navCtrl.setRoot(SortieVldPage)
    }
    show(a){
     let modal = this.modalCtrl.create(ListesortiePage, { item:a});
