@@ -76,7 +76,9 @@
       "cordova-plugin-file": {},
       "cordova-sqlite-storage": {},
       "com-badrit-base64": {},
-      "cordova-plugin-printer": {}
+      "cordova-plugin-printer": {
+        "ANDROID_SUPPORT_V4_VERSION": "28.+"
+      }
     },
     "platforms": [
       "browser",
