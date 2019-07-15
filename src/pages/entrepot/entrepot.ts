@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { EntrepotProvider } from '../../providers/entrepot/entrepot';
 import { HttpClient } from '@angular/common/http';
+import { SocieteProvider } from '../../providers/societe/societe';
 
 /**
  * Generated class for the EntrepotPage page.
@@ -16,15 +17,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class EntrepotPage {
   list:any;
+  images
   code: any;
   adresse: any;
   libelle: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams,
+  constructor(public navCtrl: NavController, public navParams: NavParams, public societe : SocieteProvider,
     
     public provider:EntrepotProvider,public httpClient: HttpClient
     ) {
-     
-  }
+     this.loadImage() 
+     }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EntrepotPage');
@@ -56,6 +58,18 @@ export class EntrepotPage {
    this.navCtrl.setRoot(EntrepotPage)
    
    }
+   
+  loadImage(){
+
+    this.societe.loadimageSociete()
+    .then(data => {
+      this.images = data;
+      console.log(this.images,"imaages")
+  
+  
+    });
+  
+  }
 
    edit(a){
     console.log("edit");
