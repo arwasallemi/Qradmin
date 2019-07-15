@@ -19,11 +19,17 @@ import { ReservationPage } from '../pages/reservation/reservation';
 import { SocietePage } from '../pages/societe/societe';
 import { UploadPage } from '../pages/upload/upload';
 import { PrintPage } from '../pages/print/print';
+import { PointagePage } from '../pages/pointage/pointage';
+import { AbscencePage } from '../pages/abscence/abscence';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
+<<<<<<< HEAD
   rootPage:any = DevisPage;
+=======
+  rootPage:any = AbscencePage;
+>>>>>>> 8fe6ad2786e2c6f56acbf1afc331c1ec8cbcc802
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
