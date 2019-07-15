@@ -57,6 +57,8 @@ import { SortieVldPage } from '../pages/sortie-vld/sortie-vld';
 import { Printer } from '@ionic-native/printer';
 import { PrintPage } from '../pages/print/print';
 import { ImageQrcodePage } from '../pages/image-qrcode/image-qrcode';
+import { SignupPage } from '../pages/signup/signup';
+import { ListeDevisProvider } from '../providers/liste-devis/liste-devis';
  
  
  
@@ -86,7 +88,8 @@ import { ImageQrcodePage } from '../pages/image-qrcode/image-qrcode';
  ListesortiePage,
  LoginPage,
  SortieCltPage,
- SortieVldPage
+ SortieVldPage,
+ SignupPage
 
   ],
   imports: [
@@ -122,7 +125,8 @@ EntrepotPage,
  SortieVldPage,
  SocietePage,
  ImageQrcodePage,
- PrintPage
+ PrintPage,
+ SignupPage
   ],
   providers: [
  
@@ -151,6 +155,7 @@ EntrepotPage,
     Printer,
     TvaProvider,
     SocieteProvider,
+    ListeDevisProvider,
   
   ]
 })

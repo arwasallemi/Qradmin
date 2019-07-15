@@ -23,7 +23,7 @@ import { PrintPage } from '../pages/print/print';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = ProduitPage;
+  rootPage:any = DevisPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

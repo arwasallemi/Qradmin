@@ -1,24 +1,17 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-
+import { Storage } from '@ionic/storage';
 
  
 import { Http , Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Storage } from '@ionic/storage';
-import {Observable} from 'rxjs/Rx';
- 
-import { catchError } from 'rxjs/operators';
-
-
 /*
-  Generated class for the EntrepotProvider provider.
+  Generated class for the ListeDevisProvider provider.
 
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
-
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
@@ -26,8 +19,9 @@ const httpOptions = {
   })
 };
 @Injectable()
-export class ListesortieProvider{
-  datares: any;
+
+export class ListeDevisProvider {
+  dataDevis: any;
 
   constructor(public storage: Storage ,
     public http: Http, public httpClient: HttpClient) {
@@ -35,46 +29,39 @@ export class ListesortieProvider{
   }
 
   get(){
-    if (this.datares) {
-      return Promise.resolve(this.datares);
+    if (this.dataDevis) {
+      return Promise.resolve(this.dataDevis);
     }
   
     
     // don't have the data yet
     return new Promise(resolve => {
-  
-      this.http.get('http://testmariadb.alwaysdata.net/public/listeBonSortie/listeBonSortie')
+      // We're using Angular HTTP provider to request the data,
+      // then on the response, it'll map the JSON data to a parsed JS object.
+      // Next, we process the data and resolve the promise with the new data.
+      this.http.get('http://testmariadb.alwaysdata.net/public/listedevi/listedevi')
         .map(res => res.json())
         .subscribe(data => {
-     
-          this.datares = data;
-          resolve(this.datares);
+          // we've got back the raw data, now generate the core schedule data
+          // and save the data for later reference
+          this.dataDevis = data;
+          resolve(this.dataDevis);
         });
     });
- 
 
  }
 
 
 
 
- getitems() {
-  return new Promise(resolve => {
-    this.http.get('http://testmariadb.alwaysdata.net/public/listeBonSortie/listeBonSortie').subscribe(data => {
-      resolve(data);
-    }, err => {
-      console.log(err);
-    });
-  });
-}
-
+ 
 
  
 
 
 save(data) {
   return new Promise((resolve, reject) => {
-    this.http.post('http://testmariadb.alwaysdata.net/public/listeBonSortie/listeBonSortie',data)
+    this.http.post('http://testmariadb.alwaysdata.net/public/listedevi/listedevis',data)
       .subscribe(res => {
         resolve(res);
       }, (err) => {
@@ -93,7 +80,7 @@ edit(id,postInfo){
      headers.append('Authorization', 'Bearer '+value);
      console.log('value: ' + value);
 
-     this.http.put('http://testmariadb.alwaysdata.net/public/listeBonSortie/listeBonSortie'+id ,  JSON.stringify(postInfo),  {headers: headers})
+     this.http.put('http://testmariadb.alwaysdata.net/public/listedevi/listedevi' +id ,  JSON.stringify(postInfo),  {headers: headers})
        .map(res => res.json())
        .subscribe(data => {
          resolve(data);
@@ -106,7 +93,7 @@ edit(id,postInfo){
 
 }
 
-
+ 
 
 
 
@@ -120,7 +107,7 @@ delete(id){
      headers.append('Authorization', 'Bearer '+value);
      console.log('value: ' + value);
 
-     this.http.delete('http://testmariadb.alwaysdata.net/public/listeBonSortie/listeBonSortie' +id,    {headers: headers})
+     this.http.delete('http://testmariadb.alwaysdata.net/public/listedevi/listedevi' +id,    {headers: headers})
        .map(res => res.json())
        .subscribe(data => {
          resolve(data);
@@ -132,5 +119,4 @@ delete(id){
  });
 
 }
-
 }

@@ -97,7 +97,7 @@ console.log("csvvvvvvvvvvvv:",csv)
     let row = ""; 
     for (let index in objArray[0]) {
         //Now convert each value to string and comma-separated
-        row += index + '|      ';
+        row += index + '  |  ';
     }
     row = row.slice(0, -1);
     //append Label row with line break
@@ -111,6 +111,7 @@ console.log("csvvvvvvvvvvvv:",csv)
         }
         str += line + '\r\n';
     }
+    console.log('str::',str);
     return str;
   }
 
