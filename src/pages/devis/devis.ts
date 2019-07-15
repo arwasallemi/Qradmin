@@ -40,6 +40,7 @@ max;
   listDl: any;
   delai: any;
   produit
+  numpdt
   dateliv: any;
   deteLivraison= new Date();
   listDVS: any;
@@ -82,7 +83,11 @@ max;
     this.getliste()
   
   }
+ supprimer(a){
+console.log("itemmmmmmmmmmmmmmm",a)
  
+this.listeDevis.splice(this.numpdt,1)
+ }
   ionViewDidLoad() {
     console.log('ionViewDidLoad DevisPage');
     var y = document.getElementById("form2");
@@ -101,12 +106,15 @@ this.prixfinal=this.ttc-this.remise
       produit:"",
       prix_location:"",
       quantite:"",
-      total:0
+      total:0,
+      num:0,
     }
   itempdt.prix_location=this.prix_location,
   itempdt.produit=this.produit,
   itempdt.quantite=this.quantite
   itempdt.total=this.total
+ itempdt.num=this.listeDevis.length+1
+this.numpdt= itempdt.num
     console.log("itempdt:::",itempdt)
     this.listeDevis.push(itempdt)
     console.log("listeeeeeee:::",this.listeDevis)

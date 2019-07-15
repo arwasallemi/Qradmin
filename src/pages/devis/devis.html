@@ -156,11 +156,11 @@
 </ion-card >
 <ion-card id="form2">
  
-  <ion-select [(ngModel)]="produit" style="width:30%" placeholder="produit" (ionChange)="select(produit)">
+  <ion-select   [(ngModel)]="produit" style="width:30%" placeholder="produit" (ionChange)="select(produit)">
     <ion-option *ngFor="let p of listPdt"  >{{p.libelle}}</ion-option>
   </ion-select>
   
-<ion-item style="width:30%">
+<ion-item  style="width:30%">
     <ion-label  floating>Prix de location</ion-label>
     <ion-input (ionChange)="calcul()"[(ngModel)]="prix_location"></ion-input>
 </ion-item>
@@ -216,7 +216,7 @@
  <ion-card id="form4">
    <table>
 <tr>
- 
+  <th>#</th>
   <th>Produit</th>
   <th>Quantité</th>
   <th>Prix unitaire HT</th>
@@ -224,13 +224,14 @@
   <th>Action</th>
 </tr>
 <tr *ngFor="let itemm of listeDevis"  >
+  <td>{{itemm.num}}</td>
     <td>{{itemm.produit}}</td>
     <td>{{itemm.quantite}}</td>
     <td>{{itemm.prix_location}}</td>
     <td>{{itemm.total}}</td>
-    <td><ion-icon id="action" name="trash"  style="color:red"></ion-icon></td>
+    <td><button ion-button (click)="supprimer(itemm.num)"></button></td>
   </tr>
-   </table>
+</table>
  </ion-card > 
 <ion-card id="form5" style="float:right;width:20%">
 <table>
