@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
 import { HomePage } from '../pages/home/home';
 import { BlankPage } from '../pages/blank/blank';
 import { MenuPage } from '../pages/menu/menu';
@@ -21,11 +20,12 @@ import { UploadPage } from '../pages/upload/upload';
 import { PrintPage } from '../pages/print/print';
 import { PointagePage } from '../pages/pointage/pointage';
 import { AbscencePage } from '../pages/abscence/abscence';
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = AbscencePage;
+  rootPage:any = ProduitPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
