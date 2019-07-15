@@ -10,12 +10,7 @@ import { Storage } from '@ionic/storage';
 import { ImageQrcodePage } from '../image-qrcode/image-qrcode';
 import { Http } from '@angular/http';
  
-/**
- * Generated class for the ProduitPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @Component({
   selector: 'page-produit',
@@ -51,6 +46,7 @@ respData: any;
 ref;
 prix;
 min;
+listData
 note='';
 lib;
 image;
@@ -144,21 +140,31 @@ get(){
     this.list = data;
   
     console.log("list:::::",this.list);
-    for(var i=0;i<this.list.length;i++){
-      this.pdt.id=this.list[i].id
-      this.pdt.libelle=this.list[i].libelle
-      this.pdt.ref=this.list[i].ref
-      this.pdt.categorie=this.list[i].categorie
-      this.pdt.note=this.list[i].note
-      this.pdt.prix_location=this.list[i].prix_location
-      this.pdt.prix_location_minimale=this.list[i].prix_location_minimale
-      console.log("prrrrrrrrrrrrrt::::",this.pdt)
-      this.listcsv.push(this.pdt)  
-    }
+this.listData = this.list
+console.log(this.listData,"listtttttttttttttttt")
+this.listcsv = []
+  
+this.pdt.id=this.listData.id
+this.pdt.libelle=this.listData.libelle
+this.pdt.ref=this.listData.ref
+this.pdt.categorie=this.listData.categorie
+this.pdt.note=this.listData.note
+this.pdt.prix_location=this.listData.prix_location
+this.pdt.prix_location_minimale=this.listData.prix_location_minimale
+
+
+
+console.log("csv list::::",this.listcsv)
+
+this.listcsv.push(this.pdt)  
 
  //   this.listcsv.push(this.pdt)
-    console.log("csv list::::",this.listcsv)
+  //  console.log("csv list::::",this.listcsv)
   });
+
+
+  
+  
 }
  edit(a){
   console.log("edit");

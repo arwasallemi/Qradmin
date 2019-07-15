@@ -57,6 +57,14 @@ import { SortieVldPage } from '../pages/sortie-vld/sortie-vld';
 import { Printer } from '@ionic-native/printer';
 import { PrintPage } from '../pages/print/print';
 import { ImageQrcodePage } from '../pages/image-qrcode/image-qrcode';
+import { DemandeCongePage } from '../pages/demande-conge/demande-conge';
+import { PointagePage } from '../pages/pointage/pointage';
+import { SalairePage } from '../pages/salaire/salaire';
+import { AbscencePage } from '../pages/abscence/abscence';
+import { AbscenceProvider } from '../providers/abscence/abscence';
+import { DemandeCongéProvider } from '../providers/demande-congé/demande-congé';
+import { PointageProvider } from '../providers/pointage/pointage';
+import { SalaireProvider } from '../providers/salaire/salaire';
  
  
  
@@ -86,7 +94,11 @@ import { ImageQrcodePage } from '../pages/image-qrcode/image-qrcode';
  ListesortiePage,
  LoginPage,
  SortieCltPage,
- SortieVldPage
+ SortieVldPage,
+ DemandeCongePage,
+ PointagePage,
+ SalairePage,
+ AbscencePage,
 
   ],
   imports: [
@@ -122,7 +134,11 @@ EntrepotPage,
  SortieVldPage,
  SocietePage,
  ImageQrcodePage,
- PrintPage
+ PrintPage,
+ DemandeCongePage,
+ PointagePage,
+ SalairePage,
+ AbscencePage,
   ],
   providers: [
  
@@ -151,6 +167,11 @@ EntrepotPage,
     Printer,
     TvaProvider,
     SocieteProvider,
+    AbscenceProvider,
+    DemandeCongéProvider,
+    PointageProvider,
+    SalaireProvider,
+  
   
   ]
 })
