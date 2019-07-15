@@ -221,12 +221,14 @@
   <th>Quantité</th>
   <th>Prix unitaire HT</th>
   <th>Prix Total TTC</th>
+  <th>Action</th>
 </tr>
-<tr *ngFor="let item of listeDevis"  >
-    <td>{{item.produit}}</td>
-    <td>{{item.quantite}}</td>
-    <td>{{item.prix_location}}</td>
-    <td>{{item.total}}</td>
+<tr *ngFor="let itemm of listeDevis"  >
+    <td>{{itemm.produit}}</td>
+    <td>{{itemm.quantite}}</td>
+    <td>{{itemm.prix_location}}</td>
+    <td>{{itemm.total}}</td>
+    <td><ion-icon id="action" name="trash"  style="color:red"></ion-icon></td>
   </tr>
    </table>
  </ion-card > 
