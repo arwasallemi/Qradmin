@@ -57,10 +57,15 @@ import { SortieVldPage } from '../pages/sortie-vld/sortie-vld';
 import { Printer } from '@ionic-native/printer';
 import { PrintPage } from '../pages/print/print';
 import { ImageQrcodePage } from '../pages/image-qrcode/image-qrcode';
-<<<<<<< HEAD
+
 import { SignupPage } from '../pages/signup/signup';
 import { ListeDevisProvider } from '../providers/liste-devis/liste-devis';
-=======
+
+
+
+
+
+
 import { DemandeCongePage } from '../pages/demande-conge/demande-conge';
 import { PointagePage } from '../pages/pointage/pointage';
 import { SalairePage } from '../pages/salaire/salaire';
@@ -69,7 +74,10 @@ import { AbscenceProvider } from '../providers/abscence/abscence';
 import { DemandeCongéProvider } from '../providers/demande-congé/demande-congé';
 import { PointageProvider } from '../providers/pointage/pointage';
 import { SalaireProvider } from '../providers/salaire/salaire';
->>>>>>> 8fe6ad2786e2c6f56acbf1afc331c1ec8cbcc802
+import { ImprimerDevisPage } from '../pages/imprimer-devis/imprimer-devis';
+import { BonRetourPage } from '../pages/bon-retour/bon-retour';
+import { BonRetourProvider } from '../providers/bon-retour/bon-retour';
+
  
  
  
@@ -100,15 +108,13 @@ import { SalaireProvider } from '../providers/salaire/salaire';
  LoginPage,
  SortieCltPage,
  SortieVldPage,
-<<<<<<< HEAD
- SignupPage
-=======
+ SignupPage,
  DemandeCongePage,
  PointagePage,
  SalairePage,
  AbscencePage,
->>>>>>> 8fe6ad2786e2c6f56acbf1afc331c1ec8cbcc802
-
+ImprimerDevisPage,
+BonRetourPage,
   ],
   imports: [
     HttpModule,
@@ -144,14 +150,12 @@ EntrepotPage,
  SocietePage,
  ImageQrcodePage,
  PrintPage,
-<<<<<<< HEAD
- SignupPage
-=======
  DemandeCongePage,
  PointagePage,
  SalairePage,
  AbscencePage,
->>>>>>> 8fe6ad2786e2c6f56acbf1afc331c1ec8cbcc802
+ ImprimerDevisPage,
+ BonRetourPage
   ],
   providers: [
  
@@ -180,15 +184,13 @@ EntrepotPage,
     Printer,
     TvaProvider,
     SocieteProvider,
-<<<<<<< HEAD
     ListeDevisProvider,
-=======
     AbscenceProvider,
     DemandeCongéProvider,
     PointageProvider,
     SalaireProvider,
+    BonRetourProvider,
   
->>>>>>> 8fe6ad2786e2c6f56acbf1afc331c1ec8cbcc802
   
   ]
 })

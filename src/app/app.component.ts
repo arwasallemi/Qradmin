@@ -21,11 +21,12 @@ import { UploadPage } from '../pages/upload/upload';
 import { PrintPage } from '../pages/print/print';
 import { PointagePage } from '../pages/pointage/pointage';
 import { AbscencePage } from '../pages/abscence/abscence';
+import { BonRetourPage } from '../pages/bon-retour/bon-retour';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = DevisPage;
+  rootPage:any = BonRetourPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

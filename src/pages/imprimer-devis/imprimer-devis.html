@@ -1,0 +1,70 @@
+ 
+<ion-content>
+  <table>
+    <tr>
+      <th>Client</th>
+      <td>{{dataDevis.client}}</td>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <td>{{dataDevis.date}}</td>
+    </tr>
+    <tr>
+      <th>Durée de validité</th>
+      <td>{{dataDevis.duree}}</td>
+    </tr>
+    <tr>
+      <th>Condition de reglement</th>
+      <td>{{dataDevis.condition}}</td>
+    </tr>
+    <tr>
+      <th>Mode de reglement</th>
+      <td>{{dataDevis.mode}}</td>
+    </tr>
+    <tr>
+      <th>Delai de livraison</th>
+      <td>{{dataDevis.delai}}</td>
+    </tr>
+    <tr>
+      <th>Date de livraison</th>
+      <td>{{dataDevis.deteLivraison}}</td>
+    </tr>
+      <tr>
+        <th>Note</th>
+        <td>{{dataDevis.note}}</td>
+      </tr>
+  </table>
+
+  <table>
+    <tr id="tr">
+      <th>Produit</th>
+      <th>Quantité</th>
+      <th>Prix unitaire HT</th>
+      <th>Prix Total TTC</th>
+  
+    </tr>
+    <tr id="tr" *ngFor="let item of liste"  >
+        <td>{{item.produit}}</td>
+        <td>{{item.quantite}}</td>
+        <td>{{item.prix_location}}</td>
+        <td>{{item.total}}</td>
+         
+      </tr>
+    </table>
+    <table  style="float:right;width:20%;">
+      <tr >
+        <th>Prix total TTC</th>
+        <td>
+        <ion-input (ionChange)="final()" [(ngModel)]="ttc"></ion-input>
+        </td>
+      </tr>
+      <tr>
+          <th>Remise</th>
+          <td>{{dataDevis.remise}}</td>
+        </tr>
+        <tr>
+            <th>Prix Final</th>
+            <td>{{prixfinal}} </td>
+          </tr>
+    </table>
+</ion-content>

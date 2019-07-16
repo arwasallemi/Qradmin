@@ -112,19 +112,11 @@
   </ion-select>
 
  </ion-item>
-
-  <!-- <ion-select [(ngModel)]="search" style="float:left;width:20%">
-    <ion-option>client</ion-option>
-    <ion-option>evenement</ion-option>
-    <ion-option>date evenement</ion-option>
-    
-  </ion-select> -->
+ 
   <ion-searchbar placeholder="rechercher ...." [(ngModel)]="myInput" (ionInput)="getItems($event)" style="float:left;width:20%"></ion-searchbar>
 
 
-<!-- <ion-item style="margin-top:15px;width:20%"> -->
-
-<!-- </ion-item> -->
+ 
 
 <ion-card>
  <table >
@@ -151,7 +143,7 @@
    
      <th>Action</th>
   </tr>
-  <tr *ngFor="let bon of listbrl " >
+  <tr *ngFor="let bon of listbrl" >
     <td>{{bon.id}}</td>
     <td>{{bon.evenement}}</td>
     <td>{{bon.nom_client}}</td>

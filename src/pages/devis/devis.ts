@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { min } from 'rxjs/operator/min';
 import { ClientProvider } from '../../providers/client/client';
 import { ConditionProvider } from '../../providers/condition/condition';
@@ -11,6 +11,7 @@ import { TvaProvider } from '../../providers/tva/tva';
 import { IonicStorageModule } from '@ionic/storage';
 import { Storage } from '@ionic/storage';
 import { ListeDevisProvider } from '../../providers/liste-devis/liste-devis';
+import { ImprimerDevisPage } from '../imprimer-devis/imprimer-devis';
 /**
  * Generated class for the DevisPage page.
  *
@@ -59,6 +60,8 @@ max;
   ttc=0;
   remise=0
   prixfinal: any=0;
+  dataDevis: { date: Date; duree: any; condition: any; mode: any; delai: any; note: any; client: any; deteLivraison: Date; remise: number; };
+  t: any;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public TvaProvider:TvaProvider,
     public Cltprovider:ClientProvider,
@@ -68,8 +71,8 @@ max;
     public Dvsprovider:DevisProvider,
     private produitProvider:ProduitProvider,
     private ListeProvider:ListeDevisProvider,
-  
-    private storage: Storage
+    public modalCtrl:ModalController,
+   
     ) {
     //this.listeDevis=this.storage.get("listeDevis")
     this.max=new Date().getUTCFullYear()+5;
@@ -83,11 +86,7 @@ max;
     this.getliste()
   
   }
- supprimer(a){
-console.log("itemmmmmmmmmmmmmmm",a)
- 
-this.listeDevis.splice(this.numpdt,1)
- }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad DevisPage');
     var y = document.getElementById("form2");
@@ -100,8 +99,17 @@ this.listeDevis.splice(this.numpdt,1)
  final(){
 this.prixfinal=this.ttc-this.remise
   }
+  supprimer(a){
+    console.log("itemmmmmmmmmmmmmmm",a)
+     let index=a-1
+     console.log("index",index)
+    this.listeDevis.splice(index,1);
+//  for(var i=0;i<this.listeDevis.length;i++){
+//   this.listeDevis[i].num=this.listeDevis[i].num-1
+//  }
+     }
   ajouter(){
-    //this.listeDevis= this.storage.get("listeDevis")
+  
    let itempdt={
       produit:"",
       prix_location:"",
@@ -113,15 +121,31 @@ this.prixfinal=this.ttc-this.remise
   itempdt.produit=this.produit,
   itempdt.quantite=this.quantite
   itempdt.total=this.total
+ 
  itempdt.num=this.listeDevis.length+1
-this.numpdt= itempdt.num
     console.log("itempdt:::",itempdt)
     this.listeDevis.push(itempdt)
     console.log("listeeeeeee:::",this.listeDevis)
     this.ttc=this.ttc+this.total
-  // this.storage.set("listeDevis",this.listeDevis)
-    //this.navCtrl.setRoot(DevisPage)
-   // this.details()
+
+  }
+  imprimer(){
+    this.dataDevis = {
+      date:this.date,
+      duree:this.duree,
+      condition:this.condition,
+      mode:this.mode,
+      delai:this.delai,
+      note:this.note,
+      client:this.client,
+      deteLivraison:this.deteLivraison,
+      remise:this.remise
+  };
+
+  let liste = this.listeDevis
+    let modal = this.modalCtrl.create(ImprimerDevisPage, {dataDevis:this.dataDevis,liste:liste,ttc:this.ttc,prixfinal:this.prixfinal});
+    modal.present();
+    console.log("Data:",this.dataDevis);
   }
   Confirmer(){
     this.add();
@@ -213,7 +237,8 @@ if(this.listPdt[i].libelle!==this.produit){
   // this.prix_location=this.listPdt[i].prix_location
   // console.log("prix:",this.listPdt[i].prix_location,"prdt:",this.produit,"list libelle::",this.listPdt[i].libelle)
   this.prix_location=this.listPdt[i].prix_location
-console.log("produitttt:",this.listPdt[i].libelle)
+  this.t=this.listPdt[i].tva
+console.log("produitttt:",this.t)
 console.log("prixx:",this.prix_location,"prdt:",this.produit,"list libelle::",this.listPdt[i].libelle)
 }
 }
@@ -222,7 +247,7 @@ console.log("prixx:",this.prix_location,"prdt:",this.produit,"list libelle::",th
     
   }
   calcul(){
-    this.total=this.quantite*this.prix_location+((this.quantite*this.prix_location)/100)*this.tva
+    this.total=this.quantite*this.prix_location+((this.quantite*this.prix_location)/100)*this.t
   }
   getTVA(){
     this.TvaProvider.get()
@@ -303,7 +328,7 @@ add(){
  remise:this.remise
          
         };
-      
+      this.dataDevis=credentials;
         this.Dvsprovider.save(credentials).then((result)=>{
           console.log("info::::",credentials)
           
