@@ -99,9 +99,9 @@
 
      <ion-select  [(ngModel)]="search" >
 
-      <ion-option>client</ion-option>
-      <ion-option>evenement</ion-option>
-      <ion-option>date evenement</ion-option>
+      <ion-option>Date retour</ion-option>
+      <ion-option>matricule</ion-option>
+      <ion-option>nom transporteur</ion-option>
   </ion-select>
 
  </ion-item>
@@ -118,6 +118,8 @@
       <th>equipe</th>
       <th>matricule</th>
       <th>etat</th>
+      <th></th>
+      <th></th>
       <th>Date de creation</th>
       <th>Note</th>
       <th>Action</th>
@@ -130,7 +132,19 @@
     <td>{{bon.transporteur_tel}}</td>
     <td>{{bon.equipe_name}}</td>
     <td>{{bon.matricule}}</td>
-    <td>{{bon.etat}}</td>
+    <td style="width:200px;margin-top:10px"  class="dropdown">
+        {{bon.etat}}
+        <ion-icon id="td" name="arrow-dropdown"></ion-icon>
+  <div class="dropdown-content">
+     <a  (click)="cloture(bon)">cloturé</a>
+     <a  (click)="valide(bon)">validé</a>
+     
+</div>
+ 
+   
+</td>
+    <td></td>
+    <td></td>
     <td>{{bon.created_at}}</td>
     <td>{{bon.note}}</td>
     <td>
