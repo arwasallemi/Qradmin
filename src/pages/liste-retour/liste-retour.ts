@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ListesortieProvider } from '../../providers/listesortie/listesortie';
-import { PrintOptions, Printer } from '@ionic-native/printer';
+import { BonRetourProvider } from '../../providers/bon-retour/bon-retour';
+import { ListeretourProvider } from '../../providers/listeretour/listeretour';
 import { SocieteProvider } from '../../providers/societe/societe';
+import { Printer, PrintOptions } from '@ionic-native/printer';
 
 /**
- * Generated class for the ListesortiePage page.
+ * Generated class for the ListeRetourPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -13,43 +14,44 @@ import { SocieteProvider } from '../../providers/societe/societe';
 
 @IonicPage()
 @Component({
-  selector: 'page-listesortie',
-  templateUrl: 'listesortie.html',
+  selector: 'page-liste-retour',
+  templateUrl: 'liste-retour.html',
 })
-export class ListesortiePage {
-  list: any;
- 
-  item: any;
-  listSortie: any=[];
+export class ListeRetourPage {
+item:any;
+  list: any=[];
+  detailretour: any=[];
   imagelist: any=[];
-
-  constructor(
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public listeretourprovider:ListeretourProvider,
     private societe:SocieteProvider,
-    private printer: Printer,
-    public navCtrl: NavController, public navParams: NavParams,public provider:ListesortieProvider) {
+    private printer: Printer,) {
     this.item=this.navParams.get('item');
-    console.log("itemmmmm",this.item);
+    console.log("item::",this.item)
     this.get()
     this.loadImage()
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ListesortiePage');
+    console.log('ionViewDidLoad ListeRetourPage');
   }
 get(){
-  this.provider.get()
-  .then(data => {
-    this.list = data;
-    console.log("list sortie:::::",this.list);
-    for(var i=0;i<this.list.length;i++){
-      if(this.list[i].bonSortie_id===this.item.id){
+  this.listeretourprovider.get()
+    .then(data => {
+      this.list= data;
+      console.log("list:::::",this.list);
+      for(var i=0;i<this.list.length;i++){
        
-        this.listSortie.push(this.list[i])
-     }
-    }
-    console.log(" sortie:::::", this.listSortie);
-  });
+        if(this.list[i].bonRetour_id==this.item.id){
+
+          this.detailretour.push(this.list[i])
+        }
+      }
+      console.log("listee:::::",this.detailretour);
+    });
+    
 }
+
 print(){
   this.printer.isAvailable().then(this.onSuccessLoad, this.onErrorLoad);
 

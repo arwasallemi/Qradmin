@@ -182,6 +182,23 @@
   <button ion-button style="float:right;margin-right:1%" (click)="back()">Back</button>
   </ion-card>
 <p id="title">Liste</p>
+<ion-item  style="width:20% ;background-color: transparent" >
+    <ion-label > Filtre </ion-label>
+  
+       <ion-select  [(ngModel)]="search" >
+  
+        <ion-option>client</ion-option>
+        <ion-option>date</ion-option>
+        <ion-option>Condition de reglement</ion-option>
+    </ion-select>
+  
+   </ion-item>
+   
+    <ion-searchbar placeholder="rechercher ...." [(ngModel)]="myInput" (ionInput)="getItems($event)" style="float:left;width:20%"></ion-searchbar>
+  
+  
+   
+  
 <ion-card id="form3">
   <table>
     <tr>
@@ -206,7 +223,8 @@
       <td>{{item.deteLivraison}}</td>
       <td>{{item.note}}</td>
       <td>{{item.created_at}}</td>
-      <td> <ion-icon id="action" name="eye" style="color:#3ea7d8"></ion-icon> <ion-icon id="action" name="create" (click)="edit(item.id)" style="color:#178a43"></ion-icon> 
+      <td> 
+        <!-- <ion-icon id="action" name="eye" style="color:#3ea7d8"></ion-icon> <ion-icon id="action" name="create" (click)="edit(item.id)" style="color:#178a43"></ion-icon>  -->
         <ion-icon id="action" name="trash" (click)="delete(item.id)" style="color:red"></ion-icon></td>
     </tr>
   

@@ -26,7 +26,7 @@ import { BonRetourPage } from '../pages/bon-retour/bon-retour';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = BonRetourPage;
+  rootPage:any = DevisPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

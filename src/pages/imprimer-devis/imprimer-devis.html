@@ -1,5 +1,19 @@
  
 <ion-content>
+    <ion-title style="margin-left:35%;margin-left:40%">Devis</ion-title>
+    <div *ngFor="let post of imagelist">
+        <img [src]="post.alt" style="height: 40px;width:20%;float:left">
+        <br>
+<br>
+  <ion-label style="font-size:0.8em">Societé: {{post.nom}}</ion-label>
+  <ion-label style="font-size:0.8em">Siege: {{post.siege}}</ion-label>
+ 
+      <ion-label style="font-size:0.8em">MF: {{post.MF}}</ion-label>
+  <ion-label style="font-size:0.8em">tel: {{post.tel1}}</ion-label>
+  <ion-label style="font-size:0.8em">tel: {{post.tel2}}</ion-label>
+  
+
+      </div>
   <table>
     <tr>
       <th>Client</th>
@@ -67,4 +81,5 @@
             <td>{{prixfinal}} </td>
           </tr>
     </table>
+    <button ion-button (click)="onSuccessLoad()">Imprimer</button>
 </ion-content>

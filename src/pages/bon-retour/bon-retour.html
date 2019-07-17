@@ -102,6 +102,7 @@
       <ion-option>Date retour</ion-option>
       <ion-option>matricule</ion-option>
       <ion-option>nom transporteur</ion-option>
+      <ion-option>etat</ion-option>
   </ion-select>
 
  </ion-item>
@@ -117,6 +118,7 @@
       <th>Tel du transporteur</th>
       <th>equipe</th>
       <th>matricule</th>
+      <th>Entrepot</th>
       <th>etat</th>
       <th></th>
       <th></th>
@@ -132,6 +134,7 @@
     <td>{{bon.transporteur_tel}}</td>
     <td>{{bon.equipe_name}}</td>
     <td>{{bon.matricule}}</td>
+    <td>{{bon.entrepot}}</td>
     <td style="width:200px;margin-top:10px"  class="dropdown">
         {{bon.etat}}
         <ion-icon id="td" name="arrow-dropdown"></ion-icon>
@@ -140,15 +143,13 @@
      <a  (click)="valide(bon)">validé</a>
      
 </div>
- 
-   
 </td>
     <td></td>
     <td></td>
     <td>{{bon.created_at}}</td>
     <td>{{bon.note}}</td>
     <td>
-        <ion-icon id="action" name="create" (click)="edit(bon.id)" style="color:#178a43"></ion-icon> 
+        <!-- <ion-icon id="action" name="create" (click)="edit(bon.id)" style="color:#178a43"></ion-icon>  -->
       <ion-icon id="action" name="trash" (click)="delete(bon.id)" style="color:red"></ion-icon>
       <ion-icon id="action" name="eye" style="color:#3ea7d8" (click)="show(bon)"></ion-icon>
     </td>

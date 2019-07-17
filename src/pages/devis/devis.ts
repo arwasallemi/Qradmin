@@ -62,6 +62,8 @@ max;
   prixfinal: any=0;
   dataDevis: { date: Date; duree: any; condition: any; mode: any; delai: any; note: any; client: any; deteLivraison: Date; remise: number; };
   t: any;
+  listrecherche: any=[];
+  search: string;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public TvaProvider:TvaProvider,
     public Cltprovider:ClientProvider,
@@ -261,6 +263,7 @@ console.log("prixx:",this.prix_location,"prdt:",this.produit,"list libelle::",th
     this.Dvsprovider.get()
     .then(dvs => {
       this.listDvs= dvs;
+      this.listrecherche=dvs
       console.log("dvs:::::",this.listDvs);
       for(var i=0;i<this.listDvs.length;i++){
         this.length=this.listDvs[i].id+1
@@ -342,5 +345,59 @@ add(){
       
        
     }
+ /////////////////////
+  //////////////////recherche
+  initializeItems(): void {
+    this.listDvs = this.listrecherche;
+  }
+  getItems(searchbar) {
+    // Reset items back to all of the items
+    this.initializeItems();
+  
+    // set q to the value of the searchbar
+    var q = searchbar.srcElement.value;
+  
+  
+    // if the value is an empty string don't filter the items
+    if (!q) {
+      return;
+    }
+  if(this.search==="Condition de reglement"){
+    this.listDvs = this.listDvs.filter((v) => {
+      if(v.evenement && q) {
+        if (v.evenement.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+          return true;
+        }
+        return false;
+      }
+    });
+  
+    console.log(q, this.listDvs.length);
+  }
+  if(this.search==="client"){
+    this.listDvs = this.listDvs.filter((v) => {
+      if(v.condition && q) {
+        if (v.condition.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+          return true;
+        }
+        return false;
+      }
+    });
+  
+    console.log(q, this.listDvs.length);
+  } 
+  if(this.search==="date"){
+    this.listDvs = this.listDvs.filter((v) => {
+      if(v.date && q) {
+        if (v.date.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+          return true;
+        }
+        return false;
+      }
+    });
+  
+    console.log(q, this.listDvs.length);
+  } 
+  }
 }
 

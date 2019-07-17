@@ -107,7 +107,7 @@ edit(id,postInfo){
      headers.append('Authorization', 'Bearer '+value);
      console.log('value: ' + value);
 
-     this.http.put('http://testmariadb.alwaysdata.net/public/bonretour/bonretours' +id ,  JSON.stringify(postInfo),  {headers: headers})
+     this.http.put('http://testmariadb.alwaysdata.net/public/bonretour/bonretours/' +id ,  JSON.stringify(postInfo),  {headers: headers})
        .map(res => res.json())
        .subscribe(data => {
          resolve(data);
@@ -148,7 +148,7 @@ return new Promise(resolve => {
      let headers = new Headers();
      headers.append('Content-Type', 'application/json');
  
-  this.http.delete('http://testmariadb.alwaysdata.net/public/bonretour/bonretours' +id,    {headers: headers})
+  this.http.delete('http://testmariadb.alwaysdata.net/public/bonretour/bonretours/' +id,    {headers: headers})
     .map(res => res.json())
     .subscribe(data => {
  

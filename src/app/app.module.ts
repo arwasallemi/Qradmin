@@ -77,6 +77,8 @@ import { SalaireProvider } from '../providers/salaire/salaire';
 import { ImprimerDevisPage } from '../pages/imprimer-devis/imprimer-devis';
 import { BonRetourPage } from '../pages/bon-retour/bon-retour';
 import { BonRetourProvider } from '../providers/bon-retour/bon-retour';
+import { ListeretourProvider } from '../providers/listeretour/listeretour';
+import { ListeRetourPage } from '../pages/liste-retour/liste-retour';
 
  
  
@@ -115,6 +117,7 @@ import { BonRetourProvider } from '../providers/bon-retour/bon-retour';
  AbscencePage,
 ImprimerDevisPage,
 BonRetourPage,
+ListeRetourPage
   ],
   imports: [
     HttpModule,
@@ -155,7 +158,8 @@ EntrepotPage,
  SalairePage,
  AbscencePage,
  ImprimerDevisPage,
- BonRetourPage
+ BonRetourPage,
+ ListeRetourPage
   ],
   providers: [
  
@@ -190,6 +194,7 @@ EntrepotPage,
     PointageProvider,
     SalaireProvider,
     BonRetourProvider,
+    ListeretourProvider,
   
   
   ]

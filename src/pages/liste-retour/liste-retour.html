@@ -1,0 +1,67 @@
+ 
+
+ <ion-content>
+    <ion-title style="margin-left:35%;margin-left:30%">Bon de retour</ion-title>
+    <div *ngFor="let post of imagelist">
+        <img [src]="post.alt" style="height: 40px;width:20%;float:left">
+        <br>
+<br>
+  <ion-label style="font-size:0.8em">Societé: {{post.nom}}</ion-label>
+  <ion-label style="font-size:0.8em">Siege: {{post.siege}}</ion-label>
+ 
+      <ion-label style="font-size:0.8em">MF: {{post.MF}}</ion-label>
+  <ion-label style="font-size:0.8em">tel: {{post.tel1}}</ion-label>
+  <ion-label style="font-size:0.8em">tel: {{post.tel2}}</ion-label>
+  
+
+      </div>
+   
+    
+  
+<ion-card style="width:50%;float:left">
+<table >
+  <tr>
+    <th>Date retour:</th>
+    <td>{{item.dateRetour}}</td>
+  </tr>
+  <tr>
+    <th>Entrepot:</th>
+    <td>{{item.entrepot}}</td>
+  </tr>
+  <tr>
+    <th>Equipe:</th>
+    <td>{{item.equipe_name}}</td>
+  </tr>
+</table>
+</ion-card>
+<ion-card style="width:40%;margin-top:20px">
+  <table>
+    <tr>
+      <th>Transporteur:</th>
+      <td>{{item.transporteur_nom}}</td>
+    </tr>
+    <tr>
+      <th>Tel transporteur:</th>
+      <td>{{item.transporteur_tel}}</td>
+    </tr>
+    <tr>
+      <th>Matricule:</th>
+      <td>{{item.matricule}}</td>
+    </tr>
+  </table>
+</ion-card>
+ 
+    <table>
+  <tr>
+    <th>#</th>
+    <th>Produit</th>
+    <th>quantité</th>
+  </tr>
+  <tr  *ngFor="let itemm of detailretour">
+    <td>{{itemm.id}}</td>
+    <td>{{itemm.ref}}</td>
+    <td>{{itemm.qte}}</td>
+  </tr>
+    </table>
+ <button ion-button (click)="onSuccessLoad()">Imprimer</button>
+</ion-content>
