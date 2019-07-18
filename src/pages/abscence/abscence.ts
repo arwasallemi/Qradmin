@@ -41,7 +41,7 @@ nbr
     
   
 
-      this.crudemply.loadempl()
+      this.crudemply.get()
       .then(data => {
         this.listEmpl = data;
 
@@ -90,7 +90,7 @@ nbr
    
    }
    loadempl(){
-    this.crudemply.loadempl()
+    this.crudemply.get()
     .then(data => {
       this.listEmpl = data;
       console.log(this.listEmpl,"list")

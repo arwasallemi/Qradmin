@@ -3,6 +3,22 @@ import { NavController, NavParams } from 'ionic-angular';
 import { EntrepotProvider } from '../../providers/entrepot/entrepot';
 import { HttpClient } from '@angular/common/http';
 import { SocieteProvider } from '../../providers/societe/societe';
+import { BonRetourPage } from '../bon-retour/bon-retour';
+import { HomePage } from '../home/home';
+import { SortieVldPage } from '../sortie-vld/sortie-vld';
+import { SortieCltPage } from '../sortie-clt/sortie-clt';
+import { BonSortiePage } from '../bon-sortie/bon-sortie';
+import { EmployeurPage } from '../employeur/employeur';
+import { DevisPage } from '../devis/devis';
+import { FacturePage } from '../facture/facture';
+import { ListeFacturePage } from '../liste-facture/liste-facture';
+import { ParamPage } from '../param/param';
+import { SocietePage } from '../societe/societe';
+import { ProduitPage } from '../produit/produit';
+import { StockPage } from '../stock/stock';
+import { ListereservationPage } from '../listereservation/listereservation';
+import { RessourcesPage } from '../ressources/ressources';
+import { ReservationPage } from '../reservation/reservation';
 
 /**
  * Generated class for the EntrepotPage page.
@@ -16,21 +32,33 @@ import { SocieteProvider } from '../../providers/societe/societe';
   templateUrl: 'entrepot.html',
 })
 export class EntrepotPage {
+  soc: any;
+  [x: string]: any;
   list:any;
   images
   code: any;
   adresse: any;
   libelle: any;
+  listsociete: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public societe : SocieteProvider,
     
-    public provider:EntrepotProvider,public httpClient: HttpClient
+    public provider:EntrepotProvider,public httpClient: HttpClient,   public providerSociete : SocieteProvider
     ) {
      this.loadImage() 
+     this.getsociete()
      }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EntrepotPage');
     this.get();
+  }
+  getsociete(){
+    this.providerSociete.loadsociete()
+    .then(data => {
+      this.listsociete = data;
+      console.log("listsociete:::::",this.listsociete);
+     this.soc = this.listsociete[0]
+    });
   }
   get(){
     this.provider.get()
@@ -86,4 +114,53 @@ export class EntrepotPage {
     this.provider.delete(a);
     this.navCtrl.setRoot(EntrepotPage)
    }
+   ////////////////menu
+bonretour(){
+  this.navCtrl.setRoot(BonRetourPage)
+}
+dashboard(){
+  this.navCtrl.setRoot(HomePage)
+}
+SortieV(){
+  this.navCtrl.setRoot(SortieVldPage)
+}
+SortieC(){
+  this.navCtrl.setRoot(SortieCltPage)
+}
+Sortieb(){
+  this.navCtrl.setRoot(BonSortiePage)
+}
+tech(){
+  this.navCtrl.setRoot(EmployeurPage)
+}
+Devis(){
+  this.navCtrl.setRoot(DevisPage)
+}
+facture(){
+  this.navCtrl.setRoot(FacturePage)
+}
+listFact(){
+  this.navCtrl.setRoot(ListeFacturePage)
+}
+param(){
+  this.navCtrl.setRoot(ParamPage)
+}
+societee(){
+  this.navCtrl.setRoot(SocietePage)
+}
+produit(){
+  this.navCtrl.setRoot(ProduitPage)
+}
+stock(){
+  this.navCtrl.setRoot(StockPage)
+}
+reservation(){
+  this.navCtrl.setRoot(ReservationPage)
+}
+entrepot(){
+  this.navCtrl.setRoot(EntrepotPage)
+}
+ressource(){
+  this.navCtrl.setRoot(RessourcesPage)
+}
 }

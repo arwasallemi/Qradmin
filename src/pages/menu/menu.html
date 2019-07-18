@@ -1,30 +1,134 @@
-<header>
-  <a href="#main-menu"
-     id="main-menu-toggle"
-     class="menu-toggle"
-     aria-label="Open main menu">
-    <span class="sr-only">Open main menu</span>
-    <span class="fa fa-bars" aria-hidden="true"></span>
-  </a>
-  
-  <h1 class="logo">hamburgers</h1>
-  
-  <nav id="main-menu" class="main-menu" aria-label="Main menu">
-    <a href="#main-menu-toggle"
-       id="main-menu-close"
-       class="menu-close"
-       aria-label="Close main menu">
-      <span class="sr-only">Close main menu</span>
-      <span class="fa fa-close" aria-hidden="true"></span>
-    </a>
-    <ul>
-      <li><a href="#">Products</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </nav>
-  <a href="#main-menu-toggle"
-     class="backdrop"
-     tabindex="-1"
-     aria-hidden="true" hidden></a>
-</header>
+
+<html>
+
+        <div style="color:white;height: 50px;">
+        <ion-icon name="cog" style="font-size:20px;color:cornflowerblue;margin-top:12px;float:right;margin-right:10px"></ion-icon>
+        <ion-icon name="home" style="font-size:20px;color:cornflowerblue;margin-top:12px;float:right;margin-right:10px"></ion-icon>
+            </div>
+<div class="area">
+        <div style="margin-left:100px"></div>
+</div><nav class="main-menu">
+            <ul>
+                <li>
+                    <a (click)="dashboard()">
+                        <i class="fa fa-home fa-2x"></i>
+                        <span class="nav-text">
+                            Dashboard
+                        </span>
+                    </a>
+                  
+                </li>
+                <li class="has-subnav">
+                    <a (click)="bonretour()">
+                        <i class="fa fa-file fa-2x"></i>
+                        <span class="nav-text">
+                            Bon Retour
+                        </span>
+                    </a>
+                    
+                </li>
+                <li class="has-subnav">
+                    <a (click)="SortieV()">
+                       <i class="fa fa-folder fa-2x"></i>
+                        <span class="nav-text">
+                            Bon de Sortie Validées
+                        </span>
+                    </a>
+                    
+                </li>
+                <li class="has-subnav">
+                    <a (click)="SortieC()">
+                       <i class="fa fa-folder-open fa-2x"></i>
+                        <span class="nav-text">
+                                Bon de Sortie Cloturées
+                        </span>
+                    </a>
+                   
+                </li>
+                <li>
+                    <a (click)="Sortieb()">
+                        <i class="fa fa-edit fa-2x"></i>
+                        <span class="nav-text">
+                                Bon de Sortie Brouillon
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a (click)="tech()">
+                        <i class="fa fa-user fa-2x"></i>
+                        <span class="nav-text">
+                           Techniciens
+                        </span>
+                    </a>
+                </li>
+                <li>
+                   <a (click)="Devis()">
+                       <i class="fa fa-copy fa-2x"></i>
+                        <span class="nav-text">
+                           Devis
+                        </span>
+                    </a>
+                </li>
+                <li>
+                   <a (click)="facture()">
+                        <i class="fa fa-edit fa-2x"></i>
+                        <span class="nav-text">
+                         Nouvelle Facture
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a (click)="listFact()">
+                       <i class="fa fa-folder fa-2x"></i>
+                        <span class="nav-text">
+                            Liste des factures
+                        </span>
+                    </a>
+                </li>
+                <li>
+                        <a (click)="reservation()">
+                           <i class="fa fa-file fa-2x"></i>
+                            <span class="nav-text">
+                               Reservation
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                            <a (click)="stock()">
+                               <i class="fa fa-file fa-2x"></i>
+                                <span class="nav-text">
+                                   Stock
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                                <a (click)="produit()">
+                                   <i class="fa fa-file fa-2x"></i>
+                                    <span class="nav-text">
+                                     Produits
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                    <a (click)="enterpot()">
+                                       <i class="fa fa-file fa-2x"></i>
+                                        <span class="nav-text">
+                                         Entrepots
+                                        </span>
+                                    </a>
+                                </li>
+            </ul>
+
+            <ul class="logout">
+                <li>
+                   <a href="#">
+                         <i class="fa fa-power-off fa-2x"></i>
+                        <span class="nav-text">
+                            Logout
+                        </span>
+                    </a>
+                </li>  
+            </ul>
+        </nav>
+
+    </html>

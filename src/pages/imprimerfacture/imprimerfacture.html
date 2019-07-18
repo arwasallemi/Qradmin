@@ -1,0 +1,107 @@
+ 
+ 
+<ion-content>
+    <ion-title style="margin-left:35%;margin-left:40%">{{title}}</ion-title>
+    <div *ngFor="let post of imagelist">
+        <img [src]="post.alt" style="height: 40px;width:20%;float:left">
+        <br>
+<br>
+  <ion-label style="font-size:0.8em">Societé: {{post.nom}}</ion-label>
+  <ion-label style="font-size:0.8em">Siege: {{post.siege}}</ion-label>
+ 
+      <ion-label style="font-size:0.8em">MF: {{post.MF}}</ion-label>
+  <ion-label style="font-size:0.8em">tel: {{post.tel1}}</ion-label>
+  <ion-label style="font-size:0.8em">tel: {{post.tel2}}</ion-label>
+  
+
+      </div>
+
+      <ion-card style="width:50%;float:left">
+          <table>
+              <tr>
+                  <th>Ref</th>
+                  <td>{{dataf.ref}}</td>
+                </tr>
+            <tr>
+              <th>Client</th>
+              <td>{{dataf.societe}}</td>
+            </tr>
+            <tr>
+              <th>Type</th>
+              <td>{{dataf.type}}</td>
+            </tr>
+            <tr>
+              <th>Date</th>
+              <td>{{dataf.date}}</td>
+            </tr>
+            <tr>
+              <th>Condition de reglement</th>
+              <td>{{dataf.condition_regl}}</td>
+            </tr>
+            </table>
+      </ion-card>
+      <ion-card style="width:40%;margin-top:15px">
+<table>
+    <tr>
+        <th>Date limite reglement</th>
+        <td>{{dataf.date_limite_reglement}}</td>
+      </tr>
+      <tr>
+        <th>Mode de livraison</th>
+        <td>{{dataf.mode_regl}}</td>
+      </tr>
+      <tr>
+        <th>Compte bancaire</th>
+        <td>{{dataf.cpte_bancaire}}</td>
+      </tr>
+        <tr>
+          <th>Etat</th>
+          <td>{{dataf.etat}}</td>
+        </tr>
+        <tr>
+            <th>Projet</th>
+            <td>{{dataf.projet}}</td>
+          </tr>
+          <tr>
+              <th>Incoterms</th>
+              <td>{{dataf.incoterms}}</td>
+            </tr>
+            <tr>
+                <th>Remise</th>
+                <td>{{dataf.remise}}</td>
+              </tr>
+     
+</table>
+      </ion-card>
+ 
+
+
+  <table>
+    <tr id="tr">
+      <th>Produit</th>
+      <th>Quantité</th>
+      <th>Prix unitaire HT</th>
+      <th>Prix Total TTC</th>
+    </tr>
+    <tr id="tr" *ngFor="let item of liste"  >
+        <td>{{item.produit}}</td>
+        <td>{{item.quantite}}</td>
+        <td>{{item.prix_location}}</td>
+        <td>{{item.total}}</td>
+         
+      </tr>
+    </table>
+    <table  style="float:right;width:20%;">
+      <tr >
+        <th>Prix total TTC</th>
+        <td>
+        <ion-input (ionChange)="final()" [(ngModel)]="ttc"></ion-input>
+        </td>
+      </tr>
+        <tr>
+            <th>Prix Final avec remise</th>
+            <td>{{dataf.montant_ttc}} </td>
+          </tr>
+    </table>
+    <button ion-button (click)="onSuccessLoad()">Imprimer</button>
+</ion-content>

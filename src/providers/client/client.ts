@@ -55,6 +55,29 @@ export class ClientProvider {
    });
 
  }
+ 
+ getclient(){
+  return new Promise((resolve, reject) => {
+   this.storage.get('token').then((value) => {
+
+     let headers = new Headers();
+     headers.append('Content-Type', 'application/json');
+     headers.append('Authorization', 'Bearer '+value);
+
+     console.log('value: ' + value);
+
+     this.http.get('http://testmariadb.alwaysdata.net/public/client/client', {headers: headers})
+       .map(res => res.json())
+       .subscribe(data => {
+         resolve(data);
+       }, (err) => {
+         reject(err);
+       }); 
+   }) 
+
+ });
+
+}
 
 
 

@@ -1,0 +1,23 @@
+page-imprimer-devis {
+    table {
+          font-size:0.8em;
+        border-collapse: collapse;
+        width: 100%;
+      }
+     
+      td, th {
+        
+        text-align: left;
+        padding: 8px;
+      }
+      
+      tr:nth-child(even) {
+        background-color: #ffffff;
+       // border: 1px solid #cfcdcd;
+      }
+      #tr:nth-child(even) {
+        background-color: #ffffff;
+       border: 1px solid #7a7373;
+      }
+
+}

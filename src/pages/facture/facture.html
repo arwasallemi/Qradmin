@@ -1,0 +1,273 @@
+
+<html>
+    <div style="color:white;height: 50px">
+        <div *ngFor="let item of listsociete">
+                <img [src]="soc.alt" style="width:10%;float:left;margin-left:50px"  >
+              </div>
+<ion-icon name="cog" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
+<ion-icon name="home" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
+<ion-icon name="car" (click)="ressource()" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>       
+</div>
+<div class="area">
+    <div style="margin-left:100px">
+        
+        <ion-card id="form1">
+            <ion-item>
+              <ion-label style="font-size:0.8em" floating>Ref:</ion-label>
+              <ion-input [(ngModel)]="ref"></ion-input>
+            </ion-item>
+       
+      
+            <ion-searchbar  style="font-size:0.8em" placeholder="nom client"  [(ngModel)]="searchInput"  [showCancelButton]="false" (ionInput)="getItems($event)"  class="" style="background-color: #073262 !important" [showCancelButton]="shouldShowCancel" style="background:none!important;"> </ion-searchbar>
+            <div *ngIf="hideMe">
+            
+                  <ion-item  *ngFor="let item of users" tappable (click)="chooseItem(item)">
+                    {{item.nom}} {{ item.prenom}}
+                  </ion-item>
+            
+                </div>
+        <ion-item>
+        <ion-label  style="font-size:0.8em" floating>Type:</ion-label>
+        <ion-input [(ngModel)]="type"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label  style="font-size:0.8em" floating>Remise:</ion-label>
+            <ion-input [(ngModel)]="remise"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label  style="font-size:0.8em" floating>date:</ion-label>
+          <ion-datetime   displayFormat="DD-MM-YYYY" pickerFormat="DD MMMM YYYY"  [(ngModel)]="date" ></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label style="font-size:0.8em" floating>Condition de reglement:</ion-label>
+            <ion-select  [(ngModel)]="condition" (ionChange)="getCdt()">
+        
+                <ion-option  *ngFor="let cdt of listCdt" >{{cdt.condition}}</ion-option>
+                
+              </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label  style="font-size:0.8em" floating>Date limite de reglement:</ion-label>
+            <ion-datetime displayFormat="DD-MM-YYYY" pickerFormat="DD MMMM YYYY"  [(ngModel)]="dateR" ></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label style="font-size:0.8em" floating>Mode de reglement:</ion-label>
+            <ion-select  [(ngModel)]="mode" (ionChange)="getMd()">
+        
+                <ion-option  *ngFor="let md of listMd" >{{md.mode}}</ion-option>
+                
+              </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label style="font-size:0.8em"  floating>Compte bancaire:</ion-label>
+            <ion-input [(ngModel)]="compte"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label style="font-size:0.8em"  floating>Etat:</ion-label>
+       
+            <ion-select [(ngModel)]="etat">
+      <ion-option>payée</ion-option>
+      <ion-option>impayée</ion-option>
+      <ion-option>brouillon</ion-option>
+            </ion-select>
+        </ion-item>
+ 
+        <button ion-button color="light" style="float:left" (click)="suivant()" >Suivant</button>
+        </ion-card>
+      <ion-card id="form2">
+          <ion-item>
+              <ion-label style="font-size:0.8em"  floating>Projet:</ion-label>
+              <ion-input [(ngModel)]="projet"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label style="font-size:0.8em"  floating>Incoterms:</ion-label>
+              <ion-input [(ngModel)]="incoterms"></ion-input>
+          </ion-item>
+          <ion-select   [(ngModel)]="produit" style="width:30%" placeholder="produit" (ionChange)="select(produit)">
+              <ion-option *ngFor="let p of listPdt"  >{{p.libelle}}</ion-option>
+            </ion-select>
+         
+          <ion-item  style="width:20%;float:left;font-size:0.8em">
+              <ion-label  floating>Prix de location</ion-label>
+              <ion-input (ionChange)="calcul()"[(ngModel)]="prix_location"></ion-input>
+          </ion-item>
+            <ion-item style="width:10%;font-size:0.8em">
+              <ion-label floating >TVA:</ion-label>
+              <ion-input (ionChange)="calcul()"[(ngModel)]="t"></ion-input>
+               
+          </ion-item>
+          <ion-item style="width:10%;font-size:0.8em;margin-left:0%" >
+            <ion-label floating>Quantité</ion-label>
+            <ion-input [(ngModel)]="quantite" (ionChange)="calcul()"></ion-input>
+          </ion-item>
+        
+          <ion-item>
+          
+            <p>{{total}}</p>
+       
+          </ion-item>
+          <button ion-button style="float:right;margin-right:1%" (click)="ajouter()">Ajouter</button>
+       
+      <button ion-button color="light" style="float:right;margin-right:1%"  float="right" (click)="back()">Retour</button>
+      <table>
+        <tr>
+          <th>#</th>
+          <th>Produit</th>
+          <th>Quantité</th>
+          <th>prix unitaire HT</th>
+          <th>prix total TTC</th>
+          <th>Action</th>
+        </tr>
+        <tr *ngFor="let itemm of liste" >
+            <td>{{itemm.num}}</td>
+          <td>{{itemm.produit}}</td>
+          <td>{{itemm.quantite}}</td>
+          <td>{{itemm.prix_location}}</td>
+          <td>{{itemm.total}}</td>
+          <td><button ion-button color="red"  (click)="supprimer(itemm.num)">retirer</button></td>
+        </tr>
+      </table>
+       
+          <table style="float:right;width:20%">
+            <tr>
+              <th>Prix total TTC</th>
+              <td>
+              <ion-input (ionChange)="final()" [(ngModel)]="ttc"></ion-input>
+              </td>
+            </tr>
+        
+              <tr>
+                  <th>Prix Final avec remise</th>
+                  <td>{{prixfinal}} </td>
+                </tr>
+          </table>
+      
+          <button ion-button block color="light" style="float:right;margin-right:1%" (click)="Confirmer()">Vente</button>
+      <button ion-button block color="light" style="float:right;margin-right:1%" (click)="imprimer()">Imprimer bon de vente</button>
+      </ion-card>
+         </div>
+</div><nav class="main-menu">
+        <ul>
+            <li>
+                <a (click)="dashboard()">
+                    <i class="fa fa-home fa-2x"></i>
+                    <span class="nav-text">
+                        Dashboard
+                    </span>
+                </a>
+              
+            </li>
+            <li class="has-subnav">
+                <a (click)="bonretour()">
+                    <i class="fa fa-file fa-2x"></i>
+                    <span class="nav-text">
+                        Bon Retour
+                    </span>
+                </a>
+                
+            </li>
+            <li class="has-subnav">
+                <a (click)="SortieV()">
+                   <i class="fa fa-folder fa-2x"></i>
+                    <span class="nav-text">
+                        Bon de Sortie Validées
+                    </span>
+                </a>
+                
+            </li>
+            <li class="has-subnav">
+                <a (click)="SortieC()">
+                   <i class="fa fa-folder-open fa-2x"></i>
+                    <span class="nav-text">
+                            Bon de Sortie Cloturées
+                    </span>
+                </a>
+               
+            </li>
+            <li>
+                <a (click)="Sortieb()">
+                    <i class="fa fa-edit fa-2x"></i>
+                    <span class="nav-text">
+                            Bon de Sortie Brouillon
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a (click)="tech()">
+                    <i class="fa fa-user fa-2x"></i>
+                    <span class="nav-text">
+                       Techniciens
+                    </span>
+                </a>
+            </li>
+            <li>
+               <a (click)="Devis()">
+                   <i class="fa fa-copy fa-2x"></i>
+                    <span class="nav-text">
+                       Devis
+                    </span>
+                </a>
+            </li>
+            <li>
+               <a (click)="facturee()">
+                    <i class="fa fa-edit fa-2x"></i>
+                    <span class="nav-text">
+                     Nouvelle Facture
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a (click)="listFact()">
+                   <i class="fa fa-folder fa-2x"></i>
+                    <span class="nav-text">
+                        Liste des factures
+                    </span>
+                </a>
+            </li>
+            <li>
+                    <a (click)="reservation()">
+                       <i class="fa fa-file fa-2x"></i>
+                        <span class="nav-text">
+                           Reservation
+                        </span>
+                    </a>
+                </li>
+                <li>
+                        <a (click)="stock()">
+                           <i class="fa fa-file fa-2x"></i>
+                            <span class="nav-text">
+                               Stock
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                            <a (click)="produitt()">
+                               <i class="fa fa-file fa-2x"></i>
+                                <span class="nav-text">
+                                 Produits
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                                <a (click)="enterpot()">
+                                   <i class="fa fa-file fa-2x"></i>
+                                    <span class="nav-text">
+                                     Entrepots
+                                    </span>
+                                </a>
+                            </li>
+        </ul>
+
+        <ul class="logout">
+            <li>
+               <a href="#">
+                     <i class="fa fa-power-off fa-2x"></i>
+                    <span class="nav-text">
+                        Logout
+                    </span>
+                </a>
+            </li>  
+        </ul>
+    </nav>
+
+</html>

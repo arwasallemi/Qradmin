@@ -52,17 +52,7 @@ export class ImageQrcodePage {
     this.printer.isAvailable().then(this.onSuccessLoad, this.onErrorLoad);
 
   }
-  // get(){
-  //   this.societe.get()
-  //   .then(data => {
-  //     this.list = data;
-  
-  //  this.image=this.list[0].alt;
-  //  console.log("image:::::",this.image);
  
-  //   });
-  
-  // }
   
   loadImage(){
 

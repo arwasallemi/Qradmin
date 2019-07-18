@@ -1,0 +1,39 @@
+
+<ion-content>
+
+<ion-title>Facture:{{item.ref}}</ion-title>
+<ion-item>
+  <ion-label style="font-size:0.8em" floating>Date</ion-label>
+  <ion-datetime displayFormat="DD-MM-YYYY" pickerFormat="DD MMMM YYYY"  [(ngModel)]="date" ></ion-datetime>
+</ion-item>
+<ion-item>
+  <ion-label style="font-size:0.8em" floating>Mode</ion-label>
+  <ion-select  [(ngModel)]="mode" (ionChange)="getMd()">
+  
+      <ion-option  *ngFor="let md of listMd" >{{md.mode}}</ion-option>
+      
+    </ion-select>
+</ion-item>
+    <ion-item>
+      <ion-label style="font-size:0.8em" floating>Compte à crediter</ion-label>
+      <ion-input  [(ngModel)]="compte"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label style="font-size:0.8em" floating>Numero cheque</ion-label>
+        <ion-input  [(ngModel)]="num"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label style="font-size:0.8em" floating>Emetteur</ion-label>
+          <ion-input  [(ngModel)]="emetteur"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label style="font-size:0.8em" floating>Banque</ion-label>
+            <ion-input  [(ngModel)]="banque"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label style="font-size:0.8em" floating>Commentaire</ion-label>
+              <ion-input  [(ngModel)]="commentaire"></ion-input>
+            </ion-item>
+ <button ion-button (click)="add()">ajouter</button>
+ 
+</ion-content>
