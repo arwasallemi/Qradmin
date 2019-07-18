@@ -9,6 +9,24 @@ import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
 import { ImageQrcodePage } from '../image-qrcode/image-qrcode';
 import { Http } from '@angular/http';
+import { TvaProvider } from '../../providers/tva/tva';
+import { BonRetourPage } from '../bon-retour/bon-retour';
+import { HomePage } from '../home/home';
+import { SortieVldPage } from '../sortie-vld/sortie-vld';
+import { SortieCltPage } from '../sortie-clt/sortie-clt';
+import { BonSortiePage } from '../bon-sortie/bon-sortie';
+import { EmployeurPage } from '../employeur/employeur';
+import { DevisPage } from '../devis/devis';
+import { FacturePage } from '../facture/facture';
+import { ListeFacturePage } from '../liste-facture/liste-facture';
+import { ParamPage } from '../param/param';
+import { SocietePage } from '../societe/societe';
+import { StockPage } from '../stock/stock';
+import { ListereservationPage } from '../listereservation/listereservation';
+import { EntrepotPage } from '../entrepot/entrepot';
+import { RessourcesPage } from '../ressources/ressources';
+import { ReservationPage } from '../reservation/reservation';
+import { SocieteProvider } from '../../providers/societe/societe';
 
 
 @Component({
@@ -25,6 +43,10 @@ export class ProduitPage {
   converted_image: string;
   categorie: any;
   listcsv: any=[];
+  listtva: any;
+  tva: any;
+  listsociete: any;
+  soc: any;
 
   displayQrCode() {
     return this.generated !== '';
@@ -64,13 +86,23 @@ list:any;
     public navCtrl: NavController, public navParams: NavParams,
     private barcodeScanner: BarcodeScanner,
     public provider:ProduitProvider,public httpClient: HttpClient,public modalCtrl:ModalController,
-    public Alert:AlertController) {
+    public Alert:AlertController,public tvaprovider:TvaProvider, public providerSociete : SocieteProvider
+    ) {
 
       this.get()
       this.encodeText();
+      this.getTva()
+      this.getsociete()
   }
 
- 
+  getsociete(){
+    this.providerSociete.loadsociete()
+    .then(data => {
+      this.listsociete = data;
+      console.log("listsociete:::::",this.listsociete);
+     this.soc = this.listsociete[0]
+    });
+  }
 
   downloadCSV() {
     // let csv = papa.unparse({
@@ -116,6 +148,19 @@ console.log("csvvvvvvvvvvvv:",csv)
  
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProduitPage');
+  }
+  getTva(){
+    this.tvaprovider.get()
+    .then(data => {
+      this.listtva = data;
+    
+      console.log("list:::::",this.list);
+   
+      console.log("csv list::::",this.listtva)
+    });
+  
+  
+    
   }
   process() {
     const qrcode = QRCode;
@@ -190,7 +235,8 @@ get(){
   prix_location_minimale:this.min,
   qrCode:this.qr,
   codeBarre:this.barre,
-  image:this.image
+  image:this.image,
+  tva:this.tva,
   };
 
   this.provider.save(credentials).then((result)=>{
@@ -278,4 +324,53 @@ encodeImageFileAsURL(event) {
   home(){
     this.navCtrl.setRoot(BlankPage)
   }
+  ////////////////menu
+bonretour(){
+  this.navCtrl.setRoot(BonRetourPage)
+}
+dashboard(){
+  this.navCtrl.setRoot(HomePage)
+}
+SortieV(){
+  this.navCtrl.setRoot(SortieVldPage)
+}
+SortieC(){
+  this.navCtrl.setRoot(SortieCltPage)
+}
+Sortieb(){
+  this.navCtrl.setRoot(BonSortiePage)
+}
+tech(){
+  this.navCtrl.setRoot(EmployeurPage)
+}
+Devis(){
+  this.navCtrl.setRoot(DevisPage)
+}
+facture(){
+  this.navCtrl.setRoot(FacturePage)
+}
+listFact(){
+  this.navCtrl.setRoot(ListeFacturePage)
+}
+param(){
+  this.navCtrl.setRoot(ParamPage)
+}
+societe(){
+  this.navCtrl.setRoot(SocietePage)
+}
+produit(){
+  this.navCtrl.setRoot(ProduitPage)
+}
+stock(){
+  this.navCtrl.setRoot(StockPage)
+}
+reservation(){
+  this.navCtrl.setRoot(ReservationPage)
+}
+entrepot(){
+  this.navCtrl.setRoot(EntrepotPage)
+}
+ressource(){
+  this.navCtrl.setRoot(RessourcesPage)
+}
 }

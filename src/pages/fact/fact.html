@@ -1,0 +1,123 @@
+ 
+<ion-content>
+
+  <div *ngFor="let post of imagelist">
+      <img [src]="post.alt" style="height: 40px;width:20%;float:left">
+      <br>
+<br>
+<ion-label style="font-size:0.8em">Societé: {{post.nom}}</ion-label>
+<ion-label style="font-size:0.8em">Siege: {{post.siege}}</ion-label>
+
+    <ion-label style="font-size:0.8em">MF: {{post.MF}}</ion-label>
+<ion-label style="font-size:0.8em">tel: {{post.tel1}}</ion-label>
+<ion-label style="font-size:0.8em">tel: {{post.tel2}}</ion-label>
+
+
+    </div>
+    <ion-item>
+      <ion-label style="font-size:0.8em" floating>Ref:</ion-label>
+      <ion-input [(ngModel)]="ref"></ion-input>
+    </ion-item>
+    <ion-item>
+    <ion-label style="font-size:0.8em" floating>Client:</ion-label>
+      <ion-input [(ngModel)]="item.nom_client"></ion-input>
+    </ion-item>
+    
+        
+<ion-item>
+<ion-label  style="font-size:0.8em" floating>Type:</ion-label>
+<ion-input [(ngModel)]="type"></ion-input>
+</ion-item>
+<ion-item>
+    <ion-label  style="font-size:0.8em" floating>Remise:</ion-label>
+    <ion-input (ionChange)="final()" [(ngModel)]="remise"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label  style="font-size:0.8em" floating>date:</ion-label>
+  <ion-datetime   displayFormat="DD-MM-YYYY" pickerFormat="DD MMMM YYYY"  [(ngModel)]="date" ></ion-datetime>
+</ion-item>
+<ion-item>
+    <ion-label style="font-size:0.8em" floating>Condition de reglement:</ion-label>
+    <ion-select  [(ngModel)]="condition" (ionChange)="getCdt()">
+
+        <ion-option  *ngFor="let cdt of listCdt" >{{cdt.condition}}</ion-option>
+        
+      </ion-select>
+</ion-item>
+<ion-item>
+    <ion-label  style="font-size:0.8em" floating>Date limite de reglement:</ion-label>
+    <ion-datetime displayFormat="DD-MM-YYYY" pickerFormat="DD MMMM YYYY"  [(ngModel)]="dateR" ></ion-datetime>
+</ion-item>
+<ion-item>
+    <ion-label style="font-size:0.8em" floating>Mode de reglement:</ion-label>
+    <ion-select  [(ngModel)]="mode" (ionChange)="getMd()">
+
+        <ion-option  *ngFor="let md of listMd" >{{md.mode}}</ion-option>
+        
+      </ion-select>
+</ion-item>
+<ion-item>
+    <ion-label style="font-size:0.8em"  floating>Compte bancaire:</ion-label>
+    <ion-input [(ngModel)]="compte"></ion-input>
+</ion-item>
+<ion-item>
+    <ion-label style="font-size:0.8em"  floating>Etat:</ion-label>
+
+    <ion-select [(ngModel)]="etat">
+<ion-option>payée</ion-option>
+<ion-option>impayée</ion-option>
+<ion-option>brouillon</ion-option>
+    </ion-select>
+</ion-item>
+<ion-item>
+    <ion-label style="font-size:0.8em"  floating>Projet:</ion-label>
+    <ion-input [(ngModel)]="projet"></ion-input>
+</ion-item>
+<ion-item>
+    <ion-label style="font-size:0.8em"  floating>Incoterms:</ion-label>
+    <ion-input [(ngModel)]="incoterms"></ion-input>
+</ion-item>
+ 
+ <br>
+ <br>
+ <br>
+ 
+   
+  
+<table>
+<tr>
+  
+  <th>Produit</th>
+  <th>Quantité</th>
+  <th>prix unitaire HT</th>
+   <th>prix total TTC</th> 
+  <th>Action</th>
+</tr>
+<tr *ngFor="let itemm of Sortie" >
+ 
+  <td>{{itemm.produit}}</td>
+  <td>{{itemm.quantite}}</td>
+  <td><ion-input (ionChange)="calcul()" [(ngModel)]="itemm.prix_location"></ion-input></td>
+   <td>{{itemm.total}}</td>
+  <td><button ion-button color="red"  (click)="supprimer(itemm.num)">retirer</button></td>
+</tr>
+</table>
+
+  <table style="float:right;width:20%;margin-right: 10px">
+    <tr>
+      <th>Prix total TTC</th>
+      <td>
+      <ion-input  [(ngModel)]="ttc"></ion-input>
+      </td>
+    </tr>
+
+      <tr>
+          <th>Prix Final avec remise</th>
+          <td>{{prixfinal}} </td>
+        </tr>
+  </table>
+
+  <button ion-button block color="light" style="float:right;margin-right:1%" (click)="Confirmer()">Vente</button>
+<button ion-button block color="light" style="float:right;margin-right:1%" (click)="onSuccessLoad()">Imprimer bon de vente</button>
+ 
+</ion-content>

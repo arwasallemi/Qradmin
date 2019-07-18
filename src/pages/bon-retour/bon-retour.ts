@@ -5,6 +5,23 @@ import { ListeretourProvider } from '../../providers/listeretour/listeretour';
 import { ProduitProvider } from '../../providers/produit/produit';
 import { StockProvider } from '../../providers/stock/stock';
 import { ListeRetourPage } from '../liste-retour/liste-retour';
+import { HomePage } from '../home/home';
+import { SortieVldPage } from '../sortie-vld/sortie-vld';
+import { SortieCltPage } from '../sortie-clt/sortie-clt';
+import { BonSortiePage } from '../bon-sortie/bon-sortie';
+import { EmployeurPage } from '../employeur/employeur';
+import { DevisPage } from '../devis/devis';
+import { FacturePage } from '../facture/facture';
+import { ListeFacturePage } from '../liste-facture/liste-facture';
+import { ParamPage } from '../param/param';
+import { SocietePage } from '../societe/societe';
+import { ProduitPage } from '../produit/produit';
+import { StockPage } from '../stock/stock';
+import { ListereservationPage } from '../listereservation/listereservation';
+import { EntrepotPage } from '../entrepot/entrepot';
+import { RessourcesPage } from '../ressources/ressources';
+import { ReservationPage } from '../reservation/reservation';
+import { SocieteProvider } from '../../providers/societe/societe';
 
 /**
  * Generated class for the BonRetourPage page.
@@ -26,16 +43,26 @@ export class BonRetourPage {
   liststock: any=[];
   listrecherche: any=[];
   search: string;
+  listsociete: any;
+  soc: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public retourprovider:BonRetourProvider,
     public listeretourprovider:ListeretourProvider,
     public Produitprovider:ProduitProvider,
     public Stockprovider:StockProvider,
-    public modalCtrl:ModalController,) {
+    public modalCtrl:ModalController,   public providerSociete : SocieteProvider) {
       this.get()
+      this.getsociete()
   }
-
+  getsociete(){
+    this.providerSociete.loadsociete()
+    .then(data => {
+      this.listsociete = data;
+      console.log("listsociete:::::",this.listsociete);
+     this.soc = this.listsociete[0]
+    });
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad BonRetourPage');
   }
@@ -179,4 +206,54 @@ show(a){
   modal.present();
   console.log("res:",a);
  }
+
+ ////////////////menu
+bonretour(){
+  this.navCtrl.setRoot(BonRetourPage)
+}
+dashboard(){
+  this.navCtrl.setRoot(HomePage)
+}
+SortieV(){
+  this.navCtrl.setRoot(SortieVldPage)
+}
+SortieC(){
+  this.navCtrl.setRoot(SortieCltPage)
+}
+Sortieb(){
+  this.navCtrl.setRoot(BonSortiePage)
+}
+tech(){
+  this.navCtrl.setRoot(EmployeurPage)
+}
+Devis(){
+  this.navCtrl.setRoot(DevisPage)
+}
+facture(){
+  this.navCtrl.setRoot(FacturePage)
+}
+listFact(){
+  this.navCtrl.setRoot(ListeFacturePage)
+}
+param(){
+  this.navCtrl.setRoot(ParamPage)
+}
+societe(){
+  this.navCtrl.setRoot(SocietePage)
+}
+produit(){
+  this.navCtrl.setRoot(ProduitPage)
+}
+stock(){
+  this.navCtrl.setRoot(StockPage)
+}
+reservation(){
+  this.navCtrl.setRoot(ReservationPage)
+}
+entrepot(){
+  this.navCtrl.setRoot(EntrepotPage)
+}
+ressource(){
+  this.navCtrl.setRoot(RessourcesPage)
+}
 }

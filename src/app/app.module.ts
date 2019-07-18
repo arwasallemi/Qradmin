@@ -79,6 +79,14 @@ import { BonRetourPage } from '../pages/bon-retour/bon-retour';
 import { BonRetourProvider } from '../providers/bon-retour/bon-retour';
 import { ListeretourProvider } from '../providers/listeretour/listeretour';
 import { ListeRetourPage } from '../pages/liste-retour/liste-retour';
+import { FacturePage } from '../pages/facture/facture';
+import { FactureProvider } from '../providers/facture/facture';
+import { ListefactureProvider } from '../providers/listefacture/listefacture';
+import { ImprimerfacturePage } from '../pages/imprimerfacture/imprimerfacture';
+import { ListeFacturePage } from '../pages/liste-facture/liste-facture';
+import { ReglementPage } from '../pages/reglement/reglement';
+import { ReglementProvider } from '../providers/reglement/reglement';
+import { FactPage } from '../pages/fact/fact';
 
  
  
@@ -117,7 +125,12 @@ import { ListeRetourPage } from '../pages/liste-retour/liste-retour';
  AbscencePage,
 ImprimerDevisPage,
 BonRetourPage,
-ListeRetourPage
+ListeRetourPage,
+FacturePage,
+ImprimerfacturePage,
+ListeFacturePage,
+ReglementPage,
+FactPage
   ],
   imports: [
     HttpModule,
@@ -159,7 +172,12 @@ EntrepotPage,
  AbscencePage,
  ImprimerDevisPage,
  BonRetourPage,
- ListeRetourPage
+ ListeRetourPage,
+ FacturePage,
+ ImprimerfacturePage,
+ ListeFacturePage,
+ ReglementPage,
+ FactPage
   ],
   providers: [
  
@@ -195,7 +213,10 @@ EntrepotPage,
     SalaireProvider,
     BonRetourProvider,
     ListeretourProvider,
-  
+    FactureProvider,
+    ListefactureProvider,
+    ReglementProvider,
+
   
   ]
 })

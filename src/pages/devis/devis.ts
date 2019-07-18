@@ -12,6 +12,22 @@ import { IonicStorageModule } from '@ionic/storage';
 import { Storage } from '@ionic/storage';
 import { ListeDevisProvider } from '../../providers/liste-devis/liste-devis';
 import { ImprimerDevisPage } from '../imprimer-devis/imprimer-devis';
+import { BonRetourPage } from '../bon-retour/bon-retour';
+import { HomePage } from '../home/home';
+import { SortieVldPage } from '../sortie-vld/sortie-vld';
+import { SortieCltPage } from '../sortie-clt/sortie-clt';
+import { BonSortiePage } from '../bon-sortie/bon-sortie';
+import { EmployeurPage } from '../employeur/employeur';
+import { FacturePage } from '../facture/facture';
+import { ListeFacturePage } from '../liste-facture/liste-facture';
+import { ParamPage } from '../param/param';
+import { SocietePage } from '../societe/societe';
+import { ProduitPage } from '../produit/produit';
+import { StockPage } from '../stock/stock';
+import { ListereservationPage } from '../listereservation/listereservation';
+import { EntrepotPage } from '../entrepot/entrepot';
+import { RessourcesPage } from '../ressources/ressources';
+import { SocieteProvider } from '../../providers/societe/societe';
 /**
  * Generated class for the DevisPage page.
  *
@@ -59,11 +75,13 @@ max;
   listD: any=[];
   ttc=0;
   remise=0
-  prixfinal: any=0;
+  prixfinal=0;
   dataDevis: { date: Date; duree: any; condition: any; mode: any; delai: any; note: any; client: any; deteLivraison: Date; remise: number; };
   t: any;
   listrecherche: any=[];
   search: string;
+  listsociete: any;
+  soc: any;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public TvaProvider:TvaProvider,
     public Cltprovider:ClientProvider,
@@ -75,6 +93,7 @@ max;
     private ListeProvider:ListeDevisProvider,
     public modalCtrl:ModalController,
    
+    public providerSociete : SocieteProvider
     ) {
     //this.listeDevis=this.storage.get("listeDevis")
     this.max=new Date().getUTCFullYear()+5;
@@ -86,9 +105,16 @@ max;
     this.getProduit();
     this.getTVA();
     this.getliste()
-  
+    this.getsociete()
   }
-
+  getsociete(){
+    this.providerSociete.loadsociete()
+    .then(data => {
+      this.listsociete = data;
+      console.log("listsociete:::::",this.listsociete);
+     this.soc = this.listsociete[0]
+    });
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad DevisPage');
     var y = document.getElementById("form2");
@@ -259,6 +285,7 @@ console.log("prixx:",this.prix_location,"prdt:",this.produit,"list libelle::",th
     });
     
   }
+
   get(){
     this.Dvsprovider.get()
     .then(dvs => {
@@ -399,5 +426,54 @@ add(){
     console.log(q, this.listDvs.length);
   } 
   }
+  ////////////////menu
+bonretour(){
+  this.navCtrl.setRoot(BonRetourPage)
+}
+dashboard(){
+  this.navCtrl.setRoot(HomePage)
+}
+SortieV(){
+  this.navCtrl.setRoot(SortieVldPage)
+}
+SortieC(){
+  this.navCtrl.setRoot(SortieCltPage)
+}
+Sortieb(){
+  this.navCtrl.setRoot(BonSortiePage)
+}
+tech(){
+  this.navCtrl.setRoot(EmployeurPage)
+}
+Devis(){
+  this.navCtrl.setRoot(DevisPage)
+}
+facture(){
+  this.navCtrl.setRoot(FacturePage)
+}
+listFact(){
+  this.navCtrl.setRoot(ListeFacturePage)
+}
+param(){
+  this.navCtrl.setRoot(ParamPage)
+}
+societe(){
+  this.navCtrl.setRoot(SocietePage)
+}
+produitt(){
+  this.navCtrl.setRoot(ProduitPage)
+}
+stock(){
+  this.navCtrl.setRoot(StockPage)
+}
+reservation(){
+  this.navCtrl.setRoot(ListereservationPage)
+}
+entrepot(){
+  this.navCtrl.setRoot(EntrepotPage)
+}
+ressource(){
+  this.navCtrl.setRoot(RessourcesPage)
+}
 }
 
