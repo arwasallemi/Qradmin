@@ -33,8 +33,6 @@ import { SocieteProvider } from '../../providers/societe/societe';
 })
 export class SortieVldPage {
   soc: any;
-  [x: string]: any;
-  [x: string]: any;
 
   list: any;
   etat: any;
