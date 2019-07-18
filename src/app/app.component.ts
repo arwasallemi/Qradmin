@@ -20,12 +20,18 @@ import { UploadPage } from '../pages/upload/upload';
 import { PrintPage } from '../pages/print/print';
 import { PointagePage } from '../pages/pointage/pointage';
 import { AbscencePage } from '../pages/abscence/abscence';
+import { LoginPage } from '../pages/login/login';
+import { TestPage } from '../pages/test/test';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = ProduitPage;
+
+  
+
+  rootPage:any = HomePage;
+
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

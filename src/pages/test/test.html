@@ -1,0 +1,24 @@
+
+ 
+
+    <ion-item>
+      <ion-label floating>username</ion-label>
+      <ion-input type="text" [(ngModel)]="username"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>email</ion-label>
+      <ion-textarea type="text" [(ngModel)]="email"></ion-textarea>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label floating>password</ion-label>
+      <ion-textarea type="text" [(ngModel)]="password"></ion-textarea>
+    </ion-item>
+
+
+  
+    <button   ion-button color="secondary"   (click)="insertData()"   >Insert</button>
+
+
+    <button   ion-button color="secondary"   (click)="getData()"   >Get data</button>

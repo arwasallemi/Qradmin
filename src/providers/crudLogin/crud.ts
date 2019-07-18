@@ -3,22 +3,19 @@ import { Injectable } from '@angular/core';
 
 
 
- 
 import { Http , Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Storage } from '@ionic/storage';
 import {Observable} from 'rxjs/Rx';
- 
 import { catchError } from 'rxjs/operators';
 
 
 /*
-  Generated class for the EntrepotProvider provider.
+  Generated class for the CrudProvider provider.
 
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
-
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
@@ -26,14 +23,18 @@ const httpOptions = {
   })
 };
 @Injectable()
-export class ClientProvider {
+export class CrudLoginProvider {
 
   constructor(public storage: Storage ,
-    public http: Http, public httpClient: HttpClient) {
-    console.log('Hello EntrepotProvider Provider');
+    public http: Http, public httpClient: HttpClient
+     ) {
+    console.log('Hello CrudProvider Provider');
   }
 
-  get(){
+
+
+
+  getPosts(){
     return new Promise((resolve, reject) => {
      this.storage.get('token').then((value) => {
 
@@ -43,7 +44,7 @@ export class ClientProvider {
 
        console.log('value: ' + value);
   
-       this.http.get('http://testmariadb.alwaysdata.net/public/client/client', {headers: headers})
+       this.http.get('http://localhost:8000/api/authors', {headers: headers})
          .map(res => res.json())
          .subscribe(data => {
            resolve(data);
@@ -59,9 +60,9 @@ export class ClientProvider {
 
 
 
- getitems() {
+ getUsers() {
   return new Promise(resolve => {
-    this.http.get('http://testmariadb.alwaysdata.net/public/client/client/').subscribe(data => {
+    this.http.get('http://localhost:8000/api/authors').subscribe(data => {
       resolve(data);
     }, err => {
       console.log(err);
@@ -71,11 +72,44 @@ export class ClientProvider {
 
 
  
+ insertPosts(postInfo){
 
 
-save(data) {
+//  return this.http.post(`http://localhost:8000/api/authors`,postInfo).toPromise();
+let headers = new Headers();
+headers.append('Access-Control-Allow-Origin' , '*');
+headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+headers.append('Accept','application/json');
+headers.append('content-type','application/json');
+headers.append('Access-Control-Allow-Credentials','true');
+ let options = new RequestOptions({ headers:headers});
   return new Promise((resolve, reject) => {
-    this.http.post('http://testmariadb.alwaysdata.net/public/client/client/',data)
+    //this.storage.get('token').then(() => {
+ 
+   
+
+      console.log('value: ',postInfo);
+ 
+      this.http.post('http://testmariadb.alwaysdata.net/public/register' ,JSON.stringify(postInfo))
+      .map(res => res.json())
+        .subscribe(data => {
+          resolve(data);
+      
+        }, (err) => {
+          reject(err);
+        }); 
+        console.log("my data:",postInfo)
+    })
+ 
+ // });
+}
+ 
+
+
+
+saveUser(data) {
+  return new Promise((resolve, reject) => {
+    this.http.post('http://testmariadb.alwaysdata.net/public/register',data)
       .subscribe(res => {
         resolve(res);
       }, (err) => {
@@ -85,7 +119,7 @@ save(data) {
 }
 
 
-edit(id,postInfo){
+editPosts(id,postInfo){
   return new Promise((resolve, reject) => {
    this.storage.get('token').then((value) => {
 
@@ -94,7 +128,7 @@ edit(id,postInfo){
      headers.append('Authorization', 'Bearer '+value);
      console.log('value: ' + value);
 
-     this.http.put('http://testmariadb.alwaysdata.net/public/client/client/' +id ,  JSON.stringify(postInfo),  {headers: headers})
+     this.http.put('http://localhost:8000/api/authors/' +id ,  JSON.stringify(postInfo),  {headers: headers})
        .map(res => res.json())
        .subscribe(data => {
          resolve(data);
@@ -112,7 +146,7 @@ edit(id,postInfo){
 
 
 
-delete(id){
+deletePosts(id ){
   return new Promise((resolve, reject) => {
    this.storage.get('token').then((value) => {
 
@@ -121,7 +155,7 @@ delete(id){
      headers.append('Authorization', 'Bearer '+value);
      console.log('value: ' + value);
 
-     this.http.delete('http://testmariadb.alwaysdata.net/public/client/client/' +id,    {headers: headers})
+     this.http.delete('http://localhost:8000/api/authors/' +id,    {headers: headers})
        .map(res => res.json())
        .subscribe(data => {
          resolve(data);
@@ -133,5 +167,13 @@ delete(id){
  });
 
 }
+
+
+
+
+
+
+
+
 
 }

@@ -1,24 +1,106 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController,AlertController, NavParams  } from 'ionic-angular';
 
-/**
- * Generated class for the HomePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
+import { AuthProvider } from '../../providers/auth/auth';
+import { TestPage } from '../test/test';
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html',
+  templateUrl: 'home.html'
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  email:string = '';
+  password:string = '';
+
+  errorMsg:string;
+
+
+
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    public authService: AuthProvider ,
+   
+    public alertCtrl: AlertController ,
+  
+  ) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
+    console.log('ionViewDidLoad LoginPage');
   }
+
+
+  errorFunc(message){
+    let alert = this.alertCtrl.create({
+      title: 'Warining!',
+      subTitle: message,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+
+
+
+  myLogIn(){
+ 
+    if (this.email.trim() !==''    ) {    
+      
+      console.log(this.email.trim() + "   " + this.password.trim() )
+       
+      if (this.password.trim()  === '') {
+        this.errorFunc('Please put your password')
+ 
+      }else{
+ 
+        let credentials = {
+          email: this.email,
+            password: this.password
+        };
+ 
+        
+         this.authService.save(credentials).then((result) => {
+            console.log("login result:",result);
+         this.navCtrl.setRoot(TestPage);
+           
+        }, (err) => {
+     
+            console.log(err);
+            this. errorFunc('Wrong credentials ! try again')
+            console.log("credentials: "+JSON.stringify(credentials))
+            
+        });
+ 
+      }
+      
+   }
+   else{
+    
+    this. errorFunc('Please put a vaild password !  for ex:(123456)')
+   
+    }
+ 
+ 
+
+}
+
+
+
+
+
+myLogOut(){
+  //this.authService.logout();
+}
+
+
+
+
+
+
+
+
 
 }

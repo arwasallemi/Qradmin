@@ -92,7 +92,7 @@
 
  <article >
   <p id="title">Ajouter un nouveau devis</p>
-  <ion-card>
+  <ion-card id="form1">
  
 <ion-item>
   <ion-label id="medium">Client</ion-label>
@@ -151,11 +151,39 @@
   <ion-input type="richtext" [(ngModel)]="note"></ion-input>
 </ion-item>  
 
-<button ion-button style="float:right;margin-right:1%" (click)="add()">Ajouter</button>
-</ion-card>
-<p id="title">Liste des devis</p>
-<ion-card>
-  <table >
+<button ion-button style="float:right;margin-right:1%" (click)="details()">Next</button>
+
+</ion-card >
+<ion-card id="form2">
+ 
+  <ion-select   [(ngModel)]="produit" style="width:30%" placeholder="produit" (ionChange)="select(produit)">
+    <ion-option *ngFor="let p of listPdt"  >{{p.libelle}}</ion-option>
+  </ion-select>
+  
+<ion-item  style="width:30%">
+    <ion-label  floating>Prix de location</ion-label>
+    <ion-input (ionChange)="calcul()"[(ngModel)]="prix_location"></ion-input>
+</ion-item>
+  <ion-item>
+    <ion-select [(ngModel)]="tva" style="width:30%" placeholder="TVA%" (ionChange)="calcul()">
+      <ion-option *ngFor="let t of listTva">{{t.valeur}}</ion-option>
+    </ion-select>
+</ion-item>
+<ion-item style="width:30%" >
+  <ion-label floating>Quantité</ion-label>
+  <ion-input [(ngModel)]="quantite" (ionChange)="calcul()"></ion-input>
+</ion-item>
+
+<ion-item>
+   
+  <p>{{total}}</p>
+</ion-item>
+<button ion-button style="float:right;margin-right:1%" (click)="ajouter()">Ajouter</button>
+  <button ion-button style="float:right;margin-right:1%" (click)="back()">Back</button>
+  </ion-card>
+<p id="title">Liste</p>
+<ion-card id="form3">
+  <table>
     <tr>
       <th>#</th>
       <th>Date</th>
@@ -166,7 +194,6 @@
       <th>Délai de livraison</th>
       <th>Note</th>
       <th>Date de ceation de devis</th>
-    
        <th>Action</th>
     </tr>
     <tr *ngFor="let item of listDvs " >
@@ -186,8 +213,46 @@
   </table>
   
 </ion-card>
- 
-          
+ <ion-card id="form4">
+   <table>
+<tr>
+  <th>#</th>
+  <th>Produit</th>
+  <th>Quantité</th>
+  <th>Prix unitaire HT</th>
+  <th>Prix Total TTC</th>
+  <th>Action</th>
+</tr>
+<tr *ngFor="let itemm of listeDevis"  >
+  <td>{{itemm.num}}</td>
+    <td>{{itemm.produit}}</td>
+    <td>{{itemm.quantite}}</td>
+    <td>{{itemm.prix_location}}</td>
+    <td>{{itemm.total}}</td>
+    <td><button ion-button (click)="supprimer(itemm.num)"></button></td>
+  </tr>
+</table>
+ </ion-card > 
+<ion-card id="form5" style="float:right;width:20%">
+<table>
+  <tr>
+    <th>Prix total TTC</th>
+    <td>
+    <ion-input (ionChange)="final()" [(ngModel)]="ttc"></ion-input>
+    </td>
+  </tr>
+  <tr>
+      <th>Remise</th>
+      <td><ion-input (ionChange)="final()" [(ngModel)]="remise" placeholder="remise"></ion-input></td>
+    </tr>
+    <tr>
+        <th>Prix Final</th>
+        <td>{{prixfinal}} </td>
+      </tr>
+</table>
+<button ion-button block color="light" (click)="Confirmer()">Confirmer</button>
+          </ion-card>
+         
     </article>
     
 
