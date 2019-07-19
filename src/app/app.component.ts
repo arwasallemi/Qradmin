@@ -20,30 +20,29 @@ import { UploadPage } from '../pages/upload/upload';
 import { PrintPage } from '../pages/print/print';
 import { PointagePage } from '../pages/pointage/pointage';
 import { AbscencePage } from '../pages/abscence/abscence';
-<<<<<<< HEAD
+
 import { LoginPage } from '../pages/login/login';
 import { TestPage } from '../pages/test/test';
 
-=======
+
 import { BonRetourPage } from '../pages/bon-retour/bon-retour';
 import { FacturePage } from '../pages/facture/facture';
 import { ListeFacturePage } from '../pages/liste-facture/liste-facture';
 import { SortieCltPage } from '../pages/sortie-clt/sortie-clt';
 import { SortieVldPage } from '../pages/sortie-vld/sortie-vld';
->>>>>>> c0b047c4bb8b40a94e2af20be15273bc806e3134
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-<<<<<<< HEAD
 
   
 
   rootPage:any = HomePage;
 
-=======
-  rootPage:any = SocietePage;
->>>>>>> c0b047c4bb8b40a94e2af20be15273bc806e3134
+
+
+
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

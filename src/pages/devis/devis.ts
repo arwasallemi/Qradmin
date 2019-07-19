@@ -115,14 +115,7 @@ max;
      this.soc = this.listsociete[0]
     });
   }
-<<<<<<< HEAD
- supprimer(){
-console.log("itemmmmmmmmmmmmmmm")
  
-this.listeDevis.splice(this.numpdt,1)
- }
-=======
->>>>>>> c0b047c4bb8b40a94e2af20be15273bc806e3134
   ionViewDidLoad() {
     console.log('ionViewDidLoad DevisPage');
     var y = document.getElementById("form2");

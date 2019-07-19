@@ -4,6 +4,8 @@ import { IonicPage, NavController,AlertController, NavParams  } from 'ionic-angu
 
 import { AuthProvider } from '../../providers/auth/auth';
 import { TestPage } from '../test/test';
+import { SocietePage } from '../societe/societe';
+import { SocieteProvider } from '../../providers/societe/societe';
 
 @Component({
   selector: 'page-home',
@@ -16,18 +18,28 @@ export class HomePage {
   password:string = '';
 
   errorMsg:string;
+  listsociete: any;
+  soc: any;
 
 
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public authService: AuthProvider ,
-   
+    public providerSociete : SocieteProvider,
     public alertCtrl: AlertController ,
   
   ) {
+    this.getsociete()
   }
-
+  getsociete(){
+    this.providerSociete.loadsociete()
+    .then(data => {
+      this.listsociete = data;
+      console.log("listsociete:::::",this.listsociete);
+     this.soc = this.listsociete[0]
+    });
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
@@ -64,7 +76,7 @@ export class HomePage {
         
          this.authService.save(credentials).then((result) => {
             console.log("login result:",result);
-         this.navCtrl.setRoot(TestPage);
+         this.navCtrl.setRoot(SocietePage);
            
         }, (err) => {
      
@@ -93,10 +105,12 @@ export class HomePage {
 
 myLogOut(){
   //this.authService.logout();
+  this.navCtrl.setRoot(TestPage)
 }
-
-
-
+mysignUp(){
+  //this.authService.logout();
+  this.navCtrl.setRoot(TestPage)
+}
 
 
 

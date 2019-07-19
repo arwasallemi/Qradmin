@@ -61,14 +61,11 @@ import { ImageQrcodePage } from '../pages/image-qrcode/image-qrcode';
 import { SignupPage } from '../pages/signup/signup';
 import { ListeDevisProvider } from '../providers/liste-devis/liste-devis';
 
-<<<<<<< HEAD
-=======
 
 
 
 
 
->>>>>>> c0b047c4bb8b40a94e2af20be15273bc806e3134
 import { DemandeCongePage } from '../pages/demande-conge/demande-conge';
 import { PointagePage } from '../pages/pointage/pointage';
 import { SalairePage } from '../pages/salaire/salaire';
@@ -77,12 +74,6 @@ import { AbscenceProvider } from '../providers/abscence/abscence';
 import { DemandeCongéProvider } from '../providers/demande-congé/demande-congé';
 import { PointageProvider } from '../providers/pointage/pointage';
 import { SalaireProvider } from '../providers/salaire/salaire';
-<<<<<<< HEAD
-import { CrudProvider } from '../providers/crud/crud';
-import { AuthProvider } from '../providers/auth/auth';
-import { CrudLoginProvider } from '../providers/crudLogin/crud';
-import { TestPage } from '../pages/test/test';
-=======
 import { ImprimerDevisPage } from '../pages/imprimer-devis/imprimer-devis';
 import { BonRetourPage } from '../pages/bon-retour/bon-retour';
 import { BonRetourProvider } from '../providers/bon-retour/bon-retour';
@@ -96,7 +87,9 @@ import { ListeFacturePage } from '../pages/liste-facture/liste-facture';
 import { ReglementPage } from '../pages/reglement/reglement';
 import { ReglementProvider } from '../providers/reglement/reglement';
 import { FactPage } from '../pages/fact/fact';
->>>>>>> c0b047c4bb8b40a94e2af20be15273bc806e3134
+import { TestPage } from '../pages/test/test';
+import { CrudLoginProvider } from '../providers/crudLogin/crud';
+import { AuthProvider } from '../providers/auth/auth';
 
  
  
@@ -128,23 +121,13 @@ import { FactPage } from '../pages/fact/fact';
  LoginPage,
  SortieCltPage,
  SortieVldPage,
-<<<<<<< HEAD
-
- SignupPage , 
-
-=======
  SignupPage,
->>>>>>> c0b047c4bb8b40a94e2af20be15273bc806e3134
  DemandeCongePage,
  TestPage,
  HomePage,
  PointagePage,
  SalairePage,
  AbscencePage,
-<<<<<<< HEAD
-
-
-=======
 ImprimerDevisPage,
 BonRetourPage,
 ListeRetourPage,
@@ -153,7 +136,6 @@ ImprimerfacturePage,
 ListeFacturePage,
 ReglementPage,
 FactPage
->>>>>>> c0b047c4bb8b40a94e2af20be15273bc806e3134
   ],
   imports: [
     HttpModule,
@@ -189,21 +171,10 @@ EntrepotPage,
  SocietePage,
  ImageQrcodePage,
  PrintPage,
-<<<<<<< HEAD
-
- SignupPage,
-
-=======
->>>>>>> c0b047c4bb8b40a94e2af20be15273bc806e3134
  DemandeCongePage,
  PointagePage,
  SalairePage,
  AbscencePage,
-<<<<<<< HEAD
- TestPage,
- HomePage,
-
-=======
  ImprimerDevisPage,
  BonRetourPage,
  ListeRetourPage,
@@ -211,8 +182,8 @@ EntrepotPage,
  ImprimerfacturePage,
  ListeFacturePage,
  ReglementPage,
- FactPage
->>>>>>> c0b047c4bb8b40a94e2af20be15273bc806e3134
+ FactPage,
+ TestPage,
   ],
   providers: [
  
@@ -241,28 +212,18 @@ EntrepotPage,
     Printer,
     TvaProvider,
     SocieteProvider,
-<<<<<<< HEAD
-
     ListeDevisProvider,
-
-=======
-    ListeDevisProvider,
->>>>>>> c0b047c4bb8b40a94e2af20be15273bc806e3134
     AbscenceProvider,
     DemandeCongéProvider,
     PointageProvider,
     SalaireProvider,
-<<<<<<< HEAD
-    CrudProvider,
-    AuthProvider,
-    CrudLoginProvider,
-=======
     BonRetourProvider,
     ListeretourProvider,
     FactureProvider,
     ListefactureProvider,
     ReglementProvider,
->>>>>>> c0b047c4bb8b40a94e2af20be15273bc806e3134
+    CrudLoginProvider,
+    AuthProvider,
 
   
   ]

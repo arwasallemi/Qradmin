@@ -4,6 +4,7 @@ import { CrudProvider } from '../../providers/crud/crud';
 import { HttpClient } from '@angular/common/http';
 import { HomePage } from '../home/home';
 import { CrudLoginProvider } from '../../providers/crudLogin/crud';
+import { SocieteProvider } from '../../providers/societe/societe';
 /**
  * Generated class for the TestPage page.
  *
@@ -21,16 +22,27 @@ export class TestPage {
  
     username;
     email;
+    listsociete: any;
     password;
   
+    soc: any;
+  constructor(public navCtrl: NavController,    public providerSociete : SocieteProvider,
+     public navParams: NavParams,public crudProvider:CrudLoginProvider,public httpClient: HttpClient) {
+    this.getsociete()
   
-  constructor(public navCtrl: NavController, public navParams: NavParams,public crudProvider:CrudLoginProvider,public httpClient: HttpClient) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TestPage');
   }
-
+  getsociete(){
+    this.providerSociete.loadsociete()
+    .then(data => {
+      this.listsociete = data;
+      console.log("listsociete:::::",this.listsociete);
+     this.soc = this.listsociete[0]
+    });
+  }
   getData() {
     this.crudProvider.getUsers()
     .then(data => {
