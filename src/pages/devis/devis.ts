@@ -125,6 +125,11 @@ max;
     w.style.display = "none";
     var e = document.getElementById("form5");
     e.style.display = "none";
+    
+    var z = document.getElementById("form3");
+
+
+    z.style.display = "none";
   }
  final(){
 this.prixfinal=this.ttc-this.remise
@@ -224,7 +229,7 @@ var y = document.getElementById("form2");
     var z = document.getElementById("form3");
 
 
-    z.style.display = "block";
+    z.style.display = "none";
 
 var w = document.getElementById("form4");
 
@@ -232,6 +237,16 @@ var w = document.getElementById("form4");
     var e = document.getElementById("form5");
 
     e.style.display = "none";
+  }
+  listeall(){
+    var z = document.getElementById("form3");
+
+
+    z.style.display = "block";
+    var x = document.getElementById("form1");
+
+
+    x.style.display = "none";
   }
   details(){
     var x = document.getElementById("form1");
