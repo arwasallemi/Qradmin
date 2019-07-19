@@ -11,7 +11,66 @@
         <ion-icon name="car" (click)="ressource()" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>       
     </div>
 <div class="area">
-    <div style="margin-left:100px"></div>
+    <div style="margin-left:100px">
+     
+<p id="title">Reservations disponiles</p>
+<ion-item  style="width:20% ;background-color: transparent" >
+        <ion-label > Filtre </ion-label>
+      
+           <ion-select  [(ngModel)]="search" >
+      
+            <ion-option>client</ion-option>
+            <ion-option>evenement</ion-option>
+            <ion-option>date debut evenement</ion-option>
+            <ion-option>status</ion-option>
+        </ion-select>
+      
+       </ion-item>
+       
+        <ion-searchbar placeholder="rechercher ...." [(ngModel)]="myInput" (ionInput)="getItems($event)" style="float:left;width:20%"></ion-searchbar>
+      
+<ion-card>
+
+
+ <table>
+   <tr>
+     <th>#</th>
+     <th>Client</th>
+     <th>Adresse Livraison</th>
+     <th>Evenement</th>
+     <th>Debut Evenement</th>
+     <th>Fin Evenement</th>
+     <th>Status</th>
+     <th>       </th>
+     <th>       </th>
+     <th>Action</th>
+   
+   </tr>
+   <tr *ngFor="let t of list " >
+<td>{{t.id}}</td>
+<td>{{t.nom_client}}</td>
+<td>{{t.adresse_livraison}}</td>
+<td>{{t.nom_evenement}}</td>
+<td>{{t.date_debut_evenement}}</td>
+<td>{{t.date_fin_evenement}}</td>
+<td   class="dropdown">{{t.status}}
+  <div class="dropdown-content">
+  
+    <a (click)="brouillon(t)">brouillon</a>
+    <a  (click)="cours(t)">en cours</a>
+    <a  (click)="valide(t)">validé</a>
+</div>
+</td>
+<td></td>
+<td></td>
+<td> <ion-icon id="action" name="eye" style="color:#3ea7d8" (click)="show(t)"></ion-icon> 
+  <ion-icon id="action" name="create" (click)="edit(t.id)" style="color:#178a43"></ion-icon> 
+  <ion-icon id="action" name="trash" (click)="delete(t.id)" style="color:red"></ion-icon></td>
+   </tr>
+ </table>
+</ion-card>
+
+</div>
 </div><nav class="main-menu">
         <ul>
             <li>
@@ -115,7 +174,7 @@
                             </a>
                         </li>
                         <li>
-                                <a (click)="enterpot()">
+                                <a (click)="entrepot()">
                                    <i class="fa fa-file fa-2x"></i>
                                     <span class="nav-text">
                                      Entrepots
@@ -138,46 +197,3 @@
 
 </html>
      
- 
-<p id="title">Reservations disponiles</p>
-<ion-card>
-
-
- <table>
-   <tr>
-     <th>#</th>
-     <th>Client</th>
-     <th>Adresse Livraison</th>
-     <th>Evenement</th>
-     <th>Debut Evenement</th>
-     <th>Fin Evenement</th>
-     <th>Status</th>
-     <th>       </th>
-     <th>       </th>
-     <th>Action</th>
-   
-   </tr>
-   <tr *ngFor="let item of list " >
-<td>{{item.id}}</td>
-<td>{{item.nom_client}}</td>
-<td>{{item.adresse_livraison}}</td>
-<td>{{item.nom_evenement}}</td>
-<td>{{item.date_debut_evenement}}</td>
-<td>{{item.date_fin_evenement}}</td>
-<td   class="dropdown">{{item.status}}
-  <div class="dropdown-content">
-  
-    <a (click)="brouillon(item)">brouillon</a>
-    <a  (click)="cours(item)">en cours</a>
-    <a  (click)="valide(item)">validé</a>
-</div>
-</td>
-<td></td>
-<td></td>
-<td> <ion-icon id="action" name="eye" style="color:#3ea7d8" (click)="show(item)"></ion-icon> 
-  <ion-icon id="action" name="create" (click)="edit(item.id)" style="color:#178a43"></ion-icon> 
-  <ion-icon id="action" name="trash" (click)="delete(item.id)" style="color:red"></ion-icon></td>
-   </tr>
- </table>
-</ion-card>
-

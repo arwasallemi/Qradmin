@@ -28,6 +28,7 @@ import { ListereservationPage } from '../listereservation/listereservation';
 import { EntrepotPage } from '../entrepot/entrepot';
 import { RessourcesPage } from '../ressources/ressources';
 import { SocieteProvider } from '../../providers/societe/societe';
+import { ReservationPage } from '../reservation/reservation';
 /**
  * Generated class for the DevisPage page.
  *
@@ -468,7 +469,7 @@ stock(){
   this.navCtrl.setRoot(StockPage)
 }
 reservation(){
-  this.navCtrl.setRoot(ListereservationPage)
+  this.navCtrl.setRoot(ReservationPage)
 }
 entrepot(){
   this.navCtrl.setRoot(EntrepotPage)

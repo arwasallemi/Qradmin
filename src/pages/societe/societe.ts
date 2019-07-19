@@ -16,6 +16,7 @@ import { StockPage } from '../stock/stock';
 import { ListereservationPage } from '../listereservation/listereservation';
 import { EntrepotPage } from '../entrepot/entrepot';
 import { RessourcesPage } from '../ressources/ressources';
+import { ReservationPage } from '../reservation/reservation';
 
 
 @IonicPage()
@@ -146,7 +147,7 @@ stock(){
   this.navCtrl.setRoot(StockPage)
 }
 reservation(){
-  this.navCtrl.setRoot(ListereservationPage)
+  this.navCtrl.setRoot(ReservationPage)
 }
 entrepot(){
   this.navCtrl.setRoot(EntrepotPage)
