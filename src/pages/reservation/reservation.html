@@ -4,7 +4,7 @@
 <html>
         <div style="color:white;height: 50px;">
                 <div *ngFor="let soc of listsociete">
-                        <img [src]="soc.alt" style="display: block; width: 10%;float:left"  >
+                        <img [src]="soc.alt" style="display: block; width: 10%;float:left;margin-left:50px"  >
                       </div>
         <ion-icon name="cog" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
         <ion-icon name="home" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
@@ -73,7 +73,7 @@
 </div>
 </div><nav class="main-menu">
         <ul>
-            <li>
+            <!-- <li>
                 <a (click)="dashboard()">
                     <i class="fa fa-home fa-2x"></i>
                     <span class="nav-text">
@@ -81,7 +81,7 @@
                     </span>
                 </a>
               
-            </li>
+            </li> -->
             <li class="has-subnav">
                 <a (click)="bonretour()">
                     <i class="fa fa-file fa-2x"></i>
