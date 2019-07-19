@@ -34,11 +34,6 @@ import { SocieteProvider } from '../../providers/societe/societe';
 })
 export class SortieCltPage {
   soc: any;
-<<<<<<< HEAD
- 
-=======
-
->>>>>>> 4488bfbef7ebe7812860514868ae28ac19e567fb
   list: any;
   etat: any;
   item={

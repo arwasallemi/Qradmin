@@ -10,8 +10,8 @@
         <ion-icon name="home" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
         <ion-icon name="car" (click)="ressource()" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>       
     </div>
-<div class="area">
-    <div style="margin-left:100px">
+<div class="area" >
+    <div style="margin-left:100px" >
      
 <p id="title">Reservations disponiles</p>
 <ion-item  style="width:20% ;background-color: transparent" >
@@ -32,7 +32,7 @@
 <ion-card>
 
 
- <table>
+ <table style="font-size:0.9em" class="fixed_header">
    <tr>
      <th>#</th>
      <th>Client</th>
@@ -42,7 +42,7 @@
      <th>Fin Evenement</th>
      <th>Status</th>
      <th>       </th>
-     <th>       </th>
+ 
      <th>Action</th>
    
    </tr>
@@ -53,16 +53,16 @@
 <td>{{t.nom_evenement}}</td>
 <td>{{t.date_debut_evenement}}</td>
 <td>{{t.date_fin_evenement}}</td>
-<td   class="dropdown">{{t.status}}
+<td  class="dropdown">{{t.status}}
   <div class="dropdown-content">
   
-    <a (click)="brouillon(t)">brouillon</a>
+    <a  (click)="brouillon(t)">brouillon</a>
     <a  (click)="cours(t)">en cours</a>
     <a  (click)="valide(t)">validé</a>
 </div>
 </td>
 <td></td>
-<td></td>
+ 
 <td> <ion-icon id="action" name="eye" style="color:#3ea7d8" (click)="show(t)"></ion-icon> 
   <ion-icon id="action" name="create" (click)="edit(t.id)" style="color:#178a43"></ion-icon> 
   <ion-icon id="action" name="trash" (click)="delete(t.id)" style="color:red"></ion-icon></td>

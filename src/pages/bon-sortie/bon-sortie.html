@@ -1,8 +1,4 @@
-<<<<<<< HEAD
  
-=======
-
->>>>>>> 4488bfbef7ebe7812860514868ae28ac19e567fb
     <div style="color:white;height: 50px">
         <div *ngFor="let item of listsociete">
                 <img [src]="soc.alt" style="width:10%;float:left;margin-left:50px"  >
@@ -30,7 +26,7 @@
           <ion-searchbar placeholder="rechercher ...." [(ngModel)]="myInput" (ionInput)="getItems($event)" style="float:left;width:20%"></ion-searchbar>
         
         <ion-card>
-         <table >
+         <table class="fixed_header">
           <tr>
             <th>#</th>
             <th>Evenement</th>

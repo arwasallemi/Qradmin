@@ -4,7 +4,7 @@
 <ion-title>Facture:{{item.ref}}</ion-title>
 <ion-item>
   <ion-label style="font-size:0.8em" floating>Date</ion-label>
-  <ion-datetime displayFormat="DD-MM-YYYY" pickerFormat="DD MMMM YYYY"  [(ngModel)]="date" ></ion-datetime>
+  <ion-datetime  min="2019" max="2040-12-31" displayFormat="DD-MM-YYYY" pickerFormat="DD MMMM YYYY"  [(ngModel)]="date" ></ion-datetime>
 </ion-item>
 <ion-item>
   <ion-label style="font-size:0.8em" floating>Mode</ion-label>

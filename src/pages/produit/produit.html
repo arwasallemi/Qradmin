@@ -16,14 +16,14 @@
     
             <div class="clearfixtop">
                 <div class="boxtop" >
-                    <ion-label>Reference</ion-label>
+                    <ion-label style="font-size: 0.8em">Reference</ion-label>
                         <ion-input [(ngModel)]="ref" type="text" placeholder="reference du produit" ></ion-input>
                      
                      
                 </div>
                 <div class="boxtop" style="float:center;margin-left:5%">
                     
-                       <ion-label>Prix location</ion-label>
+                       <ion-label style="font-size: 0.8em">Prix location</ion-label>
                        <ion-input [(ngModel)]="prix" type="text" placeholder="prix location du produit" ></ion-input>
                 </div>
               
@@ -32,19 +32,19 @@
                 <div class="clearfixtop">
                     <div class="boxtop" >
                                       
-                        <ion-label>Prix location minimal</ion-label>
+                        <ion-label style="font-size: 0.8em">Prix location minimal</ion-label>
                         <ion-input [(ngModel)]="min" type="text" placeholder="Prix location minima du produit" ></ion-input>
                     </div>
                     <div class="boxtop" >
-                      <ion-label >Categorie</ion-label>
+                      <ion-label style="font-size: 0.8em" >Categorie</ion-label>
                       <ion-input [(ngModel)]="categorie" placeholder="categorie"></ion-input>
                   </div>
                   <div class="boxtop" >
-                    <ion-label >Note</ion-label>
+                    <ion-label style="font-size: 0.8em">Note</ion-label>
                     <ion-input [(ngModel)]="note" placeholder="note"></ion-input>
                 </div>
                     <div class="boxtop" style="margin-left:5%" >
-                        <ion-label>Libelle</ion-label>
+                        <ion-label style="font-size: 0.8em">Libelle</ion-label>
                         <ion-input [(ngModel)]="code" type="text" placeholder="libelle du produit" (ionChange)="process()" ></ion-input>
                         <!-- <button ion-button block (click)="process()">Generer</button> -->
             
@@ -55,19 +55,22 @@
                       <input type="file"  [(ngModel)]="barre"  />
                   </div> -->
                     <div class="boxtop" >
-                      <ion-label>Image du produit</ion-label>
+                      <ion-label style="font-size: 0.8em">Image du produit</ion-label>
                       <input type="file" (change)="encodeImageFileAsURL($event)" />
                    
                   </div>
                   <div class="boxtop" >
-                        <ion-label>TVA</ion-label>
-                       <ion-select [(ngModel)]="tva">
-<ion-option  *ngFor="let t of listtva">{{t.valeur}}</ion-option>
-                       </ion-select>
-                     
+                      <ion-item>
+                            <ion-label style="font-size: 0.8em">TVA</ion-label>
+                            <ion-select [(ngModel)]="tva">
+     <ion-option  *ngFor="let t of listtva">{{t.valeur}}</ion-option>
+                            </ion-select>
+                          
+                      </ion-item>
+
                     </div>
                      
-                      <div class="boxtop" style="margin-left: 50%" >
+                      <div class="boxtop">
                
                           <button ion-button (click)="add()">Ajouter</button>
                       </div>
@@ -82,12 +85,12 @@
     <p id="title">Produits disponibles</p>
     <button ion-button icon-only (click)="downloadCSV()">
         <ion-icon name="download"></ion-icon>
-      </button>
+      </button> 
     <ion-card>
      
      
     
-      <table >
+      <table class="fixed_header">
         <tr>
           <th>#</th>
           <th>libelle</th>
@@ -107,8 +110,8 @@
           <td>{{item.prix_location_minimale}}</td>
           <td>{{item.created_at}}</td>
     
-      <td> <ion-icon id="action" name="eye" style="color:#3ea7d8" ></ion-icon> 
-            <ion-icon id="action" name="create" (click)="edit(item.id)" style="color:#178a43"></ion-icon> 
+      <td>
+           
             <ion-icon id="action" name="print" (click)="print(item)" style="color:rgb(231, 228, 45)"></ion-icon>
             <ion-icon id="action" name="trash" (click)="delete(item.id)" style="color:red"></ion-icon></td>
         </tr>
