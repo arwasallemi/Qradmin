@@ -45,7 +45,7 @@ export class PointagePage {
     
   
 
-      this.crudemply.loadempl()
+      this.crudemply.get()
       .then(data => {
         this.listEmpl = data;
 
@@ -95,7 +95,7 @@ export class PointagePage {
    
    }
    load(){
-    this.crudemply.loadempl()
+    this.crudemply.get()
     .then(data => {
       this.listEmpl = data;
 

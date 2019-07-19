@@ -36,6 +36,8 @@ export class ReservationPage {
   etat: string;
   listsociete: any;
   soc: any;
+  listrecherche: any;
+  search: string;
 
   constructor( private modalCtrl: ModalController,public navCtrl: NavController, public navParams: NavParams,
     public providerRes:ReservationProvider,public providerSociete : SocieteProvider) {
@@ -57,6 +59,7 @@ getReservation(){
   this.providerRes.get()
   .then(data => {
     this.list = data;
+    this.listrecherche=data
     console.log("list md:::::",this.list);
   });
 }
@@ -65,16 +68,19 @@ brouillon(a:any){
   console.log("test test:",a.id)
   this.etat="brouillon";
   this.edit(a.id)
+  this.navCtrl.setRoot(ReservationPage)
 }
 valide(a:any){
   console.log("test test:",a.id)
   this.etat="validé"
   this.edit(a.id)
+  this.navCtrl.setRoot(ReservationPage)
 }
 cours(a:any){
   console.log("test test:",a.id)
   this.etat="en cours";
   this.edit(a.id)
+  this.navCtrl.setRoot(ReservationPage)
   
 }
 edit(a){
@@ -88,6 +94,7 @@ edit(a){
   this.navCtrl.setRoot(ReservationPage)
  }
  delete(a){
+  
   console.log("delete",a);
   this.providerRes.delete(a);
   this.navCtrl.setRoot(ReservationPage)
@@ -97,6 +104,71 @@ edit(a){
   modal.present();
   console.log("res:",a);
  }
+ //////////////////recherche
+ initializeItems(): void {
+  this.list = this.listrecherche;
+}
+getItems(searchbar) {
+  // Reset items back to all of the items
+  this.initializeItems();
+
+  // set q to the value of the searchbar
+  var q = searchbar.srcElement.value;
+
+
+  // if the value is an empty string don't filter the items
+  if (!q) {
+    return;
+  }
+if(this.search==="evenement"){
+  this.list= this.list.filter((v) => {
+    if(v.nom_evenement && q) {
+      if (v.nom_evenement.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+        return true;
+      }
+      return false;
+    }
+  });
+
+  console.log(q, this.list.length);
+}
+if(this.search==="client"){
+  this.list= this.list.filter((v) => {
+    if(v.nom_client && q) {
+      if (v.nom_client.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+        return true;
+      }
+      return false;
+    }
+  });
+
+  console.log(q, this.list.length);
+} 
+if(this.search==="date debut evenement"){
+  this.list= this.list.filter((v) => {
+    if(v.date_debut_evenement && q) {
+      if (v.date_debut_evenement.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+        return true;
+      }
+      return false;
+    }
+  });
+
+  console.log(q, this.list.length);
+} 
+if(this.search==="status"){
+  this.list= this.list.filter((v) => {
+    if(v.status && q) {
+      if (v.status.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+        return true;
+      }
+      return false;
+    }
+  });
+
+  console.log(q, this.list.length);
+} 
+}
  ////////////////menu
 bonretour(){
   this.navCtrl.setRoot(BonRetourPage)

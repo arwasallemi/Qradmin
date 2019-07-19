@@ -20,6 +20,7 @@ import { EntrepotPage } from '../entrepot/entrepot';
 import { RessourcesPage } from '../ressources/ressources';
 import { ReservationPage } from '../reservation/reservation';
 import { SocieteProvider } from '../../providers/societe/societe';
+import { FactPage } from '../fact/fact';
 /**
  * Generated class for the SortieVldPage page.
  *
@@ -33,8 +34,6 @@ import { SocieteProvider } from '../../providers/societe/societe';
 })
 export class SortieVldPage {
   soc: any;
-  [x: string]: any;
-  [x: string]: any;
 
   list: any;
   etat: any;
@@ -73,6 +72,10 @@ updated_at:''
       console.log("listsociete:::::",this.listsociete);
      this.soc= this.listsociete[0]
     });
+  }
+  facturee(a){
+    let modal = this.modalCtrl.create(FactPage,{bon:a});
+    modal.present();
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad BonSortiecltPage');

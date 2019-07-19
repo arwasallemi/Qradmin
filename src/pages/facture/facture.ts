@@ -70,7 +70,7 @@ hideMe=false;
   condition: any;
   mode: any;
   compte: any;
-   
+   min=Date()
   constructor(
     public facture:FactureProvider,
     public listeprovider:ListefactureProvider,

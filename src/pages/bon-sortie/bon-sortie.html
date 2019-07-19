@@ -1,4 +1,4 @@
-<div style="color:white;height: 50px;">
+ 
     <div style="color:white;height: 50px">
         <div *ngFor="let item of listsociete">
                 <img [src]="soc.alt" style="width:10%;float:left;margin-left:50px"  >
@@ -8,101 +8,95 @@
 <ion-icon name="car" (click)="ressource()" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>       
 </div>
 <div class="area">
+    
   <div style="margin-left:100px">
 
-     
- 
-      <p id="title">Liste des bon de sortie</p>
-
-      <ion-item  style="width:20% ;background-color: transparent" >
-        <ion-label > Filtre </ion-label>
-      
-           <ion-select  [(ngModel)]="search" >
-      
-            <ion-option>client</ion-option>
-            <ion-option>evenement</ion-option>
-            <ion-option>date evenement</ion-option>
-        </ion-select>
-      
-       </ion-item>
-       
-        <ion-searchbar placeholder="rechercher ...." [(ngModel)]="myInput" (ionInput)="getItems($event)" style="float:left;width:20%"></ion-searchbar>
-      
-      
-       
-      
-      <ion-card>
-       <table >
-        <tr>
-          <th>#</th>
-          <th>Evenement</th>
-          <th>Client</th>
-          <th>Date Sortie</th>
-          <th>date Retour</th>
-          <th>date Evenement</th>
-          <th>Adresse livraison</th>
-          <th>Nom transporteur</th>
-          <th>Tel transporteur</th>
-          <th>Matricule</th>
-          
-          <th>Equipe Technique</th>
-         
-      
-      <th>Entrepot</th>
-          <th>Status</th>
-       <th></th>
-       <th></th>
-          <th>Date de creation</th>
-         <th></th>
-         <th></th>
-           <th>Action</th>
-        </tr>
-        <tr *ngFor="let bon of listbrl" >
-          <td>{{bon.id}}</td>
-          <td>{{bon.evenement}}</td>
-          <td>{{bon.nom_client}}</td>
-          <td>{{bon.dateSortie}}</td>
-          <td>{{bon.dateRetour}}</td>
-          <td>{{bon.dateEvenement}}</td>
-          <td>{{bon.adresse_livraison}}</td>
-          <td>{{bon.transporteur_nom}}</td>
-          <td>{{bon.transporteur_tel}}</td>
-      
-          <td>{{bon.matricule}}</td>
+        <ion-item  style="width:20% ;background-color: transparent" >
+          <ion-label > Filtre </ion-label>
         
-          <td>{{bon.equipe_name}}</td>
-          <td>{{bon.entrepot}}</td>
-          <td style="width:200px;margin-top:10px"  class="dropdown">
-                  {{bon.etat}}
-                  <ion-icon id="td" name="arrow-dropdown"></ion-icon>
-            <div class="dropdown-content">
-               <a  (click)="cloture(bon)">cloturé</a>
-               <a  (click)="valide(bon)">validé</a>
-               
-          </div>
+             <ion-select  [(ngModel)]="search" >
+        
+              <ion-option>client</ion-option>
+              <ion-option>evenement</ion-option>
+              <ion-option>date evenement</ion-option>
+          </ion-select>
+        
+         </ion-item>
+         
+          <ion-searchbar placeholder="rechercher ...." [(ngModel)]="myInput" (ionInput)="getItems($event)" style="float:left;width:20%"></ion-searchbar>
+        
+        <ion-card>
+         <table >
+          <tr>
+            <th>#</th>
+            <th>Evenement</th>
+            <th>Client</th>
+            <th>Date Sortie</th>
+            <th>date Retour</th>
+            <th>date Evenement</th>
+            <th>Adresse livraison</th>
+            <th>Nom transporteur</th>
+            <th>Tel transporteur</th>
+            <th>Matricule</th>
+            
+            <th>Equipe Technique</th>
            
+        
+        <th>Entrepot</th>
+            <th>Status</th>
+         <th></th>
+         <th></th>
+            <th>Date de creation</th>
+           <th></th>
+           <th></th>
+             <th>Action</th>
+          </tr>
+          <tr *ngFor="let bon of listbrl" >
+             <td>{{bon.id}}</td>
+            <td>{{bon.evenement}}</td>
+            <td>{{bon.nom_client}}</td>
+            <td>{{bon.dateSortie}}</td>
+            <td>{{bon.dateRetour}}</td>
+            <td>{{bon.dateEvenement}}</td>
+            <td>{{bon.adresse_livraison}}</td>
+            <td>{{bon.transporteur_nom}}</td>
+            <td>{{bon.transporteur_tel}}</td> 
+        
+            <td>{{bon.matricule}}</td>
+          
+            <td>{{bon.equipe_name}}</td>
+            <td>{{bon.entrepot}}</td>
+            <td style="width:200px;margin-top:10px"  class="dropdown">
+                    {{bon.etat}}
+                    <ion-icon id="td" name="arrow-dropdown"></ion-icon>
+              <div class="dropdown-content">
+                 <a  (click)="cloture(bon)">cloturé</a>
+                 <a  (click)="valide(bon)">validé</a>
+                 
+            </div>
              
-          </td>
-       <td></td>
-       <td></td>
                
-          <td>{{bon.created_at}}</td>
-      
+            </td>
          <td></td>
          <td></td>
-          <td> 
-         <button ion-button (click)="facture(bon)">Facture</button>
-            <ion-icon id="action" name="trash" (click)="delete(bon.id)" style="color:red"></ion-icon>
-            <ion-icon id="action" name="eye" style="color:#3ea7d8" (click)="show(bon)"></ion-icon> </td>
-        </tr>
-      
-      </table> 
-      
-      </ion-card>
-                       
-       
-  </div>
-</div><nav class="main-menu">
+                 
+            <td>{{bon.created_at}}</td>
+        
+           <td></td>
+           <td></td>
+            <td> 
+           
+              <ion-icon id="action" name="trash" (click)="delete(bon.id)" style="color:red"></ion-icon>
+              <ion-icon id="action" name="eye" style="color:#3ea7d8" (click)="show(bon)"></ion-icon> </td>
+          </tr>
+        
+        </table> 
+        
+        </ion-card>
+                         
+         </div>
+    </div>
+  <nav class="main-menu">
         <ul>
             <li>
                 <a (click)="dashboard()">
@@ -205,7 +199,7 @@
                             </a>
                         </li>
                         <li>
-                                <a (click)="enterpot()">
+                                <a (click)="entrepot()">
                                    <i class="fa fa-file fa-2x"></i>
                                     <span class="nav-text">
                                      Entrepots
@@ -227,3 +221,5 @@
     </nav>
     
 
+
+   

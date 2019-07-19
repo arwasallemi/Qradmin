@@ -34,8 +34,7 @@ import { SocieteProvider } from '../../providers/societe/societe';
 })
 export class SortieCltPage {
   soc: any;
-  [x: string]: any;
-  [x: string]: any;
+ 
   list: any;
   etat: any;
   item={
