@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastCmp, ToastController } from 'ionic-angular';
 import { CrudProvider } from '../../providers/crud/crud';
 import { HttpClient } from '@angular/common/http';
 import { HomePage } from '../home/home';
@@ -19,14 +19,14 @@ import { SocieteProvider } from '../../providers/societe/societe';
 })
 export class TestPage {
   users:any;
- 
+ role
     username;
     email;
     listsociete: any;
     password;
   
     soc: any;
-  constructor(public navCtrl: NavController,    public providerSociete : SocieteProvider,
+  constructor(public navCtrl: NavController,    public providerSociete : SocieteProvider, private toast : ToastController,
      public navParams: NavParams,public crudProvider:CrudLoginProvider,public httpClient: HttpClient) {
     this.getsociete()
   
@@ -55,20 +55,32 @@ export class TestPage {
       username: this.username,
       email: this.email,
       password: this.password,
-     
+      role : this.role,
     };
 
     this.crudProvider.saveUser(credentials).then((result)=>{
       console.log("info::::",credentials)
       this.navCtrl.setRoot(HomePage)
       console.log(result)
+      let toast = this.toast.create({
+        message: 'Informations were added successfully',
+        duration: 3000,
+        position: 'top'
+      });
+      
+    
+      toast.present();
       
     },(err)=>{
       console.log("insert err: "+ err)
       console.log("this.myInfo: "+ JSON.stringify(credentials))
+      alert("Wrong credentials ! try again");
     })
     
    
+   }
+   return(){
+     this.navCtrl.setRoot(HomePage)
    }
    
 }
