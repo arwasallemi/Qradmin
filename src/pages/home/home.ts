@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController,AlertController, NavParams  } from 'ionic-angular';
+import { IonicPage, NavController,AlertController, NavParams, ToastController  } from 'ionic-angular';
 
 
 import { AuthProvider } from '../../providers/auth/auth';
@@ -27,7 +27,7 @@ export class HomePage {
     public navParams: NavParams,
     public authService: AuthProvider ,
     public providerSociete : SocieteProvider,
-    public alertCtrl: AlertController ,
+    public alertCtrl: AlertController , private toast : ToastController,
   
   ) {
     this.getsociete()
@@ -77,13 +77,23 @@ export class HomePage {
          this.authService.save(credentials).then((result) => {
             console.log("login result:",result);
          this.navCtrl.setRoot(SocietePage);
+         let toast = this.toast.create({
+          message: 'Welcome !!',
+          duration: 3000,
+          position: 'top'
+        });
+        
+      
+        toast.present();
+        
            
         }, (err) => {
      
             console.log(err);
             this. errorFunc('Wrong credentials ! try again')
             console.log("credentials: "+JSON.stringify(credentials))
-            
+            alert("Wrong credentials ! try again");
+   
         });
  
       }

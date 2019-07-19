@@ -77,7 +77,21 @@ page-test {
 		
 		background: $gray-light;
 		cursor: pointer;
-	  }
+		}
+		.flex-roww {
+			display: flex;
+			margin-bottom: 1em;
+			}
+			
+			.lf--labell {
+			width: 2em;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			
+			background: $gray-light;
+			cursor: pointer;
+			}
 	  .lf--input {
 		flex: 1;
 		padding: 1em;
