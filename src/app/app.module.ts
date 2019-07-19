@@ -87,6 +87,9 @@ import { ListeFacturePage } from '../pages/liste-facture/liste-facture';
 import { ReglementPage } from '../pages/reglement/reglement';
 import { ReglementProvider } from '../providers/reglement/reglement';
 import { FactPage } from '../pages/fact/fact';
+import { TestPage } from '../pages/test/test';
+import { CrudLoginProvider } from '../providers/crudLogin/crud';
+import { AuthProvider } from '../providers/auth/auth';
 
  
  
@@ -120,6 +123,8 @@ import { FactPage } from '../pages/fact/fact';
  SortieVldPage,
  SignupPage,
  DemandeCongePage,
+ TestPage,
+ HomePage,
  PointagePage,
  SalairePage,
  AbscencePage,
@@ -177,7 +182,8 @@ EntrepotPage,
  ImprimerfacturePage,
  ListeFacturePage,
  ReglementPage,
- FactPage
+ FactPage,
+ TestPage,
   ],
   providers: [
  
@@ -216,6 +222,8 @@ EntrepotPage,
     FactureProvider,
     ListefactureProvider,
     ReglementProvider,
+    CrudLoginProvider,
+    AuthProvider,
 
   
   ]

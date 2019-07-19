@@ -116,6 +116,7 @@ max;
      this.soc = this.listsociete[0]
     });
   }
+ 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DevisPage');
     var y = document.getElementById("form2");

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
 import { HomePage } from '../pages/home/home';
 import { BlankPage } from '../pages/blank/blank';
 import { MenuPage } from '../pages/menu/menu';
@@ -21,16 +20,29 @@ import { UploadPage } from '../pages/upload/upload';
 import { PrintPage } from '../pages/print/print';
 import { PointagePage } from '../pages/pointage/pointage';
 import { AbscencePage } from '../pages/abscence/abscence';
+
+import { LoginPage } from '../pages/login/login';
+import { TestPage } from '../pages/test/test';
+
+
 import { BonRetourPage } from '../pages/bon-retour/bon-retour';
 import { FacturePage } from '../pages/facture/facture';
 import { ListeFacturePage } from '../pages/liste-facture/liste-facture';
 import { SortieCltPage } from '../pages/sortie-clt/sortie-clt';
 import { SortieVldPage } from '../pages/sortie-vld/sortie-vld';
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = SocietePage;
+
+  
+
+  rootPage:any = HomePage;
+
+
+
+
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
