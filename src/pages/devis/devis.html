@@ -70,7 +70,8 @@
         <ion-input type="richtext" [(ngModel)]="note"></ion-input>
       </ion-item>  
       
-      <button ion-button style="float:right;margin-right:1%" (click)="details()">Next</button>
+      <button ion-button style="float:right;margin-right:1%" (click)="details()">Suivant</button>
+      <button ion-button style="float:right;margin-right:1%" (click)="listeall()">Liste des devis</button>
       
       </ion-card >
       <ion-card id="form2">
@@ -84,8 +85,14 @@
               <ion-input (ionChange)="calcul()"[(ngModel)]="prix_location"></ion-input>
           </ion-item>
             <ion-item style="width:10%;font-size:0.8em">
-              <ion-label floating >TVA:</ion-label>
-              <ion-input (ionChange)="calcul()"[(ngModel)]="t"></ion-input>
+ 
+            
+                  <ion-label style="font-size: 0.8em">TVA</ion-label>
+                  <ion-select [(ngModel)]="tva">
+<ion-option  *ngFor="let t of listTva">{{t.valeur}}</ion-option>
+                  </ion-select>
+                
+        
                
           </ion-item>
           <ion-item style="width:10%;font-size:0.8em;margin-left:0%" >
@@ -99,27 +106,29 @@
        
       </ion-item>
       <button ion-button style="float:right;margin-right:1%" (click)="ajouter()">Ajouter</button>
-        <button ion-button style="float:right;margin-right:1%" (click)="back()">Back</button>
+        <button ion-button style="float:right;margin-right:1%" (click)="back()">Retour</button>
         </ion-card>
-      <p id="title">Liste</p>
-      <ion-item  style="width:20% ;background-color: transparent" >
-          <ion-label > Filtre </ion-label>
-        
-             <ion-select  [(ngModel)]="search" >
-        
-              <ion-option>client</ion-option>
-              <ion-option>date</ion-option>
-              <ion-option>Condition de reglement</ion-option>
-          </ion-select>
-        
-         </ion-item>
-         
-          <ion-searchbar placeholder="rechercher ...." [(ngModel)]="myInput" (ionInput)="getItems($event)" style="float:left;width:20%"></ion-searchbar>
-        
-        
-         
+
         
       <ion-card id="form3">
+          <button ion-button style="float:right;margin-right:1%" (click)="back()">Retour</button>
+          <p id="title">Liste</p>
+          <ion-item  style="width:20% ;background-color: transparent" >
+              <ion-label > Filtre </ion-label>
+            
+                 <ion-select  [(ngModel)]="search" >
+            
+                  <ion-option>client</ion-option>
+                  <ion-option>date</ion-option>
+                  <ion-option>Condition de reglement</ion-option>
+              </ion-select>
+            
+             </ion-item>
+             
+              <ion-searchbar placeholder="rechercher ...." [(ngModel)]="myInput" (ionInput)="getItems($event)" style="float:left;width:20%"></ion-searchbar>
+            
+            
+             
         <table class="fixed_header">
           <tr>
             <th>#</th>
