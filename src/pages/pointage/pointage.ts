@@ -2,6 +2,23 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { EmployeurProvider } from '../../providers/employeur/employeur';
 import { PointageProvider } from '../../providers/pointage/pointage';
+import { EmployeurPage } from '../employeur/employeur';
+import { SocieteProvider } from '../../providers/societe/societe';
+import { BonRetourPage } from '../bon-retour/bon-retour';
+import { HomePage } from '../home/home';
+import { SortieVldPage } from '../sortie-vld/sortie-vld';
+import { SortieCltPage } from '../sortie-clt/sortie-clt';
+import { BonSortiePage } from '../bon-sortie/bon-sortie';
+import { DevisPage } from '../devis/devis';
+import { FacturePage } from '../facture/facture';
+import { ListeFacturePage } from '../liste-facture/liste-facture';
+import { ParamPage } from '../param/param';
+import { SocietePage } from '../societe/societe';
+import { ProduitPage } from '../produit/produit';
+import { StockPage } from '../stock/stock';
+import { ReservationPage } from '../reservation/reservation';
+import { EntrepotPage } from '../entrepot/entrepot';
+import { RessourcesPage } from '../ressources/ressources';
 
 /**
  * Generated class for the PointagePage page.
@@ -25,17 +42,29 @@ export class PointagePage {
   listpointage
   idEmp
   listEmplid
+  soc
+  listsociete
   time4 = "00:00:00"
   item
   listEmployeur: {};
   listep: any;
   constructor(
-    public EmplProvider:EmployeurProvider,
+    public EmplProvider:EmployeurProvider, public providerSociete : SocieteProvider,
     public navCtrl: NavController, public navParams: NavParams,public crudemply : EmployeurProvider, public crudPointage : PointageProvider) {
     this.getEmpl()
     //this.loadpointage()
     this.load()
+    this.getsociete()
   }
+  getsociete(){
+    this.providerSociete.loadsociete()
+    .then(data => {
+      this.listsociete = data;
+      console.log("listsociete:::::",this.listsociete);
+     this.soc = this.listsociete[0]
+    });
+  }
+  
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PointagePage');
@@ -143,5 +172,53 @@ if(this.listEmpl[i].id===this.listpointage[j].employeur_id){
     });
 
   }
-
+////////////////menu
+bonretour(){
+  this.navCtrl.setRoot(BonRetourPage)
+}
+dashboard(){
+  this.navCtrl.setRoot(HomePage)
+}
+SortieV(){
+  this.navCtrl.setRoot(SortieVldPage)
+}
+SortieC(){
+  this.navCtrl.setRoot(SortieCltPage)
+}
+Sortieb(){
+  this.navCtrl.setRoot(BonSortiePage)
+}
+tech(){
+  this.navCtrl.setRoot(EmployeurPage)
+}
+Devis(){
+  this.navCtrl.setRoot(DevisPage)
+}
+facture(){
+  this.navCtrl.setRoot(FacturePage)
+}
+listFact(){
+  this.navCtrl.setRoot(ListeFacturePage)
+}
+param(){
+  this.navCtrl.setRoot(ParamPage)
+}
+societe(){
+  this.navCtrl.setRoot(SocietePage)
+}
+produitt(){
+  this.navCtrl.setRoot(ProduitPage)
+}
+stock(){
+  this.navCtrl.setRoot(StockPage)
+}
+reservation(){
+  this.navCtrl.setRoot(ReservationPage)
+}
+entrepot(){
+  this.navCtrl.setRoot(EntrepotPage)
+}
+ressource(){
+  this.navCtrl.setRoot(RessourcesPage)
+}
 }

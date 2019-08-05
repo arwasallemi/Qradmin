@@ -90,6 +90,7 @@ import { FactPage } from '../pages/fact/fact';
 import { TestPage } from '../pages/test/test';
 import { CrudLoginProvider } from '../providers/crudLogin/crud';
 import { AuthProvider } from '../providers/auth/auth';
+import { VerifiedPage } from '../pages/verified/verified';
 
  
  
@@ -135,7 +136,8 @@ FacturePage,
 ImprimerfacturePage,
 ListeFacturePage,
 ReglementPage,
-FactPage
+FactPage,
+VerifiedPage,
   ],
   imports: [
     HttpModule,
@@ -184,6 +186,7 @@ EntrepotPage,
  ReglementPage,
  FactPage,
  TestPage,
+ VerifiedPage,
   ],
   providers: [
  

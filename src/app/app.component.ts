@@ -30,6 +30,7 @@ import { FacturePage } from '../pages/facture/facture';
 import { ListeFacturePage } from '../pages/liste-facture/liste-facture';
 import { SortieCltPage } from '../pages/sortie-clt/sortie-clt';
 import { SortieVldPage } from '../pages/sortie-vld/sortie-vld';
+import { VerifiedPage } from '../pages/verified/verified';
 
 @Component({
   templateUrl: 'app.html'
@@ -50,7 +51,27 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+     // this.log()
     });
+
+
   }
+  async log(){
+   
+  let x = window.localStorage.getItem("username");
+    console.log(window.localStorage.getItem("username"))
+   let y =  window.localStorage.getItem("password");
+    console.log(window.localStorage.getItem("password"))
+  this.rootPage= SocietePage
+
+  if( window.localStorage.getItem("username") == " " || y == " ")
+  {
+    this.rootPage= HomePage
+  }
+
+   
+  
+
+ }
 }
 
