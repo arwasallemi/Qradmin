@@ -1,13 +1,13 @@
  
 <html>
-    <div style="color:white;height: 50px">
-        <div *ngFor="let item of listsociete">
-                <img [src]="soc.alt" style="width:10%;float:left;margin-left:50px"  >
-              </div>
-<ion-icon name="cog" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
-<ion-icon name="home" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
-<ion-icon name="car" (click)="ressource()" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>       
-</div>
+        <div style="color:white;height: 50px">
+                <div *ngFor="let item of listsociete">
+                        <img [src]="soc.alt" style="width:10%;float:left;margin-left:50px;height:60px;"  >
+                      </div>
+        <ion-icon name="cog" (click)="ressources()"  style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
+        <ion-icon name="home" (click)="societe()"  style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
+        <ion-icon name="car" (click)="ressource()" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>       
+        </div>
 <div class="area">
     <div style="margin-left:100px">
         <p id="title">Ajouter un nouveau technicien</p>

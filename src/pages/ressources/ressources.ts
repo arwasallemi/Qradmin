@@ -40,6 +40,7 @@ export class RessourcesPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public provider:RessourcesProvider,public providerSociete : SocieteProvider) {
     this.get();
+    this.getsociete()
   }
 
   ionViewDidLoad() {

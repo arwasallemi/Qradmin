@@ -65,7 +65,7 @@ export class ProduitProvider {
 
  getitems() {
   return new Promise(resolve => {
-    this.http.get('http://localhost:8000/produit/produits').subscribe(data => {
+    this.http.get('http://testmariadb.alwaysdata.net/produit/produits').subscribe(data => {
       resolve(data);
     }, err => {
       console.log(err);

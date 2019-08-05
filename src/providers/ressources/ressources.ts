@@ -27,6 +27,7 @@ const httpOptions = {
 };
 @Injectable()
 export class RessourcesProvider {
+  prdt: any;
 
   constructor(public storage: Storage ,
     public http: Http, public httpClient: HttpClient) {
@@ -34,25 +35,23 @@ export class RessourcesProvider {
   }
 
   get(){
-    return new Promise((resolve, reject) => {
-     this.storage.get('token').then((value) => {
-
-       let headers = new Headers();
-       headers.append('Content-Type', 'application/json');
-       headers.append('Authorization', 'Bearer '+value);
-
-       console.log('value: ' + value);
+    if (this.prdt) {
+      return Promise.resolve(this.prdt);
+    }
   
-       this.http.get('http://localhost:8000/ressource/ressources/', {headers: headers})
-         .map(res => res.json())
-         .subscribe(data => {
-           resolve(data);
-         }, (err) => {
-           reject(err);
-         }); 
-     }) 
-
-   });
+    
+    // don't have the data yet
+    return new Promise(resolve => {
+  
+      this.http.get('http://testmariadb.alwaysdata.net/public/ressource/ressources')
+        .map(res => res.json())
+        .subscribe(data => {
+     
+          this.prdt = data;
+          resolve(this.prdt);
+        });
+    });
+ 
 
  }
 
@@ -61,7 +60,7 @@ export class RessourcesProvider {
 
  getitems() {
   return new Promise(resolve => {
-    this.http.get('http://localhost:8000/ressource/ressources/').subscribe(data => {
+    this.http.get('http://testmariadb.alwaysdata.netressource/ressources/').subscribe(data => {
       resolve(data);
     }, err => {
       console.log(err);
@@ -75,7 +74,7 @@ export class RessourcesProvider {
 
 save(data) {
   return new Promise((resolve, reject) => {
-    this.http.post('http://localhost:8000/ressource/ressources/',data)
+    this.http.post('http://testmariadb.alwaysdata.net/public/ressource/ressources/',data)
       .subscribe(res => {
         resolve(res);
       }, (err) => {
@@ -94,7 +93,7 @@ edit(id,postInfo){
      headers.append('Authorization', 'Bearer '+value);
      console.log('value: ' + value);
 
-     this.http.put('http://localhost:8000/ressource/ressources/' +id ,  JSON.stringify(postInfo),  {headers: headers})
+     this.http.put('http://testmariadb.alwaysdata.net/public/ressource/ressources/' +id ,  JSON.stringify(postInfo),  {headers: headers})
        .map(res => res.json())
        .subscribe(data => {
          resolve(data);
@@ -121,7 +120,7 @@ delete(id){
      headers.append('Authorization', 'Bearer '+value);
      console.log('value: ' + value);
 
-     this.http.delete('http://localhost:8000/ressource/ressources/' +id,    {headers: headers})
+     this.http.delete('http://testmariadb.alwaysdata.net/public/ressource/ressources/' +id,    {headers: headers})
        .map(res => res.json())
        .subscribe(data => {
          resolve(data);

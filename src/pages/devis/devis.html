@@ -1,11 +1,11 @@
 
 <html>
-  <div style="color:white;height: 50px">
-    <div *ngFor="let item of listsociete">
-            <img [src]="soc.alt" style="width:10%;float:left;margin-left:50px"  >
-          </div>
-<ion-icon name="cog" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
-<ion-icon name="home" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
+    <div style="color:white;height: 50px">
+        <div *ngFor="let item of listsociete">
+                <img [src]="soc.alt" style="width:10%;float:left;margin-left:50px;height:60px;"  >
+              </div>
+<ion-icon name="cog" (click)="ressources()"  style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
+<ion-icon name="home" (click)="societe()"  style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
 <ion-icon name="car" (click)="ressource()" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>       
 </div>
 <div class="area">
@@ -75,11 +75,13 @@
       
       </ion-card >
       <ion-card id="form2">
-       
+       <ion-item>
           <ion-select   [(ngModel)]="produit" style="width:30%" placeholder="produit" (ionChange)="select(produit)">
               <ion-option *ngFor="let p of listPdt"  >{{p.libelle}}</ion-option>
             </ion-select>
          
+       </ion-item>
+     
           <ion-item  style="width:20%;float:left;font-size:0.8em">
               <ion-label  floating>Prix de location</ion-label>
               <ion-input (ionChange)="calcul()"[(ngModel)]="prix_location"></ion-input>
@@ -88,10 +90,10 @@
  
             
                   <ion-label style="font-size: 0.8em">TVA</ion-label>
-                  <ion-select [(ngModel)]="tva">
-<ion-option  *ngFor="let t of listTva">{{t.valeur}}</ion-option>
-                  </ion-select>
-                
+
+                      <ion-input (ionChange)="calcul()"[(ngModel)]="t"></ion-input>
+ 
+           
         
                
           </ion-item>

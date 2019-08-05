@@ -6,8 +6,10 @@
           <br>
           <br>
           <br>
+          <br>
+          <br>
           <div *ngFor="let item of listsociete">
-            <img [src]="soc.alt" style="width:30%;float:left;margin-left:35%"  >
+            <img [src]="soc.alt" style="width:30%;float:left;margin-left:35%;height:70%;"  >
           </div>
           <br>
           <br>
@@ -38,7 +40,7 @@
       <input id="password" name="password" class='lf--input' [(ngModel)]="password" placeholder='Password' type='password'>
     </div>
     <input class='lf--submit' style="height:50px;float:left" (click)='myLogIn()' value='Sign in'>
-    <input class='lf--submit' style="height:50px;margin-left: 20%" (click)='mysignUp()' value='Sign up'>
+    <!-- <input class='lf--submit' style="height:50px;margin-left: 20%" (click)='mysignUp()' value='Sign up'> -->
     </form>
 
 
