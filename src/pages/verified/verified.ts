@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { IonicPage, NavController,AlertController, NavParams, ToastController  } from 'ionic-angular';
 
 
@@ -7,13 +8,19 @@ import { TestPage } from '../test/test';
 import { SocietePage } from '../societe/societe';
 import { SocieteProvider } from '../../providers/societe/societe';
 
+/**
+ * Generated class for the VerifiedPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage()
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-verified',
+  templateUrl: 'verified.html',
 })
-export class HomePage {
-
-
+export class VerifiedPage {
   email:string = '';
   password:string = '';
 
@@ -32,13 +39,7 @@ export class HomePage {
   
   ) {
     this.getsociete()
-    
-    this.email = window.localStorage.getItem("username");
-    console.log("emaiiiiiiiiil:",window.localStorage.getItem("username"))
-  this.password =  window.localStorage.getItem("password");
-    console.log("ppppppp",window.localStorage.getItem("password"))
- //   this.log()
- this.log()
+   this.log()
   }
   getsociete(){
     this.providerSociete.loadsociete()
@@ -48,7 +49,6 @@ export class HomePage {
      this.soc = this.listsociete[0]
     });
   }
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
@@ -68,8 +68,6 @@ export class HomePage {
 
   myLogIn(){
  
-
-
     if (this.email.trim() !==''    ) {    
       
       console.log(this.email.trim() + "   " + this.password.trim() )
@@ -78,12 +76,12 @@ export class HomePage {
         this.errorFunc('Please put your password')
  
       }else{
-    
+ 
         let credentials = {
           email: this.email,
             password: this.password
         };
-     
+ 
         
          this.authService.save(credentials).then((result) => {
             console.log("login result:",result);
@@ -94,14 +92,17 @@ export class HomePage {
           position: 'top'
         });
         
-                   
+      
+        toast.present();
+        
         window.localStorage.setItem("password", this.password);
         console.log(window.localStorage.setItem("password",this.password ))
         window.localStorage.setItem("username", this.email);
         console.log(window.localStorage.setItem("username", this.email))
-
-        toast.present();
-    
+        window.localStorage.getItem("username");
+        console.log(window.localStorage.getItem("username"))
+        window.localStorage.getItem("password");
+        console.log(window.localStorage.getItem("password"))
 
         }, (err) => {
      
@@ -129,34 +130,17 @@ export class HomePage {
 
 async log(){
 
-
-        let credentials = {
-          email: this.email,
-            password: this.password
-        };
-     
-        
-         this.authService.save(credentials).then((result) => {
-            console.log("login result:",result);
-         this.navCtrl.setRoot(SocietePage);
-         let toast = this.toast.create({
-          message: 'Welcome !!',
-          duration: 3000,
-          position: 'top'
-        });
-        
-        toast.present();
-    
-
-        });
-
-      
-      
-   
   
+  window.localStorage.getItem("username");
+  console.log(window.localStorage.getItem("username"))
+  window.localStorage.getItem("password");
+  console.log(window.localStorage.getItem("password"))
+
+   // this.rootPage = AccueilPage
+ 
 
 
-
+    this.navCtrl.setRoot(SocietePage);
 
 }
 

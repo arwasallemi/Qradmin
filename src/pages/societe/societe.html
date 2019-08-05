@@ -5,9 +5,12 @@
             <div *ngFor="let item of listsociete">
                     <img [src]="item.alt" style="display: block; width: 10%;float:left;margin-left:50px"  >
                   </div>
+                  <ion-icon name="exit" (click)="exit()" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>        
+
     <ion-icon name="cog" (click)="param()" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
     <ion-icon name="home" (click)="societe()" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
     <ion-icon name="car" (click)="ressource()" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>        
+    
 </div>
 <div class="area">
     <div style="margin-left:100px">
