@@ -18,6 +18,10 @@ import { EntrepotPage } from '../entrepot/entrepot';
 import { RessourcesPage } from '../ressources/ressources';
 import { ReservationPage } from '../reservation/reservation';
 import { VerifiedPage } from '../verified/verified';
+import { DemandeCongePage } from '../demande-conge/demande-conge';
+import { PointagePage } from '../pointage/pointage';
+import { AbscencePage } from '../abscence/abscence';
+import { SalairePage } from '../salaire/salaire';
 
 
 @IonicPage()
@@ -117,6 +121,9 @@ image;
     this.navCtrl.setRoot(SocietePage) 
     console.log(this.item.alt ,"alttttttttttttttt")
    }
+   pointage(){
+     this.navCtrl.setRoot(PointagePage)
+   }
   loadImage(){
 
     this.providerSociete.loadsociete()
@@ -129,6 +136,9 @@ image;
   
     });
   
+  }
+  dmeConge(){
+    this.navCtrl.setRoot(DemandeCongePage)
   }
 
 ////////////////menu
@@ -179,5 +189,11 @@ entrepot(){
 }
 ressource(){
   this.navCtrl.setRoot(RessourcesPage)
+}
+abscence(){
+  this.navCtrl.setRoot(AbscencePage)
+}
+salaire(){
+  this.navCtrl.setRoot(SalairePage)
 }
 }

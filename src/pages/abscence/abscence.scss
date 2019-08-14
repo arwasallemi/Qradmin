@@ -1,24 +1,27 @@
 page-abscence {
-    table {
+   
+  table {
   
-        border-collapse: collapse;
-        width: 100%;
-      }
-     
-      td, th {
-        
-        text-align: left;
-        padding: 8px;
-      }
-      
-      tr:nth-child(even) {
-        background-color: #ffffff;
-        border: 1px solid #cfcdcd;
-      }
-      #icon{
-        font-size:1.5em
-      }
-}
-img{
-  height:60px;
+    border-collapse: collapse;
+    width: 100%;
+  }
+ 
+  td, th {
+    
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #ffffff;
+    border: 1px solid #cfcdcd;
+  }
+  #icon{
+    font-size:1.5em
+  }
+  #title{
+    font-size: 15px; 
+   // font-family:'Courier New', Courier, monospace; 
+    font-weight:500;
+  }
 }

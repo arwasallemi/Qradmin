@@ -1,18 +1,308 @@
-<!--
-  Generated template for the SalairePage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>salaire</ion-title>
-  </ion-navbar>
-
-</ion-header>
+<html>
+  <div style="color:white;height: 50px">
+    <div *ngFor="let item of listsociete">
+            <img [src]="soc.alt" style="width:10%;float:left;margin-left:50px"  >
+          </div>
+<ion-icon name="cog" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
+<ion-icon name="home" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
+<ion-icon name="car" (click)="ressource()" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>       
 
 
-<ion-content padding>
+</div>
+<div class="area">
+  <div style="margin-left:100px">
 
-</ion-content>
+
+<br/>
+    <p id="title">Ajouter le salaire</p>
+    <ion-card>
+        <ion-item style="float:left;width:20%">
+     
+
+    <ion-label> Nom employé  </ion-label>
+  
+       <ion-select  [(ngModel)]="nomEmpl" (ionChange)="chooseid()">
+  
+      <ion-option *ngFor="let item of listEmpl"  >{{item.name}}</ion-option>
+  
+    </ion-select>
+  
+
+        </ion-item>
+
+
+        <ion-item style="width:40%">
+            <ion-label> Nombre de jours  </ion-label>
+    
+              <ion-input  type="number" [(ngModel)]="nbrJour" ></ion-input>
+       
+            </ion-item>
+            <ion-item style="float:left;width:20%">
+   
+
+                <ion-label> Salaire unitaire</ion-label>
+        
+                  <ion-input  type="number" [(ngModel)]="salaire_unitaire" ></ion-input>
+           
+                </ion-item>
+            <ion-item style="width:40%">
+   
+
+                <ion-label> Nombre Heure  par jour  </ion-label>
+        
+                  <ion-input  type="number" [(ngModel)]="nbrHeure_travail" ></ion-input>
+           
+                </ion-item>
+
+        
+                <!-- <ion-item style="float:left;width:20%">
+
+                    <ion-label> Salaire nette</ion-label>
+            
+                      <ion-input  type="number" [(ngModel)]="salaireNette" ></ion-input>
+               
+                    </ion-item> -->
+                     <ion-item style="width:40%">
+     
+
+                        <ion-label> Nombre d'Heures ajoutées par mois </ion-label>
+                
+                          <ion-input  type="number" [(ngModel)]="nbrHeure_ajoute" ></ion-input>
+                   
+                        </ion-item>
+                      
+                            <!-- <ion-item style="width:40%">
+   
+
+                                <ion-label> Salaire brute</ion-label>
+                        
+                                  <ion-input  type="number" [(ngModel)]="salaireBrute" ></ion-input>
+                           
+                                </ion-item> -->
+           
+       
+             
+                <button ion-button (click)="add()"> Ajouter  </button>
+
+</ion-card>
+ 
+
+<ion-card>
+ 
+ 
+
+    <table class="fixed_header">
+    <tr>
+      <th>#</th>
+  <th>Emmploye</th>
+      <th>Nombre de jours par mois</th>
+      <th>Salaire unitaire par heure</th>
+      <th>Nombre Heure  par jour </th>
+      <th>Nombre d'Heures ajoutées par mois</th>
+      <th>salaire nette</th>
+      <th>salaire brute</th>
+      <th>Date de création</th>
+      <th>Action</th>
+    </tr>
+    <tr *ngFor="let item of listpointage">
+      
+      <td>{{item.id}}</td>
+
+
+      <td>{{item.employeur_id}}</td>
+      <td><ion-input [(ngModel)]="item.nbrJour"></ion-input></td>
+      <td><ion-input [(ngModel)]="item.salaire_unitaire"></ion-input></td>
+      <td><ion-input [(ngModel)]="item.nbrHeure_travail"></ion-input></td>
+      <td><ion-input [(ngModel)]="item.nbrHeure_ajoute"></ion-input></td>
+      <td><ion-input [(ngModel)]="item.salaireNette"></ion-input></td>
+      <td><ion-input [(ngModel)]="item.salaireBrute"></ion-input></td>
+      <td><ion-input [(ngModel)]="item.created_at"></ion-input></td>
+
+  <td> 
+        <ion-icon id="icon" name="create" (click)="edit(item)"  style="color:#178a43; size: 10px"></ion-icon> 
+
+        <ion-icon id="action" name="trash" (click)="delete(item.id)" style="color:red"></ion-icon>
+    
+        <!-- <ion-icon id="action" name="print" (click)="print(item)" style="color:rgb(231, 228, 45)"></ion-icon>
+      </td> -->
+      </td>
+    </tr>
+ 
+  </table>
+  
+</ion-card>
+
+  </div>
+</div><nav class="main-menu">
+      <ul>
+          <li>
+              <a (click)="dashboard()">
+                  <i class="fa fa-home fa-2x"></i>
+                  <span class="nav-text">
+                      Dashboard
+                  </span>
+              </a>
+            
+          </li>
+          <li class="has-subnav">
+              <a (click)="bonretour()">
+                  <i class="fa fa-file fa-2x"></i>
+                  <span class="nav-text">
+                      Bons de Retour
+                  </span>
+              </a>
+              
+          </li>
+          <li class="has-subnav">
+              <a (click)="SortieV()">
+                 <i class="fa fa-folder fa-2x"></i>
+                  <span class="nav-text">
+                      Bons de Sortie Validées
+                  </span>
+              </a>
+              
+          </li>
+          <li class="has-subnav">
+              <a (click)="SortieC()">
+                 <i class="fa fa-folder-open fa-2x"></i>
+                  <span class="nav-text">
+                          Bons de Sortie Cloturées
+                  </span>
+              </a>
+             
+          </li>
+          <li>
+              <a (click)="Sortieb()">
+                  <i class="fa fa-edit fa-2x"></i>
+                  <span class="nav-text">
+                          Bons de Sortie Brouillons
+                  </span>
+              </a>
+          </li>
+          <li>
+              <a (click)="tech()">
+                  <i class="fa fa-user fa-2x"></i>
+                  <span class="nav-text">
+                     Techniciens
+                  </span>
+              </a>
+          </li>
+          <li>
+             <a (click)="Devis()">
+                 <i class="fa fa-copy fa-2x"></i>
+                  <span class="nav-text">
+                     Devis
+                  </span>
+              </a>
+          </li>
+          <li>
+             <a (click)="facture()">
+                  <i class="fa fa-edit fa-2x"></i>
+                  <span class="nav-text">
+                   Nouvelle Facture
+                  </span>
+              </a>
+          </li>
+          <li>
+              <a (click)="listFact()">
+                 <i class="fa fa-folder fa-2x"></i>
+                  <span class="nav-text">
+                      Liste des factures
+                  </span>
+              </a>
+          </li>
+          <li>
+                  <a (click)="reservation()">
+                     <i class="fa fa-file fa-2x"></i>
+                      <span class="nav-text">
+                         Résérvation
+                      </span>
+                  </a>
+              </li>
+              <li>
+                      <a (click)="stock()">
+                         <i class="fa fa-file fa-2x"></i>
+                          <span class="nav-text">
+                             Stocks
+                          </span>
+                      </a>
+                  </li>
+                  <li>
+                          <a (click)="produitt()">
+                             <i class="fa fa-file fa-2x"></i>
+                              <span class="nav-text">
+                               Produits
+                              </span>
+                          </a>
+                      </li>
+                      <li>
+                              <a (click)="enterpot()">
+                                 <i class="fa fa-file fa-2x"></i>
+                                  <span class="nav-text">
+                                   Entrepôts
+                                  </span>
+                              </a>
+                          </li> 
+                        
+                        <li>
+                                <a (click)="dmeConge()">
+                                   <i class="fa fa-file fa-2x"></i>
+                                    <span class="nav-text">
+                                    Demande Congé
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                    <a (click)="pointage()">
+                                       <i class="fa fa-file fa-2x"></i>
+                                        <span class="nav-text">
+                                        Pointage
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a (click)="salaire()">
+                                       <i class="fa fa-file fa-2x"></i>
+                                        <span class="nav-text">
+                                        Salaire
+                                        </span>
+                                    </a>
+                                </li>
+      </ul>
+
+      <ul class="logout">
+          <li>
+             <a href="#">
+                   <i class="fa fa-power-off fa-2x"></i>
+                  <span class="nav-text">
+                      Logout
+                  </span>
+              </a>
+          </li>  
+      </ul>
+  </nav>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   

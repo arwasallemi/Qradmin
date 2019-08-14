@@ -19,6 +19,8 @@ import { StockPage } from '../stock/stock';
 import { ReservationPage } from '../reservation/reservation';
 import { EntrepotPage } from '../entrepot/entrepot';
 import { RessourcesPage } from '../ressources/ressources';
+import { DemandeCongePage } from '../demande-conge/demande-conge';
+import { SalairePage } from '../salaire/salaire';
 
 /**
  * Generated class for the PointagePage page.
@@ -197,6 +199,12 @@ Devis(){
 facture(){
   this.navCtrl.setRoot(FacturePage)
 }
+pointage(){
+  this.navCtrl.setRoot(PointagePage)
+}
+dmeConge(){
+  this.navCtrl.setRoot(DemandeCongePage)
+}
 listFact(){
   this.navCtrl.setRoot(ListeFacturePage)
 }
@@ -221,4 +229,8 @@ entrepot(){
 ressource(){
   this.navCtrl.setRoot(RessourcesPage)
 }
+salaire(){
+  this.navCtrl.setRoot(SalairePage)
+}
+
 }
