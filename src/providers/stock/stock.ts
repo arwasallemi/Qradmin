@@ -72,7 +72,7 @@ export class StockProvider {
 
 save(data) {
   return new Promise((resolve, reject) => {
-    this.http.post('http://testmariadb.alwaysdata.net/public/stock/stocks/',data)
+    this.http.post('http://testmariadb.alwaysdata.net/public/stock/stocks',data)
       .subscribe(res => {
         resolve(res);
       }, (err) => {

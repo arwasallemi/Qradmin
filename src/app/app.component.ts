@@ -31,6 +31,9 @@ import { ListeFacturePage } from '../pages/liste-facture/liste-facture';
 import { SortieCltPage } from '../pages/sortie-clt/sortie-clt';
 import { SortieVldPage } from '../pages/sortie-vld/sortie-vld';
 import { VerifiedPage } from '../pages/verified/verified';
+import { SitePage } from '../pages/site/site';
+import { TabsPage } from '../pages/tabs/tabs';
+import { TempPage } from '../pages/temp/temp';
 
 @Component({
   templateUrl: 'app.html'
@@ -39,7 +42,7 @@ export class MyApp {
 
   
 
-  rootPage:any = HomePage;
+  rootPage:any =TempPage;
 
 
 

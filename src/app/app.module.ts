@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule , Component} from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -91,12 +91,17 @@ import { TestPage } from '../pages/test/test';
 import { CrudLoginProvider } from '../providers/crudLogin/crud';
 import { AuthProvider } from '../providers/auth/auth';
 import { VerifiedPage } from '../pages/verified/verified';
+import { SitePage } from '../pages/site/site';
+import { TabsPage } from '../pages/tabs/tabs';
+import { TempPage } from '../pages/temp/temp';
 
  
  
  
 @NgModule({
+
   declarations: [
+
     MyApp,
     HomePage,
     BlankPage,
@@ -138,6 +143,9 @@ ListeFacturePage,
 ReglementPage,
 FactPage,
 VerifiedPage,
+SitePage,
+TabsPage,
+TempPage
   ],
   imports: [
     HttpModule,
@@ -187,6 +195,9 @@ EntrepotPage,
  FactPage,
  TestPage,
  VerifiedPage,
+ SitePage,
+ TabsPage,
+ TempPage
   ],
   providers: [
  

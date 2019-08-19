@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { BonRetourPage } from '../bon-retour/bon-retour';
 import { HomePage } from '../home/home';
@@ -29,6 +29,7 @@ import { RessourcesPage } from '../ressources/ressources';
   selector: 'page-menu',
   templateUrl: 'menu.html',
 })
+
 export class MenuPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {

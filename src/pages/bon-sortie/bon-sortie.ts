@@ -24,6 +24,7 @@ import { EntrepotPage } from '../entrepot/entrepot';
 import { RessourcesPage } from '../ressources/ressources';
 import { ReservationPage } from '../reservation/reservation';
 import { SocieteProvider } from '../../providers/societe/societe';
+import { TabsPage } from '../tabs/tabs';
 
 /**
  * Generated class for the BonSortiePage page.
@@ -70,6 +71,7 @@ updated_at:''
   liststock: any;
   listsociete: any;
   soc: any;
+  listt: any;
   constructor(public providerSortie:ListesortieProvider,public navCtrl: NavController, 
     public navParams: NavParams,public provider:BonSortieProvider,
     public modalCtrl:ModalController,
@@ -185,18 +187,48 @@ if((this.listeSortie[i].id===this.liststock[j].produit) || (this.listeSortie[i].
     });
     
   }
-  get(){
-    this.provider.loadBonsortie()
-    .then(data => {
-      this.list= data;
-  
-      console.log("list:::::",this.list);
-      for(var i=0;i<this.list.length;i++){
+  getcloture(){
+   // this.get()
+    for(var i=0;i<this.list.length;i++){
+      if(this.listt[i].etat==="cloturé"){
+        this.listbrl.push(this.list[i])
+        this.listrecherche.push(this.list[i])
+      }
+                }
+                this.list=this.listrecherche
+  }
+  getvalide(){
+   // this.get()
+    for(var i=0;i<this.list.length;i++){
+      if(this.listt[i].etat==="validé"){
+        this.listbrl.push(this.list[i])
+        this.listrecherche.push(this.list[i])
+      }
+                }
+                this.list=this.listrecherche
+  }
+  getbrouillon(){
+   // this.get()
+          for(var i=0;i<this.list.length;i++){
 if(this.list[i].etat==="brouillon"){
   this.listbrl.push(this.list[i])
   this.listrecherche.push(this.list[i])
 }
-      }
+          }
+          this.list=this.listrecherche
+  }
+  get(){
+    this.provider.loadBonsortie()
+    .then(data => {
+      this.list= data;
+      this.listt= data;
+      console.log("list:::::",this.list);
+//       for(var i=0;i<this.list.length;i++){
+// if(this.list[i].etat==="brouillon"){
+//   this.listbrl.push(this.list[i])
+//   this.listrecherche.push(this.list[i])
+// }
+//       }
     });
     
   }
@@ -325,5 +357,8 @@ entrepot(){
 }
 ressource(){
   this.navCtrl.setRoot(RessourcesPage)
+}
+mvt(){
+  this.navCtrl.setRoot(TabsPage)
 }
 }

@@ -1,111 +1,51 @@
  
     <div style="color:white;height: 50px">
             <div *ngFor="let item of listsociete">
-                    <img [src]="soc.alt" style="width:10%;float:left;margin-left:50px;height:60px;"  >
+                    <img [src]="item.alt" style="width:10%;float:left;margin-left:50px;height:60px;"  >
                   </div>
-    <ion-icon name="cog" (click)="ressources()"  style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
-    <ion-icon name="home" (click)="societe()"  style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
-    <ion-icon name="car" (click)="ressource()" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>       
+    <ion-icon name="cog" (click)="ressources()"  style="font-size:30px;color:rgb(185, 190, 197);margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
+    <ion-icon name="home" (click)="societe()"  style="font-size:30px;color:rgb(185, 190, 197);margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
+    <ion-icon name="car" (click)="ressource()" style="font-size:30px;color:rgb(185, 190, 197);margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>       
     </div>
 <div class="area">
     
   <div style="margin-left:100px">
 
-        <ion-item  style="width:20% ;background-color: transparent" >
-          <ion-label > Filtre </ion-label>
-        
-             <ion-select  [(ngModel)]="search" >
-        
-              <ion-option>client</ion-option>
-              <ion-option>evenement</ion-option>
-              <ion-option>date evenement</ion-option>
-          </ion-select>
-        
-         </ion-item>
-         
-          <ion-searchbar placeholder="rechercher ...." [(ngModel)]="myInput" (ionInput)="getItems($event)" style="float:left;width:20%"></ion-searchbar>
-        
-        <ion-card>
-         <table class="fixed_header">
-          <tr>
-            <th>#</th>
-            <th>Evenement</th>
-            <th>Client</th>
-            <th>Date Sortie</th>
-            <th>date Retour</th>
-            <th>date Evenement</th>
-            <th>Adresse livraison</th>
-            <th>Nom transporteur</th>
-            <th>Tel transporteur</th>
-            <th>Matricule</th>
-            
-            <th>Equipe Technique</th>
-           
-        
-        <th>Entrepot</th>
-        <th style="width:200px;margin-top:10px"  class="dropdown">
-         Status
-            <ion-icon id="td" name="arrow-dropdown"></ion-icon>
-      <div class="dropdown-content">
-            <a  (click)="get()">All</a>
-         <a  (click)="getcloture()">cloturé</a>
-         <a  (click)="getvalide()">validé</a>
-         <a  (click)="getbrouillon()">brouillon</a>
-         
-    </div>
-     
-       
-    </th>
-         <th></th>
-         <th></th>
-            <th>Date de creation</th>
-           <th></th>
-           <th></th>
-             <th>Action</th>
-          </tr>
-          <tr *ngFor="let bon of list" >
-             <td>{{bon.id}}</td>
-            <td>{{bon.evenement}}</td>
-            <td>{{bon.nom_client}}</td>
-            <td>{{bon.dateSortie}}</td>
-            <td>{{bon.dateRetour}}</td>
-            <td>{{bon.dateEvenement}}</td>
-            <td>{{bon.adresse_livraison}}</td>
-            <td>{{bon.transporteur_nom}}</td>
-            <td>{{bon.transporteur_tel}}</td> 
-        
-            <td>{{bon.matricule}}</td>
-          
-            <td>{{bon.equipe_name}}</td>
-            <td>{{bon.entrepot}}</td>
-            <td style="width:200px;margin-top:10px"  class="dropdown">
-                    {{bon.etat}}
-                    <ion-icon id="td" name="arrow-dropdown"></ion-icon>
-              <div class="dropdown-content">
-                 <a  (click)="cloture(bon)">cloturé</a>
-                 <a  (click)="valide(bon)">validé</a>
-                 
-            </div>
-             
-               
-            </td>
-         <td></td>
-         <td></td>
-                 
-            <td>{{bon.created_at}}</td>
-        
-           <td></td>
-           <td></td>
-            <td> 
-           
-              <ion-icon id="action" name="trash" (click)="delete(bon.id)" style="color:red"></ion-icon>
-              <ion-icon id="action" name="eye" style="color:#3ea7d8" (click)="show(bon)"></ion-icon> </td>
-          </tr>
-        
-        </table> 
-        
-        </ion-card>
+         <ion-card>
+                <ion-item>
+                        <ion-label>Produit</ion-label>
+                        <ion-select  [(ngModel)]="prod" (ionChange)="selectProduit()">
+                        
+                          <ion-option  *ngFor="let prdt of listPrdt" >{{prdt.ref}}</ion-option>
                          
+                        </ion-select>
+                      
+                      </ion-item>
+                <ion-item>
+                        <ion-label>Entrepot origine</ion-label>
+                        <ion-select  [(ngModel)]="entre" (ionChange)="getqte()">
+                        
+                          <ion-option  *ngFor="let ent of listO" >{{ent.entrepot}}</ion-option>
+                          
+                        </ion-select>
+                      </ion-item>
+                      
+                      <ion-item>
+                            <ion-label>Entrepot Destination</ion-label>
+                            <ion-select  [(ngModel)]="dest" (ionChange)="selectEntrepot()">
+                            
+                              <ion-option  *ngFor="let entD of listEnt" >{{entD.libelle}}</ion-option>
+                              
+                            </ion-select>
+                          </ion-item>
+                          <ion-item>
+                                <ion-label>Quantité</ion-label>
+                               <ion-input [(ngModel)]="qte"></ion-input>
+                              
+                              </ion-item>            
+                      
+             <button ion-button (click)="confirmer()">Confirmer</button>
+         </ion-card>
          </div>
     </div>
   <nav class="main-menu">
