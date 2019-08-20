@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule , Component} from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -87,6 +87,7 @@ import { AuthProvider } from '../providers/auth/auth';
 import { VerifiedPage } from '../pages/verified/verified';
 import { SitePage } from '../pages/site/site';
 import { TabsPage } from '../pages/tabs/tabs';
+import { TempPage } from '../pages/temp/temp';
 import { DashboardPage } from '../pages/dashboard/dashboard';
 import { IconsPage } from '../pages/icons/icons';
 import { MapPage } from '../pages/map/map';
@@ -95,14 +96,15 @@ import { TablesPage } from '../pages/tables/tables';
 import { TypographyPage } from '../pages/typography/typography';
 import { UpgradePage } from '../pages/upgrade/upgrade';
 import { UserPage } from '../pages/user/user';
-import { demandeCongeProvider } from '../providers/demande-cong\u00E9/demande-cong\u00E9';
-
+import { demandeCongeProvider } from '../providers/demande-congé/demande-congé';
 
  
  
  
 @NgModule({
+
   declarations: [
+
     MyApp,
     HomePage,
     BlankPage,
@@ -156,6 +158,9 @@ UpgradePage,
 UserPage,
 
 VerifiedPage,
+SitePage,
+TabsPage,
+TempPage
   ],
   imports: [
     HttpModule,
@@ -205,7 +210,10 @@ EntrepotPage,
  FactPage,
  SitePage,
  TestPage,
+ VerifiedPage,
+ SitePage,
  TabsPage,
+<<<<<<< HEAD
  DashboardPage,
 IconsPage,
 MapPage,
@@ -216,6 +224,9 @@ TypographyPage,
 UpgradePage,
 UserPage,
 
+=======
+ TempPage
+>>>>>>> 861e6e9b1ab5ee11b7c469f081d148032c556cea
   ],
   providers: [
  

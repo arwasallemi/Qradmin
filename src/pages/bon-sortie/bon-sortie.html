@@ -43,7 +43,19 @@
            
         
         <th>Entrepot</th>
-            <th>Status</th>
+        <th style="width:200px;margin-top:10px"  class="dropdown">
+         Status
+            <ion-icon id="td" name="arrow-dropdown"></ion-icon>
+      <div class="dropdown-content">
+            <a  (click)="get()">All</a>
+         <a  (click)="getcloture()">cloturé</a>
+         <a  (click)="getvalide()">validé</a>
+         <a  (click)="getbrouillon()">brouillon</a>
+         
+    </div>
+     
+       
+    </th>
          <th></th>
          <th></th>
             <th>Date de creation</th>
@@ -51,7 +63,7 @@
            <th></th>
              <th>Action</th>
           </tr>
-          <tr *ngFor="let bon of listbrl" >
+          <tr *ngFor="let bon of list" >
              <td>{{bon.id}}</td>
             <td>{{bon.evenement}}</td>
             <td>{{bon.nom_client}}</td>
@@ -107,46 +119,30 @@
                 </a>
               
             </li> -->
+            <li>
+                    <a (click)="Sortieb()">
+                        <i class="fa fa-edit fa-2x"></i>
+                        <span class="nav-text">
+                                Bon de Sortie 
+                        </span>
+                    </a>
+                </li>
             <li class="has-subnav">
                 <a (click)="bonretour()">
                     <i class="fa fa-file fa-2x"></i>
                     <span class="nav-text">
-                        Bon Retour
+                        Bon de Retour
                     </span>
                 </a>
                 
             </li>
-            <li class="has-subnav">
-                <a (click)="SortieV()">
-                   <i class="fa fa-folder fa-2x"></i>
-                    <span class="nav-text">
-                        Bon de Sortie Validées
-                    </span>
-                </a>
-                
-            </li>
-            <li class="has-subnav">
-                <a (click)="SortieC()">
-                   <i class="fa fa-folder-open fa-2x"></i>
-                    <span class="nav-text">
-                            Bon de Sortie Cloturées
-                    </span>
-                </a>
-               
-            </li>
-            <li>
-                <a (click)="Sortieb()">
-                    <i class="fa fa-edit fa-2x"></i>
-                    <span class="nav-text">
-                            Bon de Sortie Brouillon
-                    </span>
-                </a>
-            </li>
+        
+     
             <li>
                 <a (click)="tech()">
                     <i class="fa fa-user fa-2x"></i>
                     <span class="nav-text">
-                       Techniciens
+                    Employés
                     </span>
                 </a>
             </li>
@@ -154,7 +150,7 @@
                <a (click)="Devis()">
                    <i class="fa fa-copy fa-2x"></i>
                     <span class="nav-text">
-                       Devis
+                      Offre de prix
                     </span>
                 </a>
             </li>
@@ -162,18 +158,63 @@
                <a (click)="facturee()">
                     <i class="fa fa-edit fa-2x"></i>
                     <span class="nav-text">
-                     Nouvelle Facture
+                    Facturation
                     </span>
                 </a>
             </li>
+            <li >
+                    <a (click)="listFact()">
+                         <span style="font-size:.8em;margin-left:70px;">
+                        | liste
+                         </span>
+                     </a>
+                 </li>
+                 <li >
+                        <a (click)="facturee()">
+                             <span style="font-size:.8em;margin-left:70px;">
+                            | Nouvelle facture
+                             </span>
+                         </a>
+                     </li>
+    
             <li>
-                <a (click)="listFact()">
-                   <i class="fa fa-folder fa-2x"></i>
-                    <span class="nav-text">
-                        Liste des factures
-                    </span>
-                </a>
-            </li>
+                    <a (click)="produitt()">
+                       <i class="fa fa-file fa-2x"></i>
+                        <span class="nav-text">
+                         Produits
+                        </span>
+                    </a>
+                </li>
+                <li>
+                        <a >
+                           <i class="fa fa-file fa-2x"></i>
+                            <span class="nav-text">
+                               Stock
+                            </span>
+                        </a>
+                    </li>
+                    <li >
+                            <a (click)="stock()">
+                                 <span style="font-size:.8em;margin-left:70px;">
+                                | Stock disponible
+                                 </span>
+                             </a>
+                         </li>
+                         <li >
+                                <a (click)="mvt()">
+                                     <span style="font-size:.8em;margin-left:70px;">
+                                    | Mouvement de stock
+                                     </span>
+                                 </a>
+                             </li>
+                    <li>
+                            <a (click)="entrepot()">
+                               <i class="fa fa-file fa-2x"></i>
+                                <span class="nav-text">
+                                 Entrepots
+                                </span>
+                            </a>
+                        </li>
             <li>
                     <a (click)="reservation()">
                        <i class="fa fa-file fa-2x"></i>
@@ -182,30 +223,9 @@
                         </span>
                     </a>
                 </li>
-                <li>
-                        <a (click)="stock()">
-                           <i class="fa fa-file fa-2x"></i>
-                            <span class="nav-text">
-                               Stock
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                            <a (click)="produitt()">
-                               <i class="fa fa-file fa-2x"></i>
-                                <span class="nav-text">
-                                 Produits
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                                <a (click)="entrepot()">
-                                   <i class="fa fa-file fa-2x"></i>
-                                    <span class="nav-text">
-                                     Entrepots
-                                    </span>
-                                </a>
-                            </li>
+             
+             
+                   
         </ul>
 
         <ul class="logout">

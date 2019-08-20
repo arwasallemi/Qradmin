@@ -5,7 +5,23 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { SocietePage } from '../pages/societe/societe';
 
+<<<<<<< HEAD
 
+=======
+import { LoginPage } from '../pages/login/login';
+import { TestPage } from '../pages/test/test';
+
+
+import { BonRetourPage } from '../pages/bon-retour/bon-retour';
+import { FacturePage } from '../pages/facture/facture';
+import { ListeFacturePage } from '../pages/liste-facture/liste-facture';
+import { SortieCltPage } from '../pages/sortie-clt/sortie-clt';
+import { SortieVldPage } from '../pages/sortie-vld/sortie-vld';
+import { VerifiedPage } from '../pages/verified/verified';
+import { SitePage } from '../pages/site/site';
+import { TabsPage } from '../pages/tabs/tabs';
+import { TempPage } from '../pages/temp/temp';
+>>>>>>> 861e6e9b1ab5ee11b7c469f081d148032c556cea
 
 @Component({
   templateUrl: 'app.html'
@@ -14,7 +30,7 @@ export class MyApp {
 
   
 
-  rootPage:any = HomePage;
+  rootPage:any =TempPage;
 
 
 
