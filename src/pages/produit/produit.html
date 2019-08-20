@@ -60,6 +60,11 @@
                    
                   </div>
                   <div class="boxtop" >
+                    <ion-label style="font-size: 0.8em">Barre code</ion-label>
+                    <input type="file" (change)="encodeImageFileAsURL2($event)" />
+                 
+                </div>
+                  <div class="boxtop" >
                       <ion-item>
                             <ion-label style="font-size: 0.8em">TVA</ion-label>
                             <ion-select [(ngModel)]="tva">
@@ -72,11 +77,14 @@
                      
                       <div class="boxtop">
                
-                          <button ion-button (click)="add()">Ajouter</button>
+                          <button ion-button (click)="add()">Ajouter </button>
                       </div>
            
+                    
                   
                     </div>
+
+
                   
                  
     </ion-card>

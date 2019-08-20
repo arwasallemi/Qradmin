@@ -61,11 +61,6 @@ import { ImageQrcodePage } from '../pages/image-qrcode/image-qrcode';
 import { SignupPage } from '../pages/signup/signup';
 import { ListeDevisProvider } from '../providers/liste-devis/liste-devis';
 
-
-
-
-
-
 import { DemandeCongePage } from '../pages/demande-conge/demande-conge';
 import { PointagePage } from '../pages/pointage/pointage';
 import { SalairePage } from '../pages/salaire/salaire';
@@ -96,7 +91,6 @@ import { DashboardPage } from '../pages/dashboard/dashboard';
 import { IconsPage } from '../pages/icons/icons';
 import { MapPage } from '../pages/map/map';
 import { NotificationsPage } from '../pages/notifications/notifications';
-import { RtlPage } from '../pages/rtl/rtl';
 import { TablesPage } from '../pages/tables/tables';
 import { TypographyPage } from '../pages/typography/typography';
 import { UpgradePage } from '../pages/upgrade/upgrade';
@@ -155,7 +149,7 @@ DashboardPage,
 IconsPage,
 MapPage,
 NotificationsPage,
-RtlPage,
+
 TablesPage,
 TypographyPage,
 UpgradePage,
@@ -216,7 +210,7 @@ EntrepotPage,
 IconsPage,
 MapPage,
 NotificationsPage,
-RtlPage,
+
 TablesPage,
 TypographyPage,
 UpgradePage,
