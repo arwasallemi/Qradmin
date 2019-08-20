@@ -213,7 +213,7 @@ EntrepotPage,
  VerifiedPage,
  SitePage,
  TabsPage,
-<<<<<<< HEAD
+
  DashboardPage,
 IconsPage,
 MapPage,
@@ -224,9 +224,9 @@ TypographyPage,
 UpgradePage,
 UserPage,
 
-=======
+
  TempPage
->>>>>>> 861e6e9b1ab5ee11b7c469f081d148032c556cea
+
   ],
   providers: [
  
