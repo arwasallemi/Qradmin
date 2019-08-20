@@ -1,214 +1,164 @@
- 
-
-<ion-content>
-    <div style="color:white;height: 50px">
-        <div *ngFor="let item of listsociete">
-                <img [src]="soc.alt" style="width:10%;float:left;margin-left:50px;height:60px;"  >
-              </div>
-<ion-icon name="cog" (click)="ressources()"  style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
-<ion-icon name="home" (click)="societe()"  style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
-<ion-icon name="car" (click)="ressource()" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>       
-</div>
-<div class="area">
-  <div style="margin-left:100px">
-      <p id="title">Liste des bon de retour</p>
-  
-      <ion-item  style="width:20% ;background-color: transparent" >
-        <ion-label > Filtre </ion-label>
-      
-           <ion-select  [(ngModel)]="search" >
-      
-            <ion-option>Date retour</ion-option>
-            <ion-option>matricule</ion-option>
-            <ion-option>nom transporteur</ion-option>
-            <ion-option>etat</ion-option>
-        </ion-select>
-      
-       </ion-item>
-       <ion-searchbar  placeholder="rechercher ...." [(ngModel)]="myInput" (ionInput)="getItems($event)" style="float:left;width:20%"></ion-searchbar>
-      
-      
-       <ion-card>
-      <table class="fixed_header">
-        <tr>
-            <th>#</th>
-            <th>DateRetour</th>
-            <th>Nom du transporteur</th>
-            <th>Tel du transporteur</th>
-            <th>equipe</th>
-            <th>matricule</th>
-            <th>Entrepot</th>
-            <th>etat</th>
-            <th></th>
-            <th></th>
-            <th>Date de creation</th>
-            <th>Note</th>
-            <th>Action</th>
-        </tr>
-      
-        <tr *ngFor="let bon of list">
-          <td>{{bon.id}}</td>
-          <td>{{bon.dateRetour}}</td>
-          <td>{{bon.transporteur_nom}}</td>
-          <td>{{bon.transporteur_tel}}</td>
-          <td>{{bon.equipe_name}}</td>
-          <td>{{bon.matricule}}</td>
-          <td>{{bon.entrepot}}</td>
-          <td style="width:200px;margin-top:10px"  class="dropdown">
-              {{bon.etat}}
-              <ion-icon id="td" name="arrow-dropdown"></ion-icon>
-        <div class="dropdown-content">
-           <a  (click)="cloture(bon)">cloturé</a>
-           <a  (click)="valide(bon)">validé</a>
-           
-      </div>
-      </td>
-          <td></td>
-          <td></td>
-          <td>{{bon.created_at}}</td>
-          <td>{{bon.note}}</td>
-          <td>
-              <!-- <ion-icon id="action" name="create" (click)="edit(bon.id)" style="color:#178a43"></ion-icon>  -->
-            <ion-icon id="action" name="trash" (click)="delete(bon.id)" style="color:red"></ion-icon>
-            <ion-icon id="action" name="eye" style="color:#3ea7d8" (click)="show(bon)"></ion-icon>
-          </td>
-        </tr>
-      </table>
-       </ion-card>
+         <div *ngFor="let item of listsociete">
+                <img [src]="soc.alt" style="width:10%;float:left;margin-left:30px;height:60px;"  >
+              </div> 
+              <div style="color:white;height: 50px">
        
-             
-  </div>
- 
+                    <ion-icon name="cog" (click)="gotoparam()"  style="font-size:30px;color:#f70909;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
+                    <ion-icon name="home" (click)="gotosociete()"  style="font-size:30px;color:#f70909;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
+                    <ion-icon name="car" (click)="gotoressource()" style="font-size:30px;color:#f70909;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>       
+        </div>
+<div class="container">
+    <nav>
+        <ul class="mcd-menu">
 
-</div>
-<nav class="main-menu" style="float:left">
+          <li (click)="gotoSortie()">
+            <a>
+              <i><ion-icon name="cart" style="font-size:25px;color:dimgray"></ion-icon></i>
+              <strong>Bon de sortie</strong>
+            </a>
+          </li>
+          <li (click)="gotoretour()">
+            <a>
+              <i><ion-icon name="archive" style="font-size:25px;color:dimgray"></ion-icon></i>
+              <strong>Bon de retour</strong>
+            </a>
+</li>
+  
+          <li (click)="gotoempl()">
+            <a>
+              <i><ion-icon name="person" style="font-size:25px;color:dimgray"></ion-icon></i>
+              <strong>Employés</strong>
+            
+            </a>
+          </li>
+          <li>
+            <a>
+              <i><ion-icon name="contacts" style="font-size:25px;color:dimgray"></ion-icon></i>
+              <strong>GRH</strong>
+        
+            </a>
             <ul>
-                <!-- <li>
-                    <a (click)="dashboard()">
-                        <i class="fa fa-home fa-2x"></i>
-                        <span class="nav-text">
-                            Dashboard
-                        </span>
-                    </a>
-                  
-                </li> -->
-                <li class="has-subnav">
-                    <a (click)="bonretour()">
-                        <i class="fa fa-file fa-2x"></i>
-                        <span class="nav-text">
-                            Bon Retour
-                        </span>
-                    </a>
-                    
-                </li>
-                <li class="has-subnav">
-                    <a (click)="SortieV()">
-                       <i class="fa fa-folder fa-2x"></i>
-                        <span class="nav-text">
-                            Bon de Sortie Validées
-                        </span>
-                    </a>
-                    
-                </li>
-                <li class="has-subnav">
-                    <a (click)="SortieC()">
-                       <i class="fa fa-folder-open fa-2x"></i>
-                        <span class="nav-text">
-                                Bon de Sortie Cloturées
-                        </span>
-                    </a>
-                   
-                </li>
-                <li>
-                    <a (click)="Sortieb()">
-                        <i class="fa fa-edit fa-2x"></i>
-                        <span class="nav-text">
-                                Bon de Sortie Brouillon
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a (click)="tech()">
-                        <i class="fa fa-user fa-2x"></i>
-                        <span class="nav-text">
-                           Techniciens
-                        </span>
-                    </a>
-                </li>
-                <li>
-                   <a (click)="Devis()">
-                       <i class="fa fa-copy fa-2x"></i>
-                        <span class="nav-text">
-                           Devis
-                        </span>
-                    </a>
-                </li>
-                <li>
-                   <a (click)="facture()">
-                        <i class="fa fa-edit fa-2x"></i>
-                        <span class="nav-text">
-                         Nouvelle Facture
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a (click)="listFact()">
-                       <i class="fa fa-folder fa-2x"></i>
-                        <span class="nav-text">
-                            Liste des factures
-                        </span>
-                    </a>
-                </li>
-                <li>
-                        <a (click)="reservation()">
-                           <i class="fa fa-file fa-2x"></i>
-                            <span class="nav-text">
-                               Reservation
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                            <a (click)="stock()">
-                               <i class="fa fa-file fa-2x"></i>
-                                <span class="nav-text">
-                                   Stock
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                                <a (click)="produit()">
-                                   <i class="fa fa-file fa-2x"></i>
-                                    <span class="nav-text">
-                                     Produits
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                    <a (click)="entrepot()">
-                                       <i class="fa fa-file fa-2x"></i>
-                                        <span class="nav-text">
-                                         Entrepots
-                                        </span>
-                                    </a>
-                                </li>
+              <li><a  (click)="gotopointage()" >Pointage</a></li>
+       
+              <li><a  (click)="gotosalaire()" >Salaire</a></li>
+              <li><a (click)="gotodemande()">Demande de congé</a></li>
             </ul>
-
-            <ul class="logout">
-                <li>
-                   <a href="#">
-                         <i class="fa fa-power-off fa-2x"></i>
-                        <span class="nav-text">
-                            Logout
-                        </span>
-                    </a>
-                </li>  
+          </li>
+          <li (click)="gotoDevis()">
+            <a>
+              <i><ion-icon name="cash" style="font-size:25px;color:dimgray"></ion-icon></i>
+              <strong>Offre de prix</strong>
+            
+            </a>
+          </li>
+          <li>
+            <a>
+              <i><ion-icon name="calculator" style="font-size:25px;color:dimgray"></ion-icon></i>
+              <strong>Facturation</strong>
+        
+            </a>
+            <ul>
+              <li><a (click)="gotolistfact()">Liste</a></li>
+       
+              <li><a (click)="gotofacture()">Nouvelle facture</a></li>
             </ul>
-         
-        </nav>
- 
+          </li>
+          <li (click)="gotoproduit()">
+            <a>
+              <i><ion-icon name="cube" style="font-size:25px;color:dimgray"></ion-icon></i>
+              <strong>Produits</strong>
+            
+            </a>
+          </li>
+          <li >
+            <a>
+              <i><ion-icon name="cart" style="font-size:25px;color:rgb(105, 105, 105)"></ion-icon></i>
+              <strong>Stock</strong>
+        
+            </a>
+            <ul>
+              <li><a (click)="gotostock()">Stock disponible</a></li>
+       
+              <li><a (click)="gotomvt()">Mouvement de stock</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
    
+    </div>
+    <div style="margin-left:190px;margin-top:7%">
 
+    
+      <div style="margin-left:100px">
+          <p id="title">Liste des bon de retour</p>
+      
+          <ion-item  style="width:20% ;background-color: transparent" >
+            <ion-label > Filtre </ion-label>
+          
+               <ion-select  [(ngModel)]="search" >
+          
+                <ion-option>Date retour</ion-option>
+                <ion-option>matricule</ion-option>
+                <ion-option>nom transporteur</ion-option>
+                <ion-option>etat</ion-option>
+            </ion-select>
+          
+           </ion-item>
+           <ion-searchbar  placeholder="rechercher ...." [(ngModel)]="myInput" (ionInput)="getItems($event)" style="float:left;width:20%"></ion-searchbar>
+          
+          
+           <ion-card>
+          <table class="fixed_header">
+            <tr>
+                <th>#</th>
+                <th>DateRetour</th>
+                <th>Nom du transporteur</th>
+                <th>Tel du transporteur</th>
+                <th>equipe</th>
+                <th>matricule</th>
+                <th>Entrepot</th>
+                <th>etat</th>
+                <th></th>
+                <th></th>
+                <th>Date de creation</th>
+                <th>Note</th>
+                <th>Action</th>
+            </tr>
+          
+            <tr *ngFor="let bon of list">
+              <td>{{bon.id}}</td>
+              <td>{{bon.dateRetour}}</td>
+              <td>{{bon.transporteur_nom}}</td>
+              <td>{{bon.transporteur_tel}}</td>
+              <td>{{bon.equipe_name}}</td>
+              <td>{{bon.matricule}}</td>
+              <td>{{bon.entrepot}}</td>
+              <td style="width:200px;margin-top:10px"  class="dropdown">
+                  {{bon.etat}}
+                  <ion-icon id="td" name="arrow-dropdown"></ion-icon>
+            <div class="dropdown-content">
+               <a  (click)="cloture(bon)">cloturé</a>
+               <a  (click)="valide(bon)">validé</a>
+               
+          </div>
+          </td>
+              <td></td>
+              <td></td>
+              <td>{{bon.created_at}}</td>
+              <td>{{bon.note}}</td>
+              <td>
+                  <!-- <ion-icon id="action" name="create" (click)="edit(bon.id)" style="color:#178a43"></ion-icon>  -->
+                <ion-icon id="action" name="trash" (click)="delete(bon.id)" style="color:red"></ion-icon>
+                <ion-icon id="action" name="eye" style="color:#3ea7d8" (click)="show(bon)"></ion-icon>
+              </td>
+            </tr>
+          </table>
+           </ion-card>
+           
+                 
+      </div>
+     
+    
+    </div>
 
-
-  </ion-content>
- 
+    

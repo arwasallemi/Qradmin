@@ -125,7 +125,7 @@ delete(id){
      headers.append('Authorization', 'Bearer '+value);
      console.log('value: ' + value);
 
-     this.http.delete('http://localhost:8000/produit/produits/' +id,    {headers: headers})
+     this.http.delete('http://testmariadb.alwaysdata.net/public/produit/produits/' +id,    {headers: headers})
        .map(res => res.json())
        .subscribe(data => {
          resolve(data);

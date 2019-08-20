@@ -1,18 +1,287 @@
-<!--
-  Generated template for the DemandeCongePage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
+<html>
+    <div style="color:white;height: 50px">
+      <div *ngFor="let item of listsociete">
+              <img [src]="soc.alt" style="width:10%;float:left;margin-left:50px"  >
+            </div>
+  <ion-icon name="cog" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
+  <ion-icon name="home" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
+  <ion-icon name="car" (click)="ressource()" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>       
+  
+  
+  </div>
+  <div class="area">
+    <div style="margin-left:100px">
+  
+  
+  
+      <p id="title">Demande Congé</p>
+      <ion-card>
 
-  <ion-navbar>
-    <ion-title>demandeConge</ion-title>
-  </ion-navbar>
+              
+            <ion-item style="float:left;width:20%">
+   
 
-</ion-header>
+                    <ion-label> Réference </ion-label>
+            
+                      <ion-input  type="text" [(ngModel)]="ref" ></ion-input>
+               
+                    </ion-item>
+          <ion-item style="float:left;width:20%">
+       
+  
+      <ion-label> Nom employé  </ion-label>
+    
+         <ion-select  [(ngModel)]="nomEmpl" (ionChange)="chooseid()">
+    
+        <ion-option *ngFor="let item of listEmpl"  >{{item.name}}</ion-option>
+    
+      </ion-select>
+    
+  
+          </ion-item>
 
+          <ion-item style="width:40%">
+              <ion-label>Date début</ion-label>
+              <ion-datetime displayFormat="DD-MM-YYYY" pickerFormat="DD MMMM YYYY"   min="2019" max="2040-12-31"[(ngModel)]="date1" ></ion-datetime>
+       
+            </ion-item>
+            <ion-item style="width:40%">
+                <ion-label>Date fin</ion-label>
+                <ion-datetime displayFormat="DD-MM-YYYY" pickerFormat="DD MMMM YYYY"   min="2019" max="2040-12-31"[(ngModel)]="date2" ></ion-datetime>
+         
+              </ion-item>
+              <ion-item style="float:left;width:20%">
+   
 
-<ion-content padding>
+                <ion-label> Durée  </ion-label>
+        
+                  <ion-input  type="number" [(ngModel)]="duree" ></ion-input>
+           
+                </ion-item>
+              
+            
+                <ion-item style="float:left;width:20%">
+   
 
-</ion-content>
+                    <ion-label> Etat </ion-label>
+            
+                      <ion-input  type="text" [(ngModel)]="etat" ></ion-input>
+               
+                    </ion-item>
+                  
+            
+         
+                    <ion-item style="float:left;width:20%">
+   
+
+                        <ion-label> Approbateur  </ion-label>
+                
+                          <ion-input  type="text" [(ngModel)]="approbateur" ></ion-input>
+                   
+                        </ion-item>
+                      
+              
+               
+                  <button ion-button (click)="add()"> Ajouter  </button>
+  
+  </ion-card>
+   
+  
+  <ion-card>
+   
+   
+  
+    <table >
+      <tr>
+        <th>#</th>
+    <th>Employé</th>
+        <th>Réf</th>
+        <th>Durée</th>
+        <th>Date Débur</th>
+        <th>Date Fin</th>
+        <th>Etat</th>
+        <th>Approbateur</th>
+        <th>Date de création</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor="let item of listpointage ">
+        
+        <td>{{item.id}}</td>
+        <td>{{item.employeur_id}}</td>
+        <td>{{item.ref}}</td>
+        <td><ion-input [(ngModel)]="item.duree"></ion-input></td>
+        <td><ion-input [(ngModel)]="item.date_debut"></ion-input></td>
+        <td><ion-input [(ngModel)]="item.date_fin"></ion-input></td>
+        <td>{{item.etat}}</td>
+        <td>{{item.approbateur}}</td>
+        <td><ion-input [(ngModel)]="item.created_at"></ion-input></td>
+
+  
+    <td> 
+          <ion-icon id="icon" name="create" (click)="edit(item)"  style="color:#178a43; size: 10px"></ion-icon> 
+  
+        
+        </td>
+      </tr>
+   
+    </table>
+    
+  </ion-card>
+  
+    </div>
+  </div><nav class="main-menu">
+        <ul>
+            <li>
+                <a (click)="dashboard()">
+                    <i class="fa fa-home fa-2x"></i>
+                    <span class="nav-text">
+                        Dashboard
+                    </span>
+                </a>
+              
+            </li>
+            <li class="has-subnav">
+                <a (click)="bonretour()">
+                    <i class="fa fa-file fa-2x"></i>
+                    <span class="nav-text">
+                        Bons de Retour
+                    </span>
+                </a>
+                
+            </li>
+            <li class="has-subnav">
+                <a (click)="SortieV()">
+                   <i class="fa fa-folder fa-2x"></i>
+                    <span class="nav-text">
+                        Bons de Sortie Validées
+                    </span>
+                </a>
+                
+            </li>
+            <li class="has-subnav">
+                <a (click)="SortieC()">
+                   <i class="fa fa-folder-open fa-2x"></i>
+                    <span class="nav-text">
+                            Bons de Sortie Cloturées
+                    </span>
+                </a>
+               
+            </li>
+            <li>
+                <a (click)="Sortieb()">
+                    <i class="fa fa-edit fa-2x"></i>
+                    <span class="nav-text">
+                            Bons de Sortie Brouillons
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a (click)="tech()">
+                    <i class="fa fa-user fa-2x"></i>
+                    <span class="nav-text">
+                       Techniciens
+                    </span>
+                </a>
+            </li>
+            <li>
+               <a (click)="Devis()">
+                   <i class="fa fa-copy fa-2x"></i>
+                    <span class="nav-text">
+                       Devis
+                    </span>
+                </a>
+            </li>
+            <li>
+               <a (click)="facture()">
+                    <i class="fa fa-edit fa-2x"></i>
+                    <span class="nav-text">
+                     Nouvelle Facture
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a (click)="listFact()">
+                   <i class="fa fa-folder fa-2x"></i>
+                    <span class="nav-text">
+                        Liste des factures
+                    </span>
+                </a>
+            </li>
+            <li>
+                    <a (click)="reservation()">
+                       <i class="fa fa-file fa-2x"></i>
+                        <span class="nav-text">
+                           Résérvation
+                        </span>
+                    </a>
+                </li>
+                <li>
+                        <a (click)="stock()">
+                           <i class="fa fa-file fa-2x"></i>
+                            <span class="nav-text">
+                               Stocks
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                            <a (click)="produitt()">
+                               <i class="fa fa-file fa-2x"></i>
+                                <span class="nav-text">
+                                 Produits
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                                <a (click)="enterpot()">
+                                   <i class="fa fa-file fa-2x"></i>
+                                    <span class="nav-text">
+                                     Entrepôts
+                                    </span>
+                                </a>
+                            </li> 
+                            <li>
+                              <a (click)="reourcesHum()">
+                                 <i class="fa fa-file fa-2x"></i>
+                                  <span class="nav-text">
+                                   GRH
+                                  </span>
+                              </a>
+                          </li>
+        </ul>
+  
+        <ul class="logout">
+            <li>
+               <a href="#">
+                     <i class="fa fa-power-off fa-2x"></i>
+                    <span class="nav-text">
+                        Logout
+                    </span>
+                </a>
+            </li>  
+        </ul>
+    </nav>
+  
+  </html>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+     

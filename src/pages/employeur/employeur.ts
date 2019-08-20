@@ -18,6 +18,7 @@ import { EntrepotPage } from '../entrepot/entrepot';
 import { RessourcesPage } from '../ressources/ressources';
 import { ReservationPage } from '../reservation/reservation';
 import { SocieteProvider } from '../../providers/societe/societe';
+import { AbscencePage } from '../abscence/abscence';
 
 /**
  * Generated class for the EmployeurPage page.
@@ -153,4 +154,6 @@ entrepot(){
 ressource(){
   this.navCtrl.setRoot(RessourcesPage)
 }
+grh(){
+  this.navCtrl.setRoot(AbscencePage)}
 }

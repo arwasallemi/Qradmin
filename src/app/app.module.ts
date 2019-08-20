@@ -71,7 +71,6 @@ import { PointagePage } from '../pages/pointage/pointage';
 import { SalairePage } from '../pages/salaire/salaire';
 import { AbscencePage } from '../pages/abscence/abscence';
 import { AbscenceProvider } from '../providers/abscence/abscence';
-import { DemandeCongéProvider } from '../providers/demande-congé/demande-congé';
 import { PointageProvider } from '../providers/pointage/pointage';
 import { SalaireProvider } from '../providers/salaire/salaire';
 import { ImprimerDevisPage } from '../pages/imprimer-devis/imprimer-devis';
@@ -94,6 +93,16 @@ import { VerifiedPage } from '../pages/verified/verified';
 import { SitePage } from '../pages/site/site';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TempPage } from '../pages/temp/temp';
+import { DashboardPage } from '../pages/dashboard/dashboard';
+import { IconsPage } from '../pages/icons/icons';
+import { MapPage } from '../pages/map/map';
+import { NotificationsPage } from '../pages/notifications/notifications';
+import { RtlPage } from '../pages/rtl/rtl';
+import { TablesPage } from '../pages/tables/tables';
+import { TypographyPage } from '../pages/typography/typography';
+import { UpgradePage } from '../pages/upgrade/upgrade';
+import { UserPage } from '../pages/user/user';
+import { demandeCongeProvider } from '../providers/demande-congé/demande-congé';
 
  
  
@@ -141,7 +150,19 @@ FacturePage,
 ImprimerfacturePage,
 ListeFacturePage,
 ReglementPage,
+SitePage,
 FactPage,
+TabsPage,
+DashboardPage,
+IconsPage,
+MapPage,
+NotificationsPage,
+RtlPage,
+TablesPage,
+TypographyPage,
+UpgradePage,
+UserPage,
+
 VerifiedPage,
 SitePage,
 TabsPage,
@@ -193,6 +214,7 @@ EntrepotPage,
  ListeFacturePage,
  ReglementPage,
  FactPage,
+ SitePage,
  TestPage,
  VerifiedPage,
  SitePage,
@@ -228,7 +250,7 @@ EntrepotPage,
     SocieteProvider,
     ListeDevisProvider,
     AbscenceProvider,
-    DemandeCongéProvider,
+    demandeCongeProvider,
     PointageProvider,
     SalaireProvider,
     BonRetourProvider,

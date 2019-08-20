@@ -1,128 +1,27 @@
-<div style="color:white;height: 50px">
-    <div *ngFor="let item of listsociete">
-            <img [src]="soc.alt" style="width:10%;float:left;margin-left:50px;height:60px;"  >
-          </div>
-<ion-icon name="cog" (click)="ressources()"  style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
-<ion-icon name="home" (click)="societe()"  style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
-<ion-icon name="car" (click)="ressource()" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>       
-</div>
-<div class="area"></div><nav class="main-menu">
-        <ul>
-            <li>
-                <a (click)="dashboard()">
-                    <i class="fa fa-home fa-2x"></i>
-                    <span class="nav-text">
-                        Dashboard
-                    </span>
-                </a>
-              
-            </li>
-            <li class="has-subnav">
-                <a (click)="bonretour()">
-                    <i class="fa fa-file fa-2x"></i>
-                    <span class="nav-text">
-                        Bon Retour
-                    </span>
-                </a>
-                
-            </li>
-            <li class="has-subnav">
-                <a (click)="SortieV()">
-                   <i class="fa fa-folder fa-2x"></i>
-                    <span class="nav-text">
-                        Bon de Sortie Validées
-                    </span>
-                </a>
-                
-            </li>
-            <li class="has-subnav">
-                <a (click)="SortieC()">
-                   <i class="fa fa-folder-open fa-2x"></i>
-                    <span class="nav-text">
-                            Bon de Sortie Cloturées
-                    </span>
-                </a>
-               
-            </li>
-            <li>
-                <a (click)="Sortieb()">
-                    <i class="fa fa-edit fa-2x"></i>
-                    <span class="nav-text">
-                            Bon de Sortie Brouillon
-                    </span>
-                </a>
-            </li>
-            <li>
-                <a (click)="tech()">
-                    <i class="fa fa-user fa-2x"></i>
-                    <span class="nav-text">
-                       Techniciens
-                    </span>
-                </a>
-            </li>
-            <li>
-               <a (click)="Devis()">
-                   <i class="fa fa-copy fa-2x"></i>
-                    <span class="nav-text">
-                       Devis
-                    </span>
-                </a>
-            </li>
-            <li>
-               <a (click)="facture()">
-                    <i class="fa fa-edit fa-2x"></i>
-                    <span class="nav-text">
-                     Nouvelle Facture
-                    </span>
-                </a>
-            </li>
-            <li>
-                <a (click)="listFact()">
-                   <i class="fa fa-folder fa-2x"></i>
-                    <span class="nav-text">
-                        Liste des factures
-                    </span>
-                </a>
-            </li>
-            <li>
-                    <a (click)="reservation()">
-                       <i class="fa fa-file fa-2x"></i>
-                        <span class="nav-text">
-                           Reservation
-                        </span>
-                    </a>
-                </li>
-                <li>
-                        <a (click)="stock()">
-                           <i class="fa fa-file fa-2x"></i>
-                            <span class="nav-text">
-                               Stock
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                            <a (click)="produit()">
-                               <i class="fa fa-file fa-2x"></i>
-                                <span class="nav-text">
-                                 Produits
-                                </span>
-                            </a>
-                        </li>
-        </ul>
 
-        <ul class="logout">
-            <li>
-               <a href="#">
-                     <i class="fa fa-power-off fa-2x"></i>
-                    <span class="nav-text">
-                        Logout
-                    </span>
-                </a>
-            </li>  
-        </ul>
-    </nav>
  
-  <p id="title">Ajouter une nouvelle  abscence</p>
+<html>
+    <div style="color:white;height: 50px">
+      <div *ngFor="let item of listsociete">
+              <img [src]="soc.alt" style="width:10%;float:left;margin-left:50px"  >
+            </div>
+  <ion-icon name="cog" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
+  <ion-icon name="home" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
+  <ion-icon name="car" (click)="ressource()" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>       
+  
+  
+  </div>
+  <div class="area">
+    <div style="margin-left:100px">
+  <br/> 
+  <br/> 
+  <br/> 
+  
+
+  <ion-title><u> <i> Ajouter une nouvelle  abscence</i>  </u></ion-title>
+  <br/> 
+  <br/> 
+  <br/> 
   <ion-card>
       <ion-item style="float:left;width:20%">
    
@@ -169,7 +68,9 @@
               <button ion-button (click)="add()"> Ajouter  </button>
 
 </ion-card>
-
+<br/> 
+<br/> 
+<br/> 
 
 <ion-card>
 
@@ -196,20 +97,186 @@
     <td><ion-input [(ngModel)]="item.motif_abscence"></ion-input></td>
     <td><ion-input [(ngModel)]="item.created_at"></ion-input></td>
 
-<td> 
-      <ion-icon id="icon" name="create" (click)="edit(item)"  style="color:#178a43; size: 10px"></ion-icon> 
+    <td> 
+        <ion-icon id="icon" name="create" (click)="edit(item)"  style="color:#178a43; size: 10px"></ion-icon> 
 
-    
-    </td>
-  </tr>
-
-</table>
-
+      
+      </td>
+    </tr>
+ 
+  </table>
+  
 </ion-card>
 
- 
+  </div>
+</div><nav class="main-menu">
+      <ul>
+          <li>
+              <a (click)="dashboard()">
+                  <i class="fa fa-home fa-2x"></i>
+                  <span class="nav-text">
+                      Dashboard
+                  </span>
+              </a>
+            
+          </li>
+          <li class="has-subnav">
+              <a (click)="bonretour()">
+                  <i class="fa fa-file fa-2x"></i>
+                  <span class="nav-text">
+                      Bons de Retour
+                  </span>
+              </a>
+              
+          </li>
+          <li class="has-subnav">
+              <a (click)="SortieV()">
+                 <i class="fa fa-folder fa-2x"></i>
+                  <span class="nav-text">
+                      Bons de Sortie Validées
+                  </span>
+              </a>
+              
+          </li>
+          <li class="has-subnav">
+              <a (click)="SortieC()">
+                 <i class="fa fa-folder-open fa-2x"></i>
+                  <span class="nav-text">
+                          Bons de Sortie Cloturées
+                  </span>
+              </a>
+             
+          </li>
+          <li>
+              <a (click)="Sortieb()">
+                  <i class="fa fa-edit fa-2x"></i>
+                  <span class="nav-text">
+                          Bons de Sortie Brouillons
+                  </span>
+              </a>
+          </li>
+          <li>
+              <a (click)="tech()">
+                  <i class="fa fa-user fa-2x"></i>
+                  <span class="nav-text">
+                     Techniciens
+                  </span>
+              </a>
+          </li>
+          <li>
+             <a (click)="Devis()">
+                 <i class="fa fa-copy fa-2x"></i>
+                  <span class="nav-text">
+                     Devis
+                  </span>
+              </a>
+          </li>
+          <li>
+             <a (click)="facture()">
+                  <i class="fa fa-edit fa-2x"></i>
+                  <span class="nav-text">
+                   Nouvelle Facture
+                  </span>
+              </a>
+          </li>
+          <li>
+              <a (click)="listFact()">
+                 <i class="fa fa-folder fa-2x"></i>
+                  <span class="nav-text">
+                      Liste des factures
+                  </span>
+              </a>
+          </li>
+          <li>
+                  <a (click)="reservation()">
+                     <i class="fa fa-file fa-2x"></i>
+                      <span class="nav-text">
+                         Résérvation
+                      </span>
+                  </a>
+              </li>
+              <li>
+                      <a (click)="stock()">
+                         <i class="fa fa-file fa-2x"></i>
+                          <span class="nav-text">
+                             Stocks
+                          </span>
+                      </a>
+                  </li>
+                  <li>
+                          <a (click)="produitt()">
+                             <i class="fa fa-file fa-2x"></i>
+                              <span class="nav-text">
+                               Produits
+                              </span>
+                          </a>
+                      </li>
+                      <li>
+                              <a (click)="enterpot()">
+                                 <i class="fa fa-file fa-2x"></i>
+                                  <span class="nav-text">
+                                   Entrepôts
+                                  </span>
+                              </a>
+                          </li> 
+                          <li>
+                            <a (click)="reourcesHum()">
+                               <i class="fa fa-file fa-2x"></i>
+                                <span class="nav-text">
+                                 GRH
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                                <a (click)="dmeConge()">
+                                   <i class="fa fa-file fa-2x"></i>
+                                    <span class="nav-text">
+                                    Demande Congé
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                    <a (click)="pointage()">
+                                       <i class="fa fa-file fa-2x"></i>
+                                        <span class="nav-text">
+                                        Pointage
+                                        </span>
+                                    </a>
+                                </li>
+      </ul>
+
+      <ul class="logout">
+          <li>
+             <a href="#">
+                   <i class="fa fa-power-off fa-2x"></i>
+                  <span class="nav-text">
+                      Logout
+                  </span>
+              </a>
+          </li>  
+      </ul>
+  </nav>
+
+</html>
 
 
 
-        
- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
