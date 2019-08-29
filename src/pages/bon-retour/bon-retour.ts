@@ -22,6 +22,7 @@ import { EntrepotPage } from '../entrepot/entrepot';
 import { RessourcesPage } from '../ressources/ressources';
 import { ReservationPage } from '../reservation/reservation';
 import { SocieteProvider } from '../../providers/societe/societe';
+import { ImprimerBonRetourPage } from '../imprimer-bon-retour/imprimer-bon-retour';
 
 /**
  * Generated class for the BonRetourPage page.
@@ -45,6 +46,7 @@ export class BonRetourPage {
   search: string;
   listsociete: any;
   soc: any;
+ // dataBonRetour: { dateRetour: Date; transporteur_nom: any; transporteur_tel: number; equipe_name: any; matricule: any; entrepot: any; etat: any; created_at: Date; note: any; };
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public retourprovider:BonRetourProvider,
@@ -78,6 +80,26 @@ export class BonRetourPage {
    //////////////////recherche
    initializeItems(): void {
     this.list= this.listrecherche;
+  }
+  imprimer(a){
+ //equipe_name: any; matricule: any; entrepot: any; etat: any; created_at: Date; note: any; };
+
+  let dataBonRetour = {
+      dateRetour:a.dateRetour,
+      transporteur_nom:a.transporteur_nom,
+      transporteur_tel:a.transporteur_tel,
+      equipe_name:a.equipe_name,
+      matricule:a.matricule,
+      entrepot:a.entrepot,
+      etat:a.etat,
+      created_at:a.created_at,
+      note : a.note
+  };
+
+  let liste = dataBonRetour
+    let modal = this.modalCtrl.create(ImprimerBonRetourPage, {liste:liste,});
+    modal.present();
+    console.log("Data:",dataBonRetour);
   }
   getItems(searchbar) {
     // Reset items back to all of the items

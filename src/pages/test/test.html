@@ -8,9 +8,9 @@
     <br>
     <br>
     <br>
-    <div *ngFor="let item of listsociete">
+    <!-- <div *ngFor="let item of listsociete">
       <img [src]="soc.alt" style="width:30%;float:left;margin-left:35%"  >
-    </div>
+    </div> -->
     <br>
     <br>
     <br>
@@ -38,6 +38,9 @@
 </svg>
 </label>
 <input id="password" name="password" class='lf--input' [(ngModel)]="password" placeholder='Password' type='password'>
+<button  ion-button clear item-end (click) ="togglePassword()"  color="black" style="height:14px;">
+    <ion-icon name="eye"    color="danger" item-end > </ion-icon>
+    </button>
 </div>
 <div class="flex-row" >
   <label class="lf--label" for="username" style="height:50px">
@@ -55,6 +58,6 @@
     </label>
     <input id="role" name="role" class='lf--input' [(ngModel)]="role" placeholder='role' type='text'>
     </div>
-<input class='lf--submit' style="height:50px;float:left" (click)='insertData()' value='Register'>
-<input class='lf--submit' style="height:50px;margin-left: 20%" (click)='return()' value='Return'>
+<input class='lf--submit' style="height:30px;float:left" (click)='insertData()' value='Register'>
+
 </form>

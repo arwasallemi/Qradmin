@@ -21,8 +21,9 @@ export class HomePage {
   listsociete: any;
   soc: any;
   nameuser
+  passwordShown : boolean = false;
 
-
+  passwordType : string ='password';
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -39,6 +40,18 @@ export class HomePage {
     console.log("ppppppp",window.localStorage.getItem("password"))
  //   this.log()
  this.log()
+  }
+  togglePassword() {
+    if(this.passwordShown) {
+  this.passwordShown = false;
+  this.passwordType = 'password';
+    }
+    else {
+      this.passwordShown = true;
+  this.passwordType = 'text';
+    }
+    
+    
   }
   getsociete(){
     this.providerSociete.loadsociete()

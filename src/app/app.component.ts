@@ -19,6 +19,8 @@ import { VerifiedPage } from '../pages/verified/verified';
 import { SitePage } from '../pages/site/site';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TempPage } from '../pages/temp/temp';
+import { DevisPage } from '../pages/devis/devis';
+import { ProduitPage } from '../pages/produit/produit';
 
 
 @Component({
@@ -28,7 +30,7 @@ export class MyApp {
 
   
 
-  rootPage:any =TempPage;
+  rootPage:any =ProduitPage;
 
 
 

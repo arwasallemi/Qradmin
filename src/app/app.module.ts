@@ -97,6 +97,8 @@ import { TypographyPage } from '../pages/typography/typography';
 import { UpgradePage } from '../pages/upgrade/upgrade';
 import { UserPage } from '../pages/user/user';
 import { demandeCongeProvider } from '../providers/demande-congé/demande-congé';
+import { ImprimerBonRetourPage } from '../pages/imprimer-bon-retour/imprimer-bon-retour';
+import { ImprimerBonSortiePage } from '../pages/imprimer-bon-sortie/imprimer-bon-sortie';
 
  
  
@@ -127,6 +129,8 @@ import { demandeCongeProvider } from '../providers/demande-congé/demande-congé
  PrintPage,
 
  ListesortiePage,
+ ImprimerBonRetourPage,
+ ImprimerBonSortiePage,
  LoginPage,
  SortieCltPage,
  SortieVldPage,
@@ -223,7 +227,8 @@ TablesPage,
 TypographyPage,
 UpgradePage,
 UserPage,
-
+ImprimerBonRetourPage,
+ImprimerBonSortiePage,
 
  TempPage
 

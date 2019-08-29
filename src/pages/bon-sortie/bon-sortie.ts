@@ -25,6 +25,7 @@ import { RessourcesPage } from '../ressources/ressources';
 import { ReservationPage } from '../reservation/reservation';
 import { SocieteProvider } from '../../providers/societe/societe';
 import { TabsPage } from '../tabs/tabs';
+import { ImprimerBonSortiePage } from '../imprimer-bon-sortie/imprimer-bon-sortie';
 
 /**
  * Generated class for the BonSortiePage page.
@@ -94,7 +95,33 @@ updated_at:''
     console.log('ionViewDidLoad BonSortiePage');
    
   }
- 
+
+  imprimer(a){
+    console.log("imprimerrrrrrrrrr")
+    //equipe_name: any; matricule: any; entrepot: any; etat: any; created_at: Date; note: any; };
+   
+     let dataBonSortie = {
+      evenement:a.evenement,
+      nom_client:a.nom_client,
+      dateSortie:a.dateSortie,
+      dateRetour:a.dateRetour,
+      dateEvenement:a.dateEvenement,
+      adresse_livraison:a.adresse_livraison,
+      transporteur_nom:a.transporteur_nom,
+      transporteur_tel:a.transporteur_tel,
+      matricule:a.matricule,
+      equipe_name:a.equipe_name,
+      entrepot:a.entrepot,
+      etat:a.etat,
+      created_at:a.created_at,
+  
+     };
+   
+     let liste = dataBonSortie
+       let modal = this.modalCtrl.create(ImprimerBonSortiePage, {liste:liste,});
+       modal.present();
+       console.log("Data:",dataBonSortie);
+     }
   
   getSortie(){
     this.providerSortie.get()

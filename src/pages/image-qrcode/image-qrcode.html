@@ -15,21 +15,21 @@
         <tr *ngFor="let qr of imageQrList" >
 <td>
 <div *ngFor="let post of imagelist">
-<img [src]="post.alt" style="height: 40px;;width:90%">
+<img [src]="post.alt" style="height: 80px;;width:90%">
 </div>          
-<img [src]="item.qrCode" style="height: 50px;width:90%"><p style="margin-left:20px;margin-top: 0%">{{item.libelle}}</p>
+<img [src]="item.qrCode" style="height: 80px;width:80%"><p style="margin-left:20px;margin-top: 0%">{{item.libelle}}</p>
 </td>
-<td>
+<td>     
 <div *ngFor="let post of imagelist">
-<img [src]="post.alt" style="height: 40px;width:90%">
+<img [src]="post.alt" style="height: 80px;width:90%">
 </div>
-<img [src]="item.qrCode" style="height: 50px;width:90%"><p style="margin-left:20px;margin-top: 0%">{{item.libelle}}</p>
+<img [src]="item.qrCode" style="height: 80px;width:90%"><p style="margin-left:20px;margin-top: 0%">{{item.libelle}}</p>
 </td>
  <td>
 <div *ngFor="let post of imagelist">
- <img [src]="post.alt" style="height: 40px;width:90%">
+ <img [src]="post.alt" style="height: 80px;width:90%">
  </div>
-<img [src]="item.qrCode" style="height: 50px;width:90%"  ><p style="margin-left:20px;margin-top: 0%">{{item.libelle}}</p>
+<img [src]="item.qrCode" style="height: 80px;width:90%"  ><p style="margin-left:20px;margin-top: 0%">{{item.libelle}}</p>
 </td>
 <!-- <td>
 <div *ngFor="let post of imagelist">
@@ -41,5 +41,5 @@
 </table>
       <button ion-button (click)="onSuccessLoad()"> Print</button>
   </ion-list>
-   
+                                                                          
 </ion-content>

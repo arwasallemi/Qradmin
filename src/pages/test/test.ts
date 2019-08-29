@@ -20,6 +20,9 @@ import { SocieteProvider } from '../../providers/societe/societe';
 export class TestPage {
   users:any;
  role
+ passwordShown : boolean = false;
+
+ passwordType : string ='password';
     username;
     email;
     listsociete: any;
@@ -34,6 +37,18 @@ export class TestPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TestPage');
+  }
+  togglePassword() {
+    if(this.passwordShown) {
+  this.passwordShown = false;
+  this.passwordType = 'password';
+    }
+    else {
+      this.passwordShown = true;
+  this.passwordType = 'text';
+    }
+    
+    
   }
   getsociete(){
     this.providerSociete.loadsociete()

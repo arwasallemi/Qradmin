@@ -1,22 +1,122 @@
-
- 
-<html>
-    <div style="color:white;height: 50px">
-      <div *ngFor="let item of listsociete">
-              <img [src]="soc.alt" style="width:10%;float:left;margin-left:50px"  >
-            </div>
-  <ion-icon name="cog" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
-  <ion-icon name="home" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
-  <ion-icon name="car" (click)="ressource()" style="font-size:30px;color:cornflowerblue;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>       
-  
-  
-  </div>
-  <div class="area">
-    <div style="margin-left:100px">
-  <br/> 
-  <br/> 
-  <br/> 
-  
+<div *ngFor="let item of listsociete">
+        <img [src]="soc.alt" style="width:10%;float:left;margin-left:30px;height:60px;"  >
+      </div> 
+      <nav class="slidemenu">
+      
+          <!-- Item 1 -->
+          <input type="radio"  (click)="gototemp()"  name="slideItem" id="slide-item-1" class="slide-toggle" checked/>
+          <label for="slide-item-1"><p class="icon">🏠</p><span>Accueil</span></label>
+          
+          <!-- Item 2 -->
+          <input type="radio" (click)="gotoparam()" name="slideItem" id="slide-item-2" class="slide-toggle"/>
+          <label for="slide-item-2"><p class="icon">⚙️</p><span>Paramètres</span></label>
+          
+          <!-- Item 3 -->
+          <input type="radio"   (click)="gotoressource()" name="slideItem" id="slide-item-3" class="slide-toggle"/>
+          <label for="slide-item-3"><p class="icon">🚗</p><span>Ressources</span></label>
+          
+          <!-- Item 4 -->
+          <input type="radio"  (click)="gotoLogOut()"  name="slideItem" id="slide-item-4" class="slide-toggle"/>
+          <label for="slide-item-4"><p class="icon">🛑</p><span>Exit</span></label>
+          
+          <div class="clear"></div>
+          
+          <!-- Bar -->
+          <div class="slider">
+            <div class="bar"></div>
+          </div>
+          
+        </nav>
+    
+    
+    <div class="container">
+      
+     
+      
+      <nav>
+          <ul class="mcd-menu">
+            <li (click)="gotoSortie()">
+              <a>
+                <i><ion-icon name="cart" style="font-size:25px;color:dimgray"></ion-icon></i>
+                <strong>Bon de sortie</strong>
+              
+              </a>
+            </li>
+            <li (click)="gotoretour()">
+              <a>
+                <i><ion-icon name="archive" style="font-size:25px;color:dimgray"></ion-icon></i>
+                <strong>Bon de retour</strong>
+              
+              </a>
+            </li>
+    
+            <!-- <li (click)="gotoempl()">
+              <a>
+                <i><ion-icon name="person" style="font-size:25px;color:dimgray"></ion-icon></i>
+                <strong>Employés</strong>
+              
+              </a>
+            </li> -->
+            <li>
+              <a>
+                <i><ion-icon name="contacts" style="font-size:25px;color:dimgray"></ion-icon></i>
+                <strong>GRH</strong>
+          
+              </a>
+              <ul>
+                  <li><a (click)="gotoempl()">Employés</a></li>
+                <li><a  (click)="gotopointage()" >Pointage</a></li>
+         
+                <li><a  (click)="gotosalaire()" >Salaire</a></li>
+                <li><a (click)="gotodemande()">Demande de congé</a></li>
+    
+                <li><a (click)="gotoabscence()">Abscence</a></li>
+              </ul>
+            </li>
+            <li (click)="gotoDevis()">
+              <a>
+                <i><ion-icon name="cash" style="font-size:25px;color:dimgray"></ion-icon></i>
+                <strong>Offre de prix</strong>
+              
+              </a>
+            </li>
+            <li>
+              <a>
+                <i><ion-icon name="calculator" style="font-size:25px;color:dimgray"></ion-icon></i>
+                <strong>Facturation</strong>
+          
+              </a>
+              <ul>
+                <li><a (click)="gotolistfact()">Liste</a></li>
+         
+                <li><a (click)="gotofacture()">Nouvelle facture</a></li>
+              </ul>
+            </li>
+            <li (click)="gotoproduit()">
+              <a>
+                <i><ion-icon name="cube" style="font-size:25px;color:dimgray"></ion-icon></i>
+                <strong>Produits</strong>
+              
+              </a>
+            </li>
+            <li >
+              <a>
+                <i><ion-icon name="cart" style="font-size:25px;color:rgb(105, 105, 105)"></ion-icon></i>
+                <strong>Stock</strong>
+          
+              </a>
+              <ul>
+                <li><a (click)="gotostock()">Stock disponible</a></li>
+         
+                <li><a (click)="gotomvt()">Mouvement de stock</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+     
+      </div>
+    
+      <div style="margin-left:190px;margin-top:7%">
 
   <ion-title><u> <i> Ajouter une nouvelle  abscence</i>  </u></ion-title>
   <br/> 
@@ -109,155 +209,10 @@
 </ion-card>
 
   </div>
-</div><nav class="main-menu">
-      <ul>
-          <li>
-              <a (click)="dashboard()">
-                  <i class="fa fa-home fa-2x"></i>
-                  <span class="nav-text">
-                      Dashboard
-                  </span>
-              </a>
-            
-          </li>
-          <li class="has-subnav">
-              <a (click)="bonretour()">
-                  <i class="fa fa-file fa-2x"></i>
-                  <span class="nav-text">
-                      Bons de Retour
-                  </span>
-              </a>
-              
-          </li>
-          <li class="has-subnav">
-              <a (click)="SortieV()">
-                 <i class="fa fa-folder fa-2x"></i>
-                  <span class="nav-text">
-                      Bons de Sortie Validées
-                  </span>
-              </a>
-              
-          </li>
-          <li class="has-subnav">
-              <a (click)="SortieC()">
-                 <i class="fa fa-folder-open fa-2x"></i>
-                  <span class="nav-text">
-                          Bons de Sortie Cloturées
-                  </span>
-              </a>
-             
-          </li>
-          <li>
-              <a (click)="Sortieb()">
-                  <i class="fa fa-edit fa-2x"></i>
-                  <span class="nav-text">
-                          Bons de Sortie Brouillons
-                  </span>
-              </a>
-          </li>
-          <li>
-              <a (click)="tech()">
-                  <i class="fa fa-user fa-2x"></i>
-                  <span class="nav-text">
-                     Techniciens
-                  </span>
-              </a>
-          </li>
-          <li>
-             <a (click)="Devis()">
-                 <i class="fa fa-copy fa-2x"></i>
-                  <span class="nav-text">
-                     Devis
-                  </span>
-              </a>
-          </li>
-          <li>
-             <a (click)="facture()">
-                  <i class="fa fa-edit fa-2x"></i>
-                  <span class="nav-text">
-                   Nouvelle Facture
-                  </span>
-              </a>
-          </li>
-          <li>
-              <a (click)="listFact()">
-                 <i class="fa fa-folder fa-2x"></i>
-                  <span class="nav-text">
-                      Liste des factures
-                  </span>
-              </a>
-          </li>
-          <li>
-                  <a (click)="reservation()">
-                     <i class="fa fa-file fa-2x"></i>
-                      <span class="nav-text">
-                         Résérvation
-                      </span>
-                  </a>
-              </li>
-              <li>
-                      <a (click)="stock()">
-                         <i class="fa fa-file fa-2x"></i>
-                          <span class="nav-text">
-                             Stocks
-                          </span>
-                      </a>
-                  </li>
-                  <li>
-                          <a (click)="produitt()">
-                             <i class="fa fa-file fa-2x"></i>
-                              <span class="nav-text">
-                               Produits
-                              </span>
-                          </a>
-                      </li>
-                      <li>
-                              <a (click)="enterpot()">
-                                 <i class="fa fa-file fa-2x"></i>
-                                  <span class="nav-text">
-                                   Entrepôts
-                                  </span>
-                              </a>
-                          </li> 
-                          <li>
-                            <a (click)="reourcesHum()">
-                               <i class="fa fa-file fa-2x"></i>
-                                <span class="nav-text">
-                                 GRH
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                                <a (click)="dmeConge()">
-                                   <i class="fa fa-file fa-2x"></i>
-                                    <span class="nav-text">
-                                    Demande Congé
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                    <a (click)="pointage()">
-                                       <i class="fa fa-file fa-2x"></i>
-                                        <span class="nav-text">
-                                        Pointage
-                                        </span>
-                                    </a>
-                                </li>
-      </ul>
 
-      <ul class="logout">
-          <li>
-             <a href="#">
-                   <i class="fa fa-power-off fa-2x"></i>
-                  <span class="nav-text">
-                      Logout
-                  </span>
-              </a>
-          </li>  
-      </ul>
-  </nav>
 
-</html>
+
+
 
 
 

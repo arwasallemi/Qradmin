@@ -1,95 +1,123 @@
-        <br/>
-        <br/>
-        <div *ngFor="let item of listsociete">
-                <img [src]="soc.alt" style="width:20%;float:left;margin-left:30px;height:80px;"  >
-              </div> 
-              <div style="color:white;height: 50px">
-       
-                    <ion-icon name="cog" (click)="gotoparam()"  style="font-size:30px;color:#f70909;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
-                    <ion-icon name="home" (click)="gotosociete()"  style="font-size:30px;color:#f70909;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>
-                    <ion-icon name="car" (click)="gotoressource()" style="font-size:30px;color:#f70909;margin-top:5px;float:right;margin-right:15px;margin-left:10px"></ion-icon>       
-        </div>
-<div class="container">
-    <nav>
-        <ul class="mcd-menu">
-
-          <li (click)="gotoSortie()">
-            <a>
-              <i><ion-icon name="cart" style="font-size:25px;color:dimgray"></ion-icon></i>
-              <strong>Bon de sortie</strong>
-            </a>
-          </li>
-          <li (click)="gotoretour()">
-            <a>
-              <i><ion-icon name="archive" style="font-size:25px;color:dimgray"></ion-icon></i>
-              <strong>Bon de retour</strong>
-            </a>
-</li>
+<div *ngFor="let item of listsociete">
+    <img [src]="soc.alt" style="width:10%;float:left;margin-left:30px;height:60px;"  >
+  </div> 
+  <nav class="slidemenu">
   
-          <li (click)="gotoempl()">
-            <a>
-              <i><ion-icon name="person" style="font-size:25px;color:dimgray"></ion-icon></i>
-              <strong>Employés</strong>
-            
-            </a>
-          </li>
-          <li>
-            <a>
-              <i><ion-icon name="contacts" style="font-size:25px;color:dimgray"></ion-icon></i>
-              <strong>GRH</strong>
-        
-            </a>
-            <ul>
-              <li><a  (click)="gotopointage()" >Pointage</a></li>
-       
-              <li><a  (click)="gotosalaire()" >Salaire</a></li>
-              <li><a (click)="gotodemande()">Demande de congé</a></li>
-            </ul>
-          </li>
-          <li (click)="gotoDevis()">
-            <a>
-              <i><ion-icon name="cash" style="font-size:25px;color:dimgray"></ion-icon></i>
-              <strong>Offre de prix</strong>
-            
-            </a>
-          </li>
-          <li>
-            <a>
-              <i><ion-icon name="calculator" style="font-size:25px;color:dimgray"></ion-icon></i>
-              <strong>Facturation</strong>
-        
-            </a>
-            <ul>
-              <li><a (click)="gotolistfact()">Liste</a></li>
-       
-              <li><a (click)="gotofacture()">Nouvelle facture</a></li>
-            </ul>
-          </li>
-          <li (click)="gotoproduit()">
-            <a>
-              <i><ion-icon name="cube" style="font-size:25px;color:dimgray"></ion-icon></i>
-              <strong>Produits</strong>
-            
-            </a>
-          </li>
-          <li >
-            <a>
-              <i><ion-icon name="cart" style="font-size:25px;color:rgb(105, 105, 105)"></ion-icon></i>
-              <strong>Stock</strong>
-        
-            </a>
-            <ul>
-              <li><a (click)="gotostock()">Stock disponible</a></li>
-       
-              <li><a (click)="gotomvt()">Mouvement de stock</a></li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-   
-    </div>
-    <div style="margin-left:190px;margin-top:7%">
+      <!-- Item 1 -->
+      <input type="radio"  (click)="gototemp()"  name="slideItem" id="slide-item-1" class="slide-toggle" checked/>
+      <label for="slide-item-1"><p class="icon">🏠</p><span>Accueil</span></label>
+      
+      <!-- Item 2 -->
+      <input type="radio" (click)="gotoparam()" name="slideItem" id="slide-item-2" class="slide-toggle"/>
+      <label for="slide-item-2"><p class="icon">⚙️</p><span>Paramètres</span></label>
+      
+      <!-- Item 3 -->
+      <input type="radio"   (click)="gotoressource()" name="slideItem" id="slide-item-3" class="slide-toggle"/>
+      <label for="slide-item-3"><p class="icon">🚗</p><span>Ressources</span></label>
+      
+      <!-- Item 4 -->
+      <input type="radio"  (click)="gotoLogOut()"  name="slideItem" id="slide-item-4" class="slide-toggle"/>
+      <label for="slide-item-4"><p class="icon">🛑</p><span>Exit</span></label>
+      
+      <div class="clear"></div>
+      
+      <!-- Bar -->
+      <div class="slider">
+        <div class="bar"></div>
+      </div>
+      
+    </nav>
 
+
+<div class="container">
+  
+ 
+  
+  <nav>
+      <ul class="mcd-menu">
+        <li (click)="gotoSortie()">
+          <a>
+            <i><ion-icon name="cart" style="font-size:25px;color:dimgray"></ion-icon></i>
+            <strong>Bon de sortie</strong>
+          
+          </a>
+        </li>
+        <li (click)="gotoretour()">
+          <a>
+            <i><ion-icon name="archive" style="font-size:25px;color:dimgray"></ion-icon></i>
+            <strong>Bon de retour</strong>
+          
+          </a>
+        </li>
+
+        <!-- <li (click)="gotoempl()">
+          <a>
+            <i><ion-icon name="person" style="font-size:25px;color:dimgray"></ion-icon></i>
+            <strong>Employés</strong>
+          
+          </a>
+        </li> -->
+        <li>
+          <a>
+            <i><ion-icon name="contacts" style="font-size:25px;color:dimgray"></ion-icon></i>
+            <strong>GRH</strong>
+      
+          </a>
+          <ul>
+              <li><a (click)="gotoempl()">Employés</a></li>
+            <li><a  (click)="gotopointage()" >Pointage</a></li>
+     
+            <li><a  (click)="gotosalaire()" >Salaire</a></li>
+            <li><a (click)="gotodemande()">Demande de congé</a></li>
+
+            <li><a (click)="gotoabscence()">Abscence</a></li>
+          </ul>
+        </li>
+        <li (click)="gotoDevis()">
+          <a>
+            <i><ion-icon name="cash" style="font-size:25px;color:dimgray"></ion-icon></i>
+            <strong>Offre de prix</strong>
+          
+          </a>
+        </li>
+        <li>
+          <a>
+            <i><ion-icon name="calculator" style="font-size:25px;color:dimgray"></ion-icon></i>
+            <strong>Facturation</strong>
+      
+          </a>
+          <ul>
+            <li><a (click)="gotolistfact()">Liste</a></li>
+     
+            <li><a (click)="gotofacture()">Nouvelle facture</a></li>
+          </ul>
+        </li>
+        <li (click)="gotoproduit()">
+          <a>
+            <i><ion-icon name="cube" style="font-size:25px;color:dimgray"></ion-icon></i>
+            <strong>Produits</strong>
+          
+          </a>
+        </li>
+        <li >
+          <a>
+            <i><ion-icon name="cart" style="font-size:25px;color:rgb(105, 105, 105)"></ion-icon></i>
+            <strong>Stock</strong>
+      
+          </a>
+          <ul>
+            <li><a (click)="gotostock()">Stock disponible</a></li>
+     
+            <li><a (click)="gotomvt()">Mouvement de stock</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+ 
+  </div>
+
+  <div style="margin-left:190px;margin-top:7%">
+  
     
       <div style="margin-left:100px">
           <p id="title">Liste des bon de retour</p>
@@ -149,7 +177,7 @@
               <td>{{bon.created_at}}</td>
               <td>{{bon.note}}</td>
               <td>
-                  <!-- <ion-icon id="action" name="create" (click)="edit(bon.id)" style="color:#178a43"></ion-icon>  -->
+                   <ion-icon id="action" style="height: 0.5px"  name="print" (click)="imprimer(bon)" style="color:#178a43"></ion-icon>
                 <ion-icon id="action" name="trash" (click)="delete(bon.id)" style="color:red"></ion-icon>
                 <ion-icon id="action" name="eye" style="color:#3ea7d8" (click)="show(bon)"></ion-icon>
               </td>
